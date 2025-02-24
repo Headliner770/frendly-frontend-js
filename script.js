@@ -84,4 +84,4 @@ const b = 100;
 const result1 = a || b; // приводит к boolean и вернет первое true или последнее если все false
 const result2 = a ?? b; // если первый операнд null / undef, то вернет выражение b
 console.log(result1);
-console.log(result2);
+
