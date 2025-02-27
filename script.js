@@ -18,10 +18,10 @@
 
 // console.log(message);
 
-false || false; // false
-true || false; // true
-false || true; // true
-true || true; // true
+// false || false; // false
+// true || false; // true
+// false || true; // true
+// true || true; // true
 
 // const age = 15;
 // const withParent = false;
@@ -78,10 +78,86 @@ true || true; // true
 //   console.log("1111");
 // }
 
-const a = null;
-const b = 100;
+// const a = null;
+// const b = 100;
 
-const result1 = a || b; // приводит к boolean и вернет первое true или последнее если все false
-const result2 = a ?? b; // если первый операнд null / undef, то вернет выражение b
-console.log(result1);
+// const result1 = a || b; // приводит к boolean и вернет первое true или последнее если все false
+// const result2 = a ?? b; // если первый операнд null / undef, то вернет выражение b
+// console.log(result1);
 
+// 6
+// const age = +prompt("Сколько тебе лет ?");
+
+// switch (true) {
+//   case age < 1: {
+//     console.log("Такого возраста не бывает!");
+//     break;
+//   }
+//   case age === 18: {
+//     console.log("Не верю, покажи паспорт");
+//     break;
+//   }
+//   case age > 0 && age <= 125: {
+//     console.log(`Твой возраст: ${age}`);
+//     break;
+//   }
+//   case age > 125: {
+//     console.log("Вампир что ли ?");
+//     break;
+//   }
+//   default: {
+//     console.log("Возраст введен некорректно");
+//   }
+// }
+
+// 7
+
+// let count = 0;
+
+// do {
+//   console.log(count);
+//   count++;
+// } while (count < 10);
+
+// for (let i = 0; i < 4; i++) {
+//   alert(i);
+// }
+// console.log("...цикл завершен");
+
+//  8
+//function declaration
+// function logHello() {
+//   console.log("Hi");
+// }
+// logHello();
+// logHello();
+
+// function logMessage() {
+//   const message = "Hi";
+//   console.log(message);
+// }
+// logMessage();
+// console.log(`${message}, frend`);
+
+// function logMessage(message, count) {
+//   // принимаем данные  в скобках (ПАРАМЕТРЫ) (message, count)
+//   for (let i = 0; i < count; i++) {
+//     console.log(message);
+//   }
+// }
+
+// logMessage("Hi!", 5); //при вызове в скобках (АРГУМЕНТЫ)
+// logMessage("By!", 2);
+
+const message = "Привет";
+
+function logMessage(message, count) {
+  message = `((${message}))`;
+
+  for (let i = 0; i < count; i++) {
+    console.log(message);
+  }
+}
+
+logMessage(message, 3);
+console.log(message);
