@@ -125,12 +125,31 @@
 // console.log("...цикл завершен");
 
 //  8
+
+// const numberFromString = Number("100"); //преобр из string в number
+// const stringFromNumber = String(10);  //преобр из number в string
+// const booleanFromNull = Boolean(null); //преобр к boolean
+
+// alert("Hi all");
+// confirm("Подтверждение действия");
+
+// const answer = prompt("Введите ответ");
+
 //function declaration
 // function logHello() {
 //   console.log("Hi");
 // }
 // logHello();
 // logHello();
+
+// const message = 'Global privet'
+
+// function logMessage() {
+//   const message = 'Local privet'
+//   console.log(message)
+// }
+// logMessage()
+// console.log(message)  //выведит сначала локал, потом глобал
 
 // function logMessage() {
 //   const message = "Hi";
@@ -140,7 +159,7 @@
 // console.log(`${message}, frend`);
 
 // function logMessage(message, count) {
-//   // принимаем данные  в скобках (ПАРАМЕТРЫ) (message, count)
+//   // принимаем данные в скобках (ПАРАМЕТРЫ) (message, count)
 //   for (let i = 0; i < count; i++) {
 //     console.log(message);
 //   }
@@ -149,15 +168,53 @@
 // logMessage("Hi!", 5); //при вызове в скобках (АРГУМЕНТЫ)
 // logMessage("By!", 2);
 
-const message = "Привет";
+// const globalMessage = "Привет";
 
-function logMessage(message, count) {
-  message = `((${message}))`;
+// function logMessage(message = 'Yo', count = 5) {
+//   const messageFormatted = `(((${message})))`;
 
-  for (let i = 0; i < count; i++) {
-    console.log(message);
-  }
+//   for (let i = 0; i < count; i++) {
+//     console.log(messageFormatted);
+//   }
+// }
+// logMessage();
+// console.log(globalMessage)
+
+// function sumFiveNumbers(num5, num1 = 100, num2 = 200, num3 = 300, num4 = 400) {
+//   const sum = num1 + num2 + num3 + num4 + num5;
+
+//   console.log(`Сумма чисел равно ${sum}`);
+// }
+
+// sumFiveNumbers(1, 1, 1);
+
+// function sum(a, b) {
+//   return a + b;
+// }
+
+// console.log(sum(1, 9));
+
+// function getAgeType(age) {
+//   if (typeof age !== 'number') {
+//     return 'Некорректно'
+//   }
+
+//   if (age < 1 || age > 125) {
+//     return "Не может быть"
+//   }
+
+//   if (age < 18) {
+//     return "Несовершеннолетний"
+//   }
+
+//   return 'Взрослый'
+// }
+
+// console.log(getAgeType(56))
+
+function get(name) {
+  if (!name) return;
+  return `знаю, ты ${name}`;
 }
 
-logMessage(message, 3);
-console.log(message);
+console.log(get());
