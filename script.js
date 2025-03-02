@@ -664,3 +664,124 @@
 //   },
 // };
 // ladder.up().up().down().showStep().down().showStep(); // показывает 1 затем 0 //Вызов через точку - чейнинг(цепь)
+
+// // 13 Методы примитивов. Числа. Объект math. Округление. Парсинг чисел и строк
+// // Примитивные типы данных:
+// const name = "Pavel"; //string
+// const age = 35; //number
+// const universeStars = 999999999999999999999n; //BigInt
+// const isDeveloper = true; //Boolean
+// const id = Symbol(); //symbol
+// const dog = null; //null
+// const future = undefined; //undefiend
+
+// // Непримитивный тип данных:
+// const user = {} // Объект
+
+// В объектах находятся свойства. Некоторые свойства содержат функции (методы). Методы могут ывп любую логику
+// const user = {
+//   name: "Alex",
+//   age: 30,
+//   logInfo() {
+//     console.log(`
+//       Имя: ${this.name}
+//       Возраст: ${this.age}
+//       `);
+//   },
+//   getIsAdult() {
+//     return this.age >= 18;
+//   },
+// };
+// user.logInfo(); //Обращение к методу
+// console.log("Взрослый?", user.getIsAdult());
+
+// Округление
+// const price = 99.99;
+// const roundedPrice = price.toFixed(0);
+// console.log(`Округленная цена:`, roundedPrice);
+
+// const price = 99.555;
+// console.log("Округление до 0 знаков после запятой:", price.toFixed());
+// console.log("Округление до 1 знаков после запятой:", price.toFixed(1));
+// console.log("Округление до 2 знаков после запятой:", price.toFixed(2));
+
+// Округление идет от самого первого числа
+// const num = 100.055;
+// console.log(num.toPrecision(5));
+
+// const num = 100;
+// const numAsString = num.toString();
+// console.log("Число:", num); // выводит число 100
+// console.log("Число в виде строки:", numAsString); // выводит строку 100
+
+// const num = 100;
+// console.log(`Число ${num} в двоичной системе счисления:`, num.toString(2));
+
+// console.log(Math);
+
+// console.log("Случайное число:", Math.random());
+
+//Отбрасывает минус
+// console.log(Math.abs(-1));
+// console.log(Math.abs(2));
+// console.log(Math.abs(-1234));
+
+// console.log(Math.pow(2, 10)); //возводит в степень
+// console.log(2 ** 10); //так же возводит в степень
+
+// console.log(Math.sqrt(16)) //квадратный корень
+// console.log(Math.sqrt(100)) //квадратный корень
+// console.log(Math.cbrt(1000)) //кубический корень
+// console.log(Math.cbrt(100)) //кубический корень
+
+// console.log(Math.min(1, 2, 3, -5, 112, 99)); // Возвращает минимальное число
+// console.log(Math.max(1, 2, 3, -5, 112, 99)); // Возвращает максимальное число
+// Тот же пример, но с массивом :
+// const nums = [1, 2, 3, -5, 112, 99];
+// // console.log(Math.min(...nums));
+
+// // метод round округляет до ближайшего целого
+// console.log(Math.round(3.49)); // 3
+// console.log(Math.round(3.5)); // 4
+// console.log(Math.round(3.51)); // 4
+// console.log(Math.round(-3.49)); // -3
+// console.log(Math.round(-3.5)); // -3
+// console.log(Math.round(-3.51)); // -4
+
+// // метод floor округляет вниз до ближайшего целого
+// console.log(Math.floor(3.49)); // 3
+// console.log(Math.floor(3.5)); // 3
+// console.log(Math.floor(3.51)); // 3
+// console.log(Math.floor(-3.49)); // -4
+// console.log(Math.floor(-3.5)); // -4
+// console.log(Math.floor(-3.51)); // -4
+
+// // метод ceil округляет вверх до ближайшего целого
+// console.log(Math.ceil(3.49)); // 4
+// console.log(Math.ceil(3.5)); // 4
+// console.log(Math.ceil(3.51)); // 4
+// console.log(Math.ceil(-3.49)); // -3
+// console.log(Math.ceil(-3.5)); // -3
+// console.log(Math.ceil(-3.51)); // -3
+
+// // метод trunc округляет в меньшую сторону без учета знака числа (отриц будет окр вверх / отрицат будет окр вниз)
+// console.log(Math.trunc(3.49)); // 3
+// console.log(Math.trunc(3.5)); // 3
+// console.log(Math.trunc(3.51)); // 3
+// console.log(Math.trunc(-3.49)); // -3
+// console.log(Math.trunc(-3.5)); // -3
+// console.log(Math.trunc(-3.51)); // -3
+
+// const numberAsString = "100"; // строка 100
+// console.log(Number(numberAsString)); // число 100
+// console.log(+numberAsString); // число 100
+
+// const numberAsString = "100px";  // строка 100 пикселей
+// console.log(parseInt(numberAsString)); // число 100
+
+// const numberAsString = "100.5px";  // строка 100.5 пикселей
+// console.log(parseFloat(numberAsString)); // число 100.5
+
+// const numberAsString = "    100.5px"
+// console.log(parseInt(numberAsString)) //можно распарсить даже с пробелами
+// console.log(parseFloat(numberAsString))
