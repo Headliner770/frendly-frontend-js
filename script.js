@@ -110,7 +110,7 @@
 //   }
 // }
 
-// 7
+// 7  Циклы
 
 // let count = 0;
 
@@ -124,7 +124,7 @@
 // }
 // console.log("...цикл завершен");
 
-//  8
+//  8  Функции
 
 // const numberFromString = Number("100"); //преобр из string в number
 // const stringFromNumber = String(10);  //преобр из number в string
@@ -219,7 +219,8 @@
 
 // console.log(get());
 
-//  9
+//  9 Виды функций
+
 // Особ-сть fun decloration : ёё можно использовать до её объявления!!!
 // console.log(sum(6, 3)); //Хойстинг
 
@@ -306,3 +307,98 @@
 //   showMenu();
 // });
 // // Функция должна выполнять одно действие, логичное от её названия
+
+// 10 Объекты
+
+// const firstEmptyObject = {}; // Пустой объект
+// const secondEmptyObject = new Object(); // То же пустой объект
+
+// const user = {
+//   login: "iamsuper", // Наботр свойств или набор пар ключ - значение (в {})
+//   password: "qwerty",
+// };
+// console.log(user.login) или (user['login']) // Получаем доступ к свойству
+
+// const user = {
+//   login: "iamsuper", // Наботр свойств или набор пар ключ - значение (в {})
+//   password: "qwerty",
+//   adress: {
+//     city: "Moscow",
+//   },
+//   sayHi: () => console.log("Hello!"), // функция внутри объекта это !!! МЕТОД !!!
+// };
+// console.log(user["login"]);
+// user.sayHi(); // вызвали Метод sayHi внутри объекта user
+
+// Манипулировать свойствами внутри константного объекта МОЖНО, но полностью переопределить переменную НЕЛЬЗЯ
+// const user = {};
+
+// user.name = "Pavel"; // Добавили в пустой объект поле name со значением Pavel
+// user["is deeloper"] = true;
+
+// console.log(user);
+
+// user.name = "Максим"; // Измениили значение поля name на Максим
+// user.age = 35;
+// delete user.name; // Удаляем свойство
+
+// console.log(user);
+
+// Создали объект user из двух переменных
+// const name = "Pavel";
+// const age = 35;
+
+// const user = {
+//   name: name,
+//   age,
+// };
+// console.log(user);
+
+// const obj = {
+//   123: "Example",
+// };
+// console.log(obj["123"]);
+
+// можно использовать нэйминг для ключа даже такой
+// const obj = {
+//   const: "blabla",
+//   let: "bla",
+//   for: "xz",
+// };
+// console.log(obj);
+
+// const propName = prompt("Какое совйство?");
+// const propValue = prompt("Какое значение ${propName}?");
+
+// const obj = {
+//   [propName]: propValue,
+// };
+// console.log(obj);
+
+// Проверку соществования свойства в объекте
+// const user = {
+//   name: "PAvel",
+//   age: 35,
+// };
+// console.log("isDeveloper" in user);
+
+// Способ перебора свойств объект через цикл  !!! for in !!!
+// const user = {
+//   name: "Pavel",
+//   age: 35,
+//   isDeveloper: true,
+// };
+// for (const propName in user) {
+//   console.log(user[propName]);
+// }
+
+// const nums = {
+//   2: "Two",
+//   1: "One",
+//   3: "Tree",
+// };
+// for (const num in nums) {
+//   console.log(nums[num]); // При выводе js сортирует порядок
+// }
+
+// 11 Объекты - сравнение, копирование, объединение, деструктуризация, остаточные пар-ры
