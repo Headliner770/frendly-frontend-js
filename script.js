@@ -402,3 +402,188 @@
 // }
 
 // 11 Объекты - сравнение, копирование, объединение, деструктуризация, остаточные пар-ры
+
+// JS хранит объекты по ссылке в обл памите
+// const obj1 = { age: 10 };
+// // const obj2 = { age: 10 };
+// // console.log(obj1 === obj2); //false
+// console.log(obj1);
+
+// const obj1 = { name: "Pavel" };
+// const obj2 = obj1; //obj1 и obj2 будут ссылаться на одну обл в памяти
+
+// obj2.name = "Max";
+
+// console.log(obj1 === obj2); //true
+// console.log(obj1); // name: 'Max'
+// console.log(obj2); // name: 'Max'
+
+// const obj1 = {
+//   name: "Pavel",
+//   age: 35,
+// };
+// const obj2 = {
+//   name: "Pavel",
+//   age: 35,
+// };
+// const areObjectsEqual = (object1, object2) => {
+//   const keys1 = Object.keys(object1);
+//   const keys2 = Object.keys(object2);
+
+//   console.log("Длина keys1:", keys1.length);
+//   console.log("Длина keys2:", keys2.length);
+
+//   if (keys1.length !== keys2.length) {
+//     return false;
+//   }
+
+//   for (const key in object1) {
+//     const value1 = object1[key];
+//     const value2 = object2[key];
+//     const areValueObjects =
+//       typeof value1 === "object" && typeof value2 === "object";
+
+//     if (areValueObjects) {
+//       return areObjectsEqual(value1, value2); // Рекурсия - когда ф-ия areObjectsEqual внутри использ саму себя
+//     }
+
+//     if (value1 !== value2) {
+//       return false;
+//     }
+//   }
+//   return true;
+// };
+// console.log(areObjectsEqual(obj1, obj2)); //true
+
+// const obj1 = { name: "Pavel" };
+// const obj2 = { ...obj1 }; // Копировали с помощью спрэт оператора
+
+// for (const key in obj1) {
+//   obj2[key] = obj1[key];
+// }
+// obj2.name = "Max";
+// console.log("obj1:", obj1);
+// console.log("obj2:", obj2);
+
+// const obj1 = { name: "Pavel" };
+// const obj2 = { age: 35 };
+// const obj3 = {
+//   name: "Max",
+//   isDeveloper: true,
+// };
+
+// const user = { ...obj1, ...obj2, ...obj3 }; // Создали новый объект с объедененными значениями имеющихся объектов
+// console.log("user:", user); //{name: 'Max', age: 35, isDeveloper: true} (значение name будет взято последнее)
+
+// const user = {
+//   name: "Pavel",
+//   age: 28,
+//   // address: {
+//   //   city: "Moskow",
+//   //   code: 234,
+//   // },
+// };
+// // console.log(user.address.city); //Будет ошибка
+// console.log("текст"); //Последующий код не вполнится из-за ошибки
+// console.log(user.address?.city); //Использ спрэт оператор ?. Тогда последующий код выполнится
+
+// const guest1 = {
+//   name: "Vasya",
+//   age: 30,
+//   orderInfo: {
+//     roomType: 2,
+//     stayDates: {
+//       from: "14.04.2024",
+//       to: "21.04.2024",
+//     },
+//   },
+// };
+// const guest2 = {
+//   name: "Katya",
+//   age: 33,
+// };
+// const logGuestInfo = (guest) => {
+//   console.log(`
+//     Имя: ${guest.name}
+//     Возраст: ${guest.age}
+//     Дата выезда: ${guest.orderInfo?.stayDates?.to ?? "Не указана"}
+// `); //Проверка наличия
+// };
+// logGuestInfo(guest1);
+// logGuestInfo(guest2);
+
+//Синтаксис диструктурирующего присваивания
+// const user = {
+//   name: "Pavel",
+//   age: 35,
+//   isDeveloper: true,
+// };
+// const { name, age, isDeveloper } = user;
+// console.log("name:", name);
+// console.log("age:", age);
+// console.log("isDeveloper:", isDeveloper);
+
+// const logAdress = ({ city, street, houseNumber, apartamentNumber }) => {
+//   console.log(`
+//     Адрес:
+//     г. ${city}, ул. ${street},
+//     д. ${houseNumber}, кв. ${apartamentNumber},
+//   `);
+// };
+// logAdress({
+//   city: "Moskow",
+//   street: "Pushkina",
+//   houseNumber: 21,
+//   apartamentNumber: 11,
+// });
+
+//деструктуризация с переименованием
+// const user = {
+//   name: "Pavel",
+// };
+// const admin = {
+//   name: "Boss",
+// };
+// const { name: userName } = user;
+// const { name: adminName } = admin;
+// console.log("userName:", userName);
+// console.log("adminName:", adminName);
+
+// const user1 = {
+//   name: "Pavel",
+//   age: 35,
+//   city: "Moskow",
+// };
+// const user2 = {
+//   name: "Max",
+//   age: 20,
+// };
+// const { city = "Не указан" } = user1;
+// console.log("Город: ", city);
+
+// //Деструктуризация с переимен и значением по умолчанию
+// const user = {
+//   // city: "Moskow",
+// };
+// const { city: userCity = "не указано" } = user;
+// console.log("userCity:", userCity);
+
+//Остаточные или rest-параметры
+//Очень часто применяется в React!!!!!!!!!!!!!!!!!!!!!!
+// const logUser = (user) => {
+//   const { name, age, city, ...otherInfo } = user; //otherInfo будет отвечать за остаточные параметры
+
+//   console.log(`
+//   Имя: ${name}
+//   Возраст: ${age}
+//   Город: ${city}`);
+//   console.log("Доп информация:", otherInfo);
+// };
+// logUser({
+//   name: "Pavel",
+//   age: 35,
+//   city: "Moskow",
+//   company: "VK",
+//   jobPost: "Frontend Developer",
+//   hasCat: true,
+// });
