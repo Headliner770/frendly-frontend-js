@@ -212,9 +212,97 @@
 
 // console.log(getAgeType(56))
 
-function get(name) {
-  if (!name) return;
-  return `знаю, ты ${name}`;
-}
+// function get(name) {
+//   if (!name) return;
+//   return `знаю, ты ${name}`;
+// }
 
-console.log(get());
+// console.log(get());
+
+//  9
+// Особ-сть fun decloration : ёё можно использовать до её объявления!!!
+// console.log(sum(6, 3)); //Хойстинг
+
+// function sum(a, b) {
+//   return a + b;
+// }
+
+// Особ-сть fun decloration : её можно перезаписать, но где бы её не вызвали, код из тела ф-ии будет выполняться из той, которая написана !!!последней!!!
+// logMessage();
+// function logMessage() {
+//   console.log("Привет!");
+// }
+
+// fun logMessage() {
+//   console.log("Пока!");
+// }
+
+// fun expression
+// fun expression НЕЛЬЗЯ ИСПОЛЬЗОВАТЬ ДО ЕЁ ОБЪЯВЛЕНИЯ, как в примере c fun decloration !!!
+// const logHello = function () {
+//   console.log("Hello!");
+// };
+// // fun expression НЕЛЬЗЯ ПЕРЕОПРИДЕЛИТЬ (если она объявлена через const), как в примере c fun decloration !!!
+
+// logHello();
+
+// Arrow fun
+// Arrow fun НЕЛЬЗЯ ИСПОЛЬЗОВАТЬ ДО ЕЁ ОБЪЯВЛЕНИЯ, так же как и с fun expression
+// У Arrow fun нет своего контекста. Ключ слово this покажет на родительскую обл видимости
+// const logHello = () => {
+//   console.log("Hello!");
+// };
+// logHello();
+
+// const sum = (a, b) => a + b; //Особеность: return можно не указывать. Если возможно указать тело ф-ии в одну троку, то {} не обязательны
+
+// console.log(sum(1, 2));
+
+// function fn1() {
+//   return "I'm function1"
+// }
+
+// const fn2 = function() {
+//   return "I'm function2"
+// }
+
+// const fn3 = () => {
+//   return "I'm function3"
+// }
+// console.log(fn1())
+// console.log(fn2())
+// console.log(fn3())// Функция всегда вызывается с круглыми скобками, даже если аргументы не передаются
+
+// const fn1 = () => {
+//   return "Im function1";
+// };
+
+// const fn2 = fn1;  //Уже объявленную ранее переменную, можем присвоить в другую переменную
+// console.log(fn2());
+
+// const logMessage = (actionBefore, actionAfter) => {
+//   actionBefore();
+//   console.log("Hello!");
+//   actionAfter();
+// };
+// const fn1 = () => console.log("before");
+// const fn2 = () => console.log("after");
+
+// logMessage(
+//   () => console.log("before"),
+//   () => console.log("after")
+// );
+
+// const validate = (hasAccess) =>
+//   hasAccess ? () => console.log("go") : () => console.log("stop"); // логика с тернарными оператарами '?' и ':' вместо 'if' и 'else'
+
+// const logMessage = validate(true);
+// logMessage();
+
+// const showMenu = () => {
+//   document.querySelector(".menu").classList.add("is-active");
+// };
+// document.querySelector(".button").addEventListener("click", () => {
+//   showMenu();
+// });
+// // Функция должна выполнять одно действие, логичное от её названия
