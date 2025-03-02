@@ -587,3 +587,80 @@
 //   jobPost: "Frontend Developer",
 //   hasCat: true,
 // });
+
+// // 12 this в методах объекта
+// console.log("this глобальный:", this);
+// function fn() {
+//   console.log("this в теле функции:", this);
+// }
+// fn(); //this будет ссылаться на один и тот де объект - window
+
+// const user = {
+//   name: "Pavel",
+//   age: 28,
+//   logThis() { //если использ стрелочную ф-ию, то this будет ссылаться на window(глобал) !!!!!!
+//     console.log("this в теле метода объекта user:", this);
+//     // console.log("this.name:", this.name);
+//   },
+//   address: {
+//     city: "Moskow",
+//     code: 12344,
+//     logInnerThis: function () {
+//       console.log("this в теле метода объекта address:", this);
+//     },
+//   },
+// };
+// user.logThis();
+// user.address.logInnerThis();
+
+// const user1 = { name: "Alex" };
+// const user2 = { name: "Bers" };
+// function logInfo() {
+//   console.log("this:", this); // Глобальный контекст
+//   console.log("this.name:", this.name); //
+// }
+// logInfo();
+// user1.logName = logInfo;
+// user2.logName = logInfo;
+// user1.logName(); // this.name: Alex
+// user2.logName(); // this.name: Bers
+// // Получим в this зависит к какому контексту this пренадлежит.
+// // Если в fun decloration, то получим ссылку на сам объект, которому метод пренадлежит  !!!!!!
+// // Если метод объявлен через стрел ф-ию иил обращение к this идет вне метода объекта, то получим глобал контекст выполнения !!!!!!!!
+
+//задача с lernjs
+// const calculator = {
+//   read() {
+//     this.a = Number(prompt("Enter first number:", 0));
+//     this.b = Number(prompt("Enter second number:", 0));
+//   },
+//   sum() {
+//     return this.a + this.b;
+//   },
+//   mul() {
+//     return this.a * this.b;
+//   },
+// };
+// calculator.read();
+// console.log("calculator:", calculator);
+// console.log("Сумма:", calculator.sum());
+// console.log("Произведение:", calculator.mul());
+
+//задача с lernjs
+// let ladder = {
+//   step: 0,
+//   up() {
+//     this.step++;
+//     return this;
+//   },
+//   down() {
+//     this.step--;
+//     return this;
+//   },
+//   showStep() {
+//     // показывает текущую ступеньку
+//     console.log("Текущая ступенька:", this.step);
+//     return this;
+//   },
+// };
+// ladder.up().up().down().showStep().down().showStep(); // показывает 1 затем 0 //Вызов через точку - чейнинг(цепь)
