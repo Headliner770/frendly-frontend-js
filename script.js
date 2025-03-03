@@ -785,3 +785,101 @@
 // const numberAsString = "    100.5px"
 // console.log(parseInt(numberAsString)) //можно распарсить даже с пробелами
 // console.log(parseFloat(numberAsString))
+
+// 14 Строки. Метды at, replace, slice, includes, trim...
+
+// const name = "Pavel";
+// const emptyStr = "";
+// const strWithOneSpace = " ";
+// console.log(`Длина строки '${name}: `, name.length); // 5
+// console.log(`Длина строки '${emptyStr}: `, emptyStr.length); //0
+// console.log(`Длина строки '${strWithOneSpace}: `, strWithOneSpace.length); // 1
+
+// console.log("123".length); // 3
+
+// const name = "Pavel";
+// console.log(name[0]); // Получили первый символ строки по номеру индекса !! Р !!
+// console.log(name[2]); // Получили первый символ строки по номеру индекса !! v !!
+// // Отсчет индексов идет с 0
+// console.log(name[name.length - 1]); // Получили последний символ !! l !!
+
+// const name = "Pavel";
+// console.log(name.at(0)); // P   Получаем первый символ с начала
+// console.log(name.at(1)); // a
+// console.log(name.at(-1)); // l  Получаем последний символ с конца
+
+// const text = "КаКойТоТеКсТ";
+// console.log(text.toLowerCase()); // Меняет текст строки к нижнему регистру
+// console.log(text.toUpperCase()); // Меняет текст строки к верхнему регистру
+
+// const message = "   Hello!  ";
+// console.log(`
+//     Строка '${message}' имеет длину ${message.length} символов`); //Наша строка имеет длину в 11 символов
+// const messageFormatted = message.trim();
+// console.log(`
+//     Строка '${messageFormatted}' имеет длину ${messageFormatted.length} символов`); //Наша строка имеет длину в 6 символов (trim обрезает пробелы вначале и вконце строки)
+// // Так же есть !!! trimStart !!! - обрезает пробелы вначале и !!! trimEnd !!! - обрезает пробелы вконце
+
+// const message = "Пробуем найти !это выражение! в этом предложении";
+// // console.log(message.indexOf('найти')) // Поиск индекса по Строке или символу
+// console.log(message.includes("найти")); // Определяет есть ли слово/символ в предложениее. Выдает boolean значение
+
+// const message = "Начало строки и конец";
+// console.log(message.startsWith("Нач")); // Проверка на начинается ли строка на данное значение
+// console.log(message.endsWith("Нач")); // Проверка на заканчивается ли строка на данное значение
+
+// const message = "Hello!";
+// console.log(message.indexOf("el", 2)); // Поиск индекса (начиная со второго) строки el
+// console.log(message.includes("el", 3)); // Поиск индекса (начиная с третьего) строки el
+// console.log(message.startsWith("He", 0));
+// console.log(message.endsWith("o!", message.length)); // Номер поз 5 будет концом строки. Проверяем, заканчивается ли строка на 'el'
+
+// const str = "JavaScript";
+// // console.log(str.substring(0, 4 )); // Получаем подстроку с 0 до 4 индекса
+// // console.log(str.substring(4, 1 )); // Получаем подстроку с 4 до 1 индекса
+// console.log(str.slice(1, 3)); // Получаем подстроку с 1 до 3 индекса
+// console.log(str.slice(-6)); // Получаем подстроку в диапазоне с конца до -6 символа. Всё остальное обрезается
+// console.log(str.slice(-6, -3)); // Получаем подстроку в диапазоне от -6 до -3 символа.
+// console.log(str.repeat(3)); // Возвращает строку n-число раз
+
+// const message = "Я изучаю бэкенд, но я ещё ничего не знаю про бэкенд";
+// console.log(message.replace("бэкенд", "фронтенд")); // Указываем что на что меняем (первую обнаруженную строку)
+// console.log(message.replaceAll("бэкенд", "фронтенд")); // Указываем что на что меняем (Все обнаруженные строки)
+
+// const str = "+7 (999) 999-00-99";
+// console.log(str.replace(/\d/g, "#")); // Меняем все цифры на символ #
+
+// const str = "Привет, мир!";
+// console.log(str.split(", ")); // Разделяем строку на массив ['Привет', 'мир!']
+// console.log(str.split("")); // Разделяем строку на массив (каждый символ элемент массива)
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  Все эти методы не мутирую исходный код  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+// const message = " Hello!    ";
+// console.log(`
+//     Сообщение до: '${message}'`);
+// message.trim();
+// message.toUpperCase();
+// console.log(`
+//     Сообщение после: '${message}'`);
+// Ничего не поменялось. Все эти методы не изменяют строку. Каждое из выражени вернула результат в никуда. Исходная сущность не поменялась.
+// let message = " Hello!    ";
+// console.log(`
+//     Сообщение до: '${message}'`);
+// message = message.trim();
+// message = message.toUpperCase();
+// console.log(`
+//     Сообщение после: '${message}'`);
+// //Так измнится. Убрали константу. Каждый раз мы переоприделяли значение message
+
+// // Задачка
+// const value = prompt("Введите ваше имя:");
+// const clearValue = value.trim().toLowerCase()
+// if (clearValue.length === 0) {
+//   alert("Error! xxxNamexxx");
+// }
+// if (clearValue.includes("админ")) {
+//   alert("Error admin");
+// }
+
+// 15 Массивы
