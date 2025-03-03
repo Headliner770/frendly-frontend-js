@@ -882,4 +882,124 @@
 //   alert("Error admin");
 // }
 
-// 15 Массивы
+// 15 Массивы - основы. Приведение к строке. Копир, объединение и сравнение массивов.
+// Массив - коллекция элементов, которая хранится в своём порядке. Или массив это объект
+// const arr = [] //пустой массив
+// const arr = ["Привет", 100, true]; // У каждого элемента есть свой индекс (0, 1, 2)
+// console.log(arr[0]); // Привет
+// console.log(arr[1]); // 100
+
+// const arr = [
+//   "Привет",
+//   100,
+//   true,
+//   {
+//     name: "Pavel", // добавили объект
+//   },
+//   () => console.log("Yo!"), // добавили ф-ию
+//   [true, true, false], //// добавили массив
+// ];
+// console.log(arr[3]); // {name: 'Pavel'}
+// console.log(arr[3]["name"]); // Pavel
+// arr[4](); // Yo! (результат выполн ф-ии)
+// console.log(arr[5][0]); // true
+
+// const matrix = [
+//   [1, 2, 3],
+//   [4, 5, 6],
+//   [7, 8, 9],
+// ];
+// console.log(matrix[2]); //  (3) [7, 8, 9]
+// console.log(matrix[1][0]); //  4
+
+// const arr = ["Привет", 100, true];
+// console.log("arr before:", arr);
+// arr[0] = "Пока"; //   !!!!! Перезаписали значение, несмотря на const. Формальны мы не переопределяем прееменную arr. Мы меняем значения конкретных элементов массива !!!!!!!
+// arr[1] = 200; // Перезаписали значение
+// console.log(arr); // (3) ['Пока', 200, true]
+// arr[3] = 234234; // Элементы можно добавлять. Если добавить элемент с индексом 10, то не назначенные индексы без свойств будут пустыми.
+// console.log(arr.at(2)); // Доступ к заданному по индексу элемента массива
+
+// const letters = ["A", "B", "C"];
+// console.log("letters before:", letters); // (3) ['A', 'B', 'C']
+// letters.push("D"); // Добавили элемент в конец массива
+// console.log("letters before:", letters); // (4) ['A', 'B', 'C', 'D']
+// letters.unshift("E"); // Добавили элем в начало массива. Нумерация остальных элем сдвинулась
+// console.log("letters before:", letters); // (5) ['E','A', 'B', 'C', 'D']
+// letters.pop(); // Удаляет последний элем массива и возвращает массив
+// console.log(letters.shift()); // Выводит элем Е. Удаляет первый элем массива (Е) и возвращает массив
+// console.log("letters before:", letters); // (3) ['A', 'B', 'C']
+
+// const arr = [
+//   "Hello!",
+//   100,
+//   { name: "Pavel" },
+//   () => console.log("yo"),
+//   [true, true],
+// ];
+// console.log(arr.toString()); //Привели массив к строке
+
+// const arr = ["Hello!", 100, true];
+// console.log(arr.join()); // Так же привели массив к строке  // Hello!,100,true
+// console.log(arr.join(", ")); // Так же привели массив к строке, отделив элем запятой и пробелом
+
+// const message = "One, two, three, four, five";
+// console.log(message.split(", ").join(", ")); //превр строку в массив, затем в строку
+
+// const arr1 = ["A", "B", "C"];
+// const arr2 = arr1;
+// arr2[0] = "-"; // Изменили элем с индексом 0. Аналогично как в объектах
+// console.log("arr1:", arr1); // (3) ['-', 'B', 'C']
+// console.log("arr2:", arr2); // (3) ['-', 'B', 'C']
+
+// const arr1 = ["A", "B", "C"];
+// const arr2 = [...arr1];
+// arr2[0] = "-"; // Изменили элем с индексом 0, но только в arr2   !!!!!!!!!!!!!!!!!!!!!!!!
+// console.log("arr1:", arr1); // (3) ['A', 'B', 'C']
+// console.log("arr2:", arr2); // (3) ['-', 'B', 'C']
+
+// const arr1 = ["A", "B", "C"];
+// const arr2 = arr1.slice(0, 2); //получаем копию части массива (с 0 по 2 элем, но не включая 2)
+// console.log("arr1:", arr1);
+// console.log("arr2:", arr2); // (2) ['A', 'B']
+
+// const arr1 = ["A", "B"];
+// const arr2 = ["C", "D"];
+// const totalArr = [...arr1, ...arr2]; //Создали нов массив из двух
+// console.log(totalArr); // (4) ['A', 'B', 'C', 'D']
+
+// Массивы как и объекты нельзя сравнивать напрямую
+
+// const arr1 = ["A", "B"];
+// const arr2 = ["C", "D"];
+// console.log(arr1 === arr2); //false    //Сравниваем по сути ссылки, поэтому false
+
+// const arr1 = ["A", "B", "C"];
+// const arr2 = ["A", "B", "C"];
+// const areArreysEqual = (array1, array2) => {
+//   if (array1.length !== array2.length) {
+//     return false;
+//   }
+//   for (let i = 0; i < array1.length; i++) {
+//     const value1 = array1[i];
+//     const value2 = array2[i];
+
+//     const areValueыArrays = Array.isArray(value1) && Array.isArray(value2);
+//     if (areValueыArrays) {
+//       if (!areArreysEqual(value1, value2)) {
+//         return false;
+//       } else {
+//         continue;
+//       }
+//     } // добавили проверку
+
+//     if (value1 !== value2) {
+//       return false;
+//     }
+//   }
+//   return true;
+// };
+// console.log(areArreysEqual(arr1, arr2)); // true
+// // Но если в массивах будут находится непримитивные значения, например добавим в оба массива [], тогда будет False
+
+// 15 Методы массивов - forEach, map, filter, reduce, sort ....
