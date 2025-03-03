@@ -1076,7 +1076,7 @@
 //   {
 //     name: "Alex",
 //     age: 28,
-//     city: "Moskow",
+//     city: "Moscow",
 //   },
 //   {
 //     name: "Paul",
@@ -1091,11 +1091,11 @@
 //   {
 //     name: "Kate",
 //     age: 33,
-//     city: "Moskow",
+//     city: "Moscow",
 //   },
 // ];
 // const filteredUsers = users.filter((city, age) => {
-//   return city === "Moskow" || age < 30; // Так же поиск по параметрам
+//   return city === "Moscow" || age < 30; // Так же поиск по параметрам
 // });
 // console.log(filteredUsers);
 
@@ -1104,7 +1104,7 @@
 //   {
 //     name: "Alex",
 //     age: 28,
-//     city: "Moskow",
+//     city: "Moscow",
 //   },
 //   {
 //     name: "Paul",
@@ -1119,7 +1119,7 @@
 //   {
 //     name: "Kate",
 //     age: 33,
-//     city: "Moskow",
+//     city: "Moscow",
 //   },
 // ];
 // const usersFormatted = users.map((user) => {
@@ -1132,7 +1132,7 @@
 //   {
 //     name: "Alex",
 //     age: 28,
-//     city: "Moskow",
+//     city: "Moscow",
 //   },
 //   {
 //     name: "Paul",
@@ -1147,7 +1147,7 @@
 //   {
 //     name: "Kate",
 //     age: 33,
-//     city: "Moskow",
+//     city: "Moscow",
 //   },
 // ];
 // // let ageSum = 0;
@@ -1171,3 +1171,72 @@
 // const numbers = [8, 4, 500, 99];
 // const sortedNumbers = [...numbers].sort((a, b) => a - b);
 // console.log("Отсортированные имена:", sortedNumbers); //Добавили собственнубф-ию сортировки с применением Sort
+
+// Перебор объекта. Коллекции Map и Set
+
+// const user = {
+//   name: "Pavel",
+//   age: 35,
+//   city: "Moscow",
+// };
+// //Метод for in
+// for (const key in user) {
+//   console.log("Имя свойства:", key);
+//   console.log("Значение свойства:", user[key]);
+// }
+
+// const user = {
+//   name: "Pavel",
+//   age: 35,
+//   city: "Moscow",
+// };
+// const userKeys = Object.keys(user); // Из объекта можем получить массив ключей
+// console.log("userKeys:", userKeys);
+// userKeys.forEach((key) => {
+//   // Перебираем через forEach
+//   console.log("Имя свойства:", key);
+// });
+
+// const user = {
+//   name: "Pavel",
+//   age: 35,
+//   city: "Moscow",
+// };
+// const userValues = Object.values(user);
+// console.log("userValues:", userValues);
+// userValues.forEach((value) => {
+//   console.log("Значение свойства:", value); // Получаем массив значений
+// });
+
+// const user = {
+//   name: "Pavel",
+//   age: 35,
+//   city: "Moscow",
+// };
+// const userEntries = Object.entries(user);
+// console.log("userEntries:", userEntries);
+// // Object.entries позволяет получить из объекта массив, где каждый элем это массив пара ключ-значение
+// userEntries.forEach(([key, value]) => {
+//   console.log("Имя свойства:", key);
+//   console.log("Значение свойства:", value);
+// });
+
+// const data = {};
+// data[1] = "Один как число";
+// data["1"] = "Один как строка";
+// console.log(data); // Выдаст последнее {1: 'Один как строка'}
+
+// const data = new Map([
+//   [1, "Один как число"],
+//   ["1", "Один как строка"],
+// ]);
+
+// const data = new Map();
+// data.set(1, "Один как число");
+// data.set("1", "Один как строка");
+// console.log(data.get(1)); // Один как число
+// console.log(data.get("1")); // Один как строка
+
+// const data = new Map();
+// data.set("name", undefined);
+// console.log(data.has("name"));
