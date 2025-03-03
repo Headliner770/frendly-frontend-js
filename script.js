@@ -1003,3 +1003,171 @@
 // // Но если в массивах будут находится непримитивные значения, например добавим в оба массива [], тогда будет False
 
 // 15 Методы массивов - forEach, map, filter, reduce, sort ....
+
+// const data = ["Pavel", 35];
+// const [name, age] = data; // Произвели деструктуризацию
+// console.log(name);
+// console.log(age);
+
+// const letters = ["A", "B", "C", "D", "E"];
+// !!!!!!!!!!!!   СТАРЫЙ МЕТОД ПЕРЕБОРА    !!!!!!!!!!!!!
+// for (let i = 0; i < letters.length; i++) {
+//   console.log(letters[i]);
+// }
+// Перебор массива с помощью forEach   !!!!!!!!!!!!!!!!!!!!!!
+// letters.forEach((letter, i, array) => {
+//   console.log(letter, i, array);
+//   console.log(letter);
+// });
+
+// const prices = [100, 200, 444, 500, 444, 777];                  // ПОВТОРИТЬ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// // console.log(prices.indexOf(200)); // По заданнау числу находи его индекс
+// console.log(prices.indexOf(777, 3)); //Поиск индекса от заданного индекса
+// console.log(prices.lastIndexOf(777, 3)); //Поиск индекса от заданного индекса, но с конца
+
+// const users = [
+//   {
+//     name: "Alex",
+//     age: 28,
+//   },
+//   {
+//     name: "Paul",
+//     age: 35,
+//   },
+//   {
+//     name: "Kate",
+//     age: 33,
+//   },
+// ];
+// console.log(
+//   //Поиск индекса
+//   users.findIndex((user) => user.name === "Kate")
+//   findIndex // Тот же поиск, но с конца
+// );
+
+// const prices = [100, 200, 444, 500, 444, 777];
+// console.log(prices.includes(200)); // Поиск оприделенного элемента. Так же можно задать начальный индекс
+
+// const users = [
+//   {
+//     name: "Alex",
+//     age: 28,
+//   },
+//   {
+//     name: "Paul",
+//     age: 35,
+//   },
+//   {
+//     name: "Paul",
+//     age: 31,
+//   },
+//   {
+//     name: "Kate",
+//     age: 33,
+//   },
+// ];
+// // С помощью includes не получится с наличием более сложных структур, тк !!!!! объекты сравниваются по ссылкам !!!!
+// console.log(users.some((user) => user.name === "Kate")); //Выдаст true/false. Поиск присутствия
+// console.log(users.every((user) => user.age >= 18)); //Проверка возраста в каждом элем массива
+// console.log(users.find((user) => user.name === "Paul")); //Поиск целого элемента массива по условию. ИЛи вернет первый если есть похожий элемент
+// console.log(users.filter((user) => user.name === "Paul")); //Поиск целого элемента массива по условию. Вернет два схожих элем
+
+// const users = [
+//   {
+//     name: "Alex",
+//     age: 28,
+//     city: "Moskow",
+//   },
+//   {
+//     name: "Paul",
+//     age: 35,
+//     city: "Rostov",
+//   },
+//   {
+//     name: "Bers",
+//     age: 31,
+//     city: "Krasnod",
+//   },
+//   {
+//     name: "Kate",
+//     age: 33,
+//     city: "Moskow",
+//   },
+// ];
+// const filteredUsers = users.filter((city, age) => {
+//   return city === "Moskow" || age < 30; // Так же поиск по параметрам
+// });
+// console.log(filteredUsers);
+
+// !!!!!!!!!!!!!!!!!!!!!!!!  map не мутирует основной объект !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// const users = [
+//   {
+//     name: "Alex",
+//     age: 28,
+//     city: "Moskow",
+//   },
+//   {
+//     name: "Paul",
+//     age: 35,
+//     city: "Rostov",
+//   },
+//   {
+//     name: "Bers",
+//     age: 31,
+//     city: "Krasnod",
+//   },
+//   {
+//     name: "Kate",
+//     age: 33,
+//     city: "Moskow",
+//   },
+// ];
+// const usersFormatted = users.map((user) => {
+//   //, index, array//)
+//   return `${user.name}, ${user.age} лет, живет в г. ${user.city}`;
+// });
+// console.log(usersFormatted);
+
+// const users = [
+//   {
+//     name: "Alex",
+//     age: 28,
+//     city: "Moskow",
+//   },
+//   {
+//     name: "Paul",
+//     age: 35,
+//     city: "Rostov",
+//   },
+//   {
+//     name: "Bers",
+//     age: 31,
+//     city: "Krasnod",
+//   },
+//   {
+//     name: "Kate",
+//     age: 33,
+//     city: "Moskow",
+//   },
+// ];
+// // let ageSum = 0;
+// // for (let i = 0; i < users.length; i++) {
+// //   ageSum += users[i].age;
+// // }
+// // console.log("Средний возраст пользователей:", ageSum / users.length); // Средний возраст
+// // Можно решить, но более эффективно через reduce
+// debugger;
+// const ageSum = users.reduce((sum, { age }) => sum + age, 0); //reduceRight для перебора массива справа налево
+// console.log("Средний возраст пользователей:", ageSum / users.length);
+
+// revers; // Выводит массивы в обрятном порядке. !!!!!! ВАЖНО !!!!!  Метод revers Мутирует исходную сущность !!!!!!!
+// // Если мы не хотим мутировать основной массив при исп revers. Можно сделать копию : const reversedUsers = [...user].reverse()
+
+// const names = ["Vasya", "Alex", "Max", "Paul"];
+// const sortedNames = [...names].sort(); //Для обхода мутации можно работать над копией [...names]
+// console.log("Отсортированные имена:", sortedNames); //sort вывел в алфавитном порядке по возрастанию
+// // Метод sort так же как и revers мутирует исходный массив
+
+// const numbers = [8, 4, 500, 99];
+// const sortedNumbers = [...numbers].sort((a, b) => a - b);
+// console.log("Отсортированные имена:", sortedNumbers); //Добавили собственнубф-ию сортировки с применением Sort
