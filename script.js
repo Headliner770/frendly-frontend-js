@@ -1361,3 +1361,35 @@
 // set.forEach((value) => {
 //   console.log(value); //  set values: Pavel  Bers
 // });
+
+// 18 // JSON формат.
+//  JavaScript Object Notation — стандартный текстовый формат для хранения и передачи структурированных данных.
+//  или стандартизированный формат данных в виду JS объекта.
+//  Он основан на синтаксисе объекта в JavaScript, но не привязан к нему.
+//  Например, есть в JS объект и нам нид отправить его на сервер, но просто так отправл данные и получать их мы не можем.
+//  Поэтому данные отправл и получаемые сначала приводят к формату строки. С помощью мет toString этого мы не сделаем.
+//  В JS для работы с JSON-форматом есть глобал объект JSON. У него есть несколько методов, но нам нид только два.
+//  !!! Первый !!! JSON.stringify - преобразует данные из JS-объекта в JSON-объект в виде строки.
+//  !!! Второй !!! JSON.parse - преобразует данные из JSON-объекта в JS-объект.
+// const user = {
+//   name: "Pavel",
+//   age: 35,
+//   city: "Moscow",
+//   todos: ["sleep", "eat", "work", "train"],
+//   hasCat: true,
+// };
+// const userDataAsString = JSON.stringify(user);
+// const parsedUserData = JSON.parse(userDataAsString);
+// console.log(parsedUserData)
+
+// const user = {
+//   name: "Pavel",
+//   sayHi() {
+//     console.log(`Hello, ${this.name}!`); // Если в объекте есть методы
+//   },
+//   car: undefined, // Если в объекте есть undefined
+// };
+// const userDataAsString = JSON.stringify(user); // JSON.stringify не будет учитывать методы и undefined
+// console.log(userDataAsString); // {"name":"Pavel"}
+
+// 19 // Классы в JS
