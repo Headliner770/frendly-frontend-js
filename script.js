@@ -1393,3 +1393,203 @@
 // console.log(userDataAsString); // {"name":"Pavel"}
 
 // 19 // Классы в JS
+//  Класс - это многофункциональный шаблон для создания объектов.
+//  Он позв один раз задать правила по которым будут работать все объекты, созданные с помощью этого класса.
+//  Классы не обязательно воспринимать как кальку для создания объектов !!!!!!!!
+//  Классы помогают чуть лучше ориентироваться в коде.
+
+// class Student {
+//   constructor(name, age) {
+//     (this.name = name), (this.age = age);
+//   }
+// }
+// const firstStudent = new Student("Bers", 25); // создали экземпляр
+// const secondStudent = new Student("Igor", 21);
+// console.log("firstStudent:", firstStudent); // Student {name: 'Bers', age: 25}
+// console.log("secondStudent:", secondStudent); // Student {name: 'Igor', age: 21}
+// console.log("Имя первого студента:", firstStudent.name); // Имя первого студента: Bers
+// console.log("Имя второго студента:", secondStudent.name); // Имя второго студента: Igor
+
+// class Student {
+//   planet = "Земля";
+//   country = "Россия";
+//   region;
+//   // в методе constructor мы тоже добавили в класс св-ва...
+//   constructor(name, age) {
+//     this.name = name;
+//     this.age = age;
+//   }
+// }
+// const firstStudent = new Student("Bers", 25); //...но добавлялись они здесь динамически при создании класса Student
+// const secondStudent = new Student("Igor", 21);
+// console.log(firstStudent); // если значение в св-ве будущего объекта зависит от данных, которые приходят в момент инициализации класса, то такое св-во нид добовлять в constructor. Если мы заранее знаем какое значение будет в св-ве, то записываем как вначале (planet = "Земля";country = "Россия";region;)
+
+// class Student {
+//   planet = "Земля";
+//   country = "Россия";
+//   region;
+//   constructor(name, age) {
+//     this.name = name;
+//     this.age = age;
+//   }
+//   logAge() {
+//     console.log(this.age); // важно исп this
+//   }
+// }
+// const firstStudent = new Student("Bers", 25);
+// const secondStudent = new Student("Igor", 21);
+// firstStudent.logAge();
+// secondStudent.logAge();
+
+// // Геттеры (get - получать), Сеттеры (set - устанавливать)
+// class Student {
+//   constructor(name, age) {
+//     this.name = name;
+//     this.age = age;
+//   }
+// }
+// const firstStudent = new Student("Bers", 25);
+// firstStudent.city = "moscow"; // здесь сработал метод сеттер
+// console.log(firstStudent.city); // здесь сработал метод геттер
+
+// // можно добавить самому get set. Они нужны для добавления кастомной логики.
+// class Student {
+//   constructor(name, age) {
+//     this.name = name;
+//     this.age = age;
+//   }
+//   // Добавляем set
+//   // Хотим сделать первую будву заглавную, остальные строчные
+//   // !!! _ нижнее подчеркивание это приватное св-во с которым напрямую вне тела класса работать нельзя !!!
+//   // Для этого мы и создали геттер и сеттер, и дали им названия без знака _
+//   set city(value) {
+//     const firstLetter = value[0].toUpperCase(); // Записываем первую букву в верхнем регистри
+//     const fromSecondLetter = value.slice(1).toLowerCase(); // Все оставшиеся буквы преобразуем в нижний регистр
+//     this._city = `${firstLetter}${fromSecondLetter}`; // Соединяем эти две строки
+//   }
+//   // Можно заменить все символы _ на #. Тогда нид пере constructor добавить #city.
+//   // Но глабально обратиться не получится, тк св-во приватное.
+//   // # и нид для приватной работы. Чтобы не было возм работать из вне.
+//   // Добавляем get
+//   get city() {
+//     return `г. ${this._city}`;
+//   }
+// }
+// const firstStudent = new Student("Bers", 25);
+// firstStudent.city = "moscow";
+// console.log(firstStudent.city); // Получаем отформатированные данные // Moscow
+
+// // Так же можно сделать статичными, но с ограничениями. нельяз исп для экземпляров класса. нельзя исп this
+// class Student {
+//   static country = "Russia";
+//   constructor(name, age) {
+//     this.name = name;
+//     this.age = age;
+//   }
+// }
+
+// Механика наследования классов || Сложно пля!
+// class Person {
+//   // Конструктор принимает в параметрах (name, age)
+//   constructor(name, age) {
+//     // записывает эти данные в качестве одноим св-в
+//     this.name = name;
+//     this.age = age;
+//   }
+//   // в этом классе есть методы eat и sleep, выводящие инфу в консоль
+//   eat() {
+//     console.log("Ем...");
+//   }
+//   sleep() {
+//     console.log("Сплю...");
+//   }
+// }
+// const examplePerson = new Person("Vasya", 30); // созд экз класса и дальще исп его св-а и методы
+// // // console.log("Имя:", examplePerson.name);
+// // // console.log("Возраст:", examplePerson.age);
+// // // examplePerson.eat();
+// // // examplePerson.sleep();
+// // создаем копию с расширением. Добавили код внутрь кл Developer, который наследуется от кл Person
+// class Developer extends Person {
+//   writeCode() {
+//     console.log("Пишу код...");
+//   }
+//   // наследование
+//   sleep() {
+//     console.log("Не хочу спать, пойду еще попишу код...");
+//   }
+// }
+// class JSDeveloper extends Developer {
+//   makeFrontend() {
+//     console.log("Пишу фронтенд...");
+//   }
+// }
+// const exampleDeveloper = new Developer("Bers", 25);
+// exampleDeveloper.writeCode();
+// console.log("Имя:", examplePerson.name);
+// console.log("Возраст:", examplePerson.age);
+// exampleDeveloper.eat();
+// exampleDeveloper.sleep();
+// const JSDeveloperExample = new JSDeveloper("Max", 30);
+// JSDeveloperExample.makeFrontend();
+
+// class Person {
+//   // Конструктор принимает в параметрах (name, age)
+//   constructor(name, age) {
+//     // записывает эти данные в качестве одноим св-в
+//     this.name = name;
+//     this.age = age;
+//   }
+//   // в этом классе есть методы eat и sleep, выводящие инфу в консоль
+//   eat() {
+//     console.log("Ем...");
+//   }
+//   sleep() {
+//     console.log("Сплю...");
+//   }
+// }
+// const examplePerson = new Person("Vasya", 30); // созд экз класса и дальще исп его св-а и методы
+// // // console.log("Имя:", examplePerson.name);
+// // // console.log("Возраст:", examplePerson.age);
+// // // examplePerson.eat();
+// // // examplePerson.sleep();
+// // создаем копию с расширением. Добавили код внутрь кл Developer, который наследуется от кл Person
+// class Developer extends Person {
+//   writeCode() {
+//     console.log("Пишу код...");
+//   }
+//   // наследование
+//   sleep() {
+//     console.log("Не хочу спать, пойду еще попишу код...");
+//   }
+// }
+
+// class Person {
+//   constructor(name, age) {
+//     this.name = name;
+//     this.age = age;
+//   }
+//   eat() {
+//     console.log("Ем...");
+//   }
+//   sleep() {
+//     console.log("Сплю...");
+//   }
+// }
+// class Developer extends Person {
+//   constructor(name, age, experience) {
+//     super(name, age); // super вызывает конструктор родительского класса. Через this не получится
+//     this.experience = experience;
+//   }
+//   writeCode() {
+//     console.log("Пишу код...");
+//   }
+//   sleep() {
+//     console.log("Не хочу спать, пойду еще попишу код...");
+//     this.writeCode();
+//   }
+// }
+// const developerExample = new Developer("Миша", 25, 5);
+// console.log("Количество лет опыта:", developerExample.experience); //Количество лет опыта: 5
+
+//  20  // SetTimeout и SetInterval, clearTimeout
