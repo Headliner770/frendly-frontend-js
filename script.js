@@ -1216,6 +1216,7 @@
 // const userEntries = Object.entries(user);
 // console.log("userEntries:", userEntries);
 // // Object.entries позволяет получить из объекта массив, где каждый элем это массив пара ключ-значение
+// // Object.fromEntries позволяет получить из массива объект
 // userEntries.forEach(([key, value]) => {
 //   console.log("Имя свойства:", key);
 //   console.log("Значение свойства:", value);
@@ -1226,11 +1227,13 @@
 // data["1"] = "Один как строка";
 // console.log(data); // Выдаст последнее {1: 'Один как строка'}
 
+// Колекция
 // const data = new Map([
 //   [1, "Один как число"],
 //   ["1", "Один как строка"],
 // ]);
 
+// Для добавления элем в коллекцию динамически, то есть после ееё добавления
 // const data = new Map();
 // data.set(1, "Один как число");
 // data.set("1", "Один как строка");
@@ -1238,5 +1241,123 @@
 // console.log(data.get("1")); // Один как строка
 
 // const data = new Map();
-// data.set("name", undefined);
-// console.log(data.has("name"));
+// console.log(data.has("name")); //вернет false
+// data.set("name", undefined); // если добавить перед логом
+// console.log(data.has("name")); // вернет true
+// data.delete('name) // так можно удалять
+
+// const data = new Map();
+// data.set("name", "Pavel");
+// data.set("age", "35");
+// data.clear() // у коллекции есть метод clear полностью очищающий всю коллекцию целиком
+// console.log("data:", data);
+
+// const data = new Map();
+// data.set("name", "Pavel");
+// data.set("age", "35");
+// console.log(data.size); // Свойство size (!!!!НЕ Метод!!!!) Возвращает число, кол-во пар ключ-значение в коллекции
+
+// const data = new Map();
+// data.set("name", "Pavel");
+// data.set("age", 35);
+// console.log("keys:", data.keys()); // Получаем коллекцию map в виде перебираемого этерируемого объекта
+// console.log("values:", data.values()); // Получаем коллекцию map в виде перебираемого этерируемого объекта
+// console.log("entries:", data.entries()); // Получаем коллекцию map в виде перебираемого этерируемого объекта
+
+// Чтобы перебрать этерируемый объект (пример выше)
+// const data = new Map();
+// data.set("name", "Pavel");
+// data.set("age", 35);
+// // С помощью data.keys получили перебираемый объект с ключами коллекции
+// for (const key of data.keys()) {
+//   console.log("key:", key);
+// }
+// // С data.values получили перебираемый объект со значениями коллекции
+// for (const value of data.values()) {
+//   console.log("value:", value);
+// }
+// // data.entries позволяет работать с коллекцией, как с перебираемым объектом, где на каждой итерации цикла 'for of' будет набор данных ключ-значение в виде массива
+// for (const entry of data.entries()) {
+//   console.log("entry:", entry);
+// }
+
+// const data = new Map();
+// data.set("name", "Pavel");
+// data.set("age", 35);
+// // У map колекции есть собственный forEach
+// data.forEach((value, key, map) => {
+//   console.log("value:", value); //значение текущей пары коллекции
+//   console.log("key:", key); //ключ
+//   console.log("map:", map); //ссылка на коллекцию
+// });
+
+// Когда нужно преобразовать Объект в Коллекцию
+// const obj = {
+//   name: "Pavel",
+//   age: 35,
+// };
+// const map = new Map(Object.entries(obj));
+// map.forEach((value, key) => {
+//   console.log(`${key}: ${value}`);
+// });
+// // Когда нужно преобразовать Коллекцию в Объект нид исп Object.fromEntries(map)
+
+// const map = new Map([
+//   ["name", "Pavel"],
+//   ["age", 35],
+//   [1, "Один как число"],
+//   ["1", "Один как строка"], // в map коллекции содержится две пары ключ-значение (число и число в виде строки)
+// ]);
+// const obj = Object.fromEntries(map); // после преобразования из двух пар ключ-значение выведится последняя
+// console.log(obj);
+
+// const set = new Set([1, 2, 2, 2, 3]);
+// console.log(set); // Set исключает дубли и помещает в коллекцию
+// или то же самое
+// const arr = [100, 100, 1000, 1000, 5000];
+// const set = new Set(arr);
+// console.log(set); // Set исключает дубли и помещает в коллекцию
+
+//Добавление
+// const arr = [];
+// const set = new Set();
+// arr.push("Pavel");
+// arr.push("Pavel");
+// arr.push("Pavel");
+// set.add("Pavel");
+// set.add("Pavel");
+// set.add("Pavel");
+// console.log("arr:", arr); // В массиве будут все 3 одинаковых элема
+// console.log("set:", set); // В set добавится только 1, остальные проигнорятся
+
+// // У set есть почти все методы и свойства присущие коллекции map
+// const set = new Set();
+// set.add("Pavel"); // Добавл элем
+// set.delete("Pavel"); // Удаляет элем
+// console.log(`Содержит ли set значение 'Александр':`, set.has("Pavel")); // has проверяет есть ли оприд значение
+// set.add("Max");
+// set.add("Bers");
+// console.log("size после добавления двух элемов:", set.size); // Получаем размер set коллекции
+// set.clear();
+// console.log("size после удаления всех элемов:", set.size); // Очищаем set коллекцию
+
+// //  Для перебора Set коллекции исп те же способы что и для Map
+// const set = new Set();
+// set.add("Pavel");
+// set.add("Bers");
+// // Keys
+// for (const key of set.keys()) {
+//   console.log("key:", key); // key: Pavel   key: Bers
+// }
+// // Values
+// for (const value of set.values()) {
+//   console.log("value:", value); // value: Pavel   value: Bers
+// }
+// // Entries
+// for (const entry of set.entries()) {
+//   console.log("entry:", entry); // (2) ['Pavel', 'Pavel']   (2) ['Bers', 'Bers']
+// }
+// console.log("set values:");
+// set.forEach((value) => {
+//   console.log(value); //  set values: Pavel  Bers
+// });
