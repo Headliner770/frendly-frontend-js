@@ -1593,3 +1593,4 @@
 // console.log("Количество лет опыта:", developerExample.experience); //Количество лет опыта: 5
 
 //  20  // SetTimeout и SetInterval, clearTimeout
+setTimeout
