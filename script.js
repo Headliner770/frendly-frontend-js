@@ -191,22 +191,18 @@
 // function sum(a, b) {
 //   return a + b;
 // }
-
 // console.log(sum(1, 9));
 
 // function getAgeType(age) {
 //   if (typeof age !== 'number') {
 //     return 'Некорректно'
 //   }
-
 //   if (age < 1 || age > 125) {
 //     return "Не может быть"
 //   }
-
 //   if (age < 18) {
 //     return "Несовершеннолетний"
 //   }
-
 //   return 'Взрослый'
 // }
 
@@ -1593,4 +1589,51 @@
 // console.log("Количество лет опыта:", developerExample.experience); //Количество лет опыта: 5
 
 //  20  // SetTimeout и SetInterval, clearTimeout
-setTimeout
+//  Применяются для отбражения (спустя 10 сек) окошка с чатом техподдержки, после основной загрузки страницы
+// setTimeout(() => {}, 2000); //setTimeout или таймер (2000 миллисек (число любое))
+
+// setTimeout(() => {
+//   alert("Уведомление");
+// }, 2000);
+
+// const logMessage = (name, age) => {
+//   alert(`Hello, my name is ${name}, to me ${age}`);
+// };
+// setTimeout(logMessage, 2000, "Pavel", 35); // Hello, my name is Pavel, to me 35.
+
+// const logMessage = () => {
+//   alert("asdasd");
+// };
+// const timerId = setTimeout(logMessage, 3000); // вызывает окошко
+// clearTimeout(timerId); // очищаем таймаут. Окошко не появится
+
+// //Обязательно нид записать в переменную (const intervalId)
+// const intervalId = setInterval(() => {
+//   console.log("Hello!");
+// }, 1000); // непрерывный вызов каждую секунду
+// clearInterval(intervalId); //передаем сущность intervalId аргументом. Прерываем вызов кода
+
+// const intervalId = setInterval(() => {
+//   console.log("Hello!");
+// }, 1000); // непрерывный вызов каждую секунду
+// setTimeout(() => {
+//   clearInterval(intervalId);
+// }, 5000); // прерывает вызов через 5 сек
+
+// setInterval не гарантирует, что предыдущий вызов кода не завершил свою работу
+// setInterval(() => {
+//   alert("asdad");
+// }, 1000); //Окошко будет появляться постоянно, даже если его будем закрывать, время накладывается
+
+// setTimeout(function logMessage() {
+//   alert("23dfs");
+//   setTimeout(logMessage, 1000);
+// }, 1000); // Здесь окошко будет появляться строго через 1 сек. Получили более чистый аналог setInterval
+
+console.log("№1");
+setTimeout(() => {
+  console.log("№2");
+}, 0);
+console.log("№3");
+// Выведется :  №1    №3    №2.  Код с №2 вызвался не сразу (хоть и указано 0 мс), а после других.
+// Это из-за особенностей браузера, тк вв setTimeout есть минимальная задержка, хоть и указано 0 мс и браузер выполнит этот код не сразу (не ранее чем через 4 миллисек)
