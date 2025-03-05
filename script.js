@@ -1745,3 +1745,209 @@
 //   // выполняем при любом раскладе. Даже если в try будет поймана ошибка finally отработает.
 // }
 // console.log("Конец кода...");
+
+//  22  // Событийный цикл Event Loop, асинхронный код, Promises, async / await
+// Чтение кода выполняет движок JS v8
+// Последовательное чтение кода называется синхронным
+// console.log(1); // 1
+// console.log(2); // 2
+// console.log(3); // 3
+
+// const wait = (ms, callback) => {
+//   const now = new Date().getTime();
+//   while (new Date().getTime() < now + ms) {
+//     /* ничего не делаем */
+//   }
+//   callback();
+// };
+// console.log(1); // сначала сразу выведится 1
+// wait(3000, () => console.log(2)); // затем спустя 3сек выведится 2
+// console.log(3); // последним, сразу же выведится 3
+// Код последовательный, но логирование числа 2 происходит с заданной задержкой, соотв строка 3 выполняется не сразу.
+// Данная задержка блокирует всё остальное, пока не выполнит тот код, где задана задержка
+
+// Делаем функцию асинхронной, чтобы она не блокировала выполнение дальнейшего кода
+// const wait = (ms, callback) => {
+//   setTimeout(callback, ms);
+// };
+// console.log(1); // сначала сразу выведится 1
+// wait(3000, () => console.log(2)); // последним, спустя 3сек выведится 2
+// console.log(3); // затем сразу же выведится 3
+// За последовательное выполнение кода и за своевременное выполн асинхронных задач отвечает Event Loop !!!!!!!!
+// JS работает в одном потоке (основным потоком выполнения), то есть он может выполнять только одну операцию за раз.
+// Если в коде есть задачи, выполн которых занимает некоторое время, то такие задачи считаются асинхронными !!!!!
+// Event Loop создает очеред в которую добавляются все асинхронные задачи.
+// Очередь задач - это список задач, которые движку JS необх выполн, как только оснвной поток выполнения будет освобожден.
+// Главная задача событийного цикла Event Loop постоянно проверять есть ли в очереди задачи и свободен ли поток выполнения.
+// Если основной поток свободен, то событийный цикл берет первую задачу из очереди и выполняет её.
+
+// Синхронный код, выполняющийся сразу
+// console.log("Начало программы");
+// // Асинхронная операция с использованием setTimeout
+// setTimeout(() => {
+//   console.log("Асинхронная задача выполнена");
+// }, 2000); // задержка в 2 сек
+// // Синхронный код, выполняющийся сразу
+// console.log("Конец программы");
+// Здесь первым вполнится код "Начало программы", тк это синхронная операция
+// Затем вызывается ф-я setTimeout, она ставит переданную первым аргументом аноним стрел ф-ю в очередь задач с задерж в 2сек.
+// Основной поток выполнения сразу же переходит к следующему коду и не ждет выполнения setTimeout. Выводится "Конец пр.."
+// Через 2 сек ф-ия, переданная setTimeout попадает в очередь задач. Событийный цикл видит, что осн поток свободен, вся синхр часть кода выполнена и соб цикл выполн задачу из таймера (выводит "Асинхронная задача...")
+
+// Таким образом соб цикл позволяет вып асинхр операции без блокировки основного потока, давая возм вып синхронный код сразу и продолжать работу с асинхронными задачами позже, когда осн поток будет свободен.
+
+//  !!!!!  Колбэк - это функция, которая вызывается в ответ на совершение определенного события !!!!!!
+// setTimeout(() => {
+//   console.log("Hello!");
+// }, 3000);
+
+//  Колбэк - это способ асинхронно выполнить какое то действие. Их часто исп когда нид получить ответ от сервера.
+
+// Бывает, что код может содержать большое кол-во колбэков. Особенно часто такое может быть при обращении к серверу.
+// Такой синтаксис называют CallBach Hell. ОН трудночитаем и еще труднее его поддерживать.
+// По результатам задачи нужно вып другую задачу и по рез др задачи, нужно вып еще задачу и происходит многоуровневая вложенность из колбэков. Помогает решить эту проблему Promise.
+
+// Promise - специальный объект-надстройка для работы с асинхронным кодом
+// Promise имеет 3 состояния:
+// pending - ожидание, исходное состояние
+// fulfilled - выполнено успешно, получен результат
+// rejected - выполнено с ошибкой
+// Своё состояние promise может изменить только один раз !!!!!!
+// Основные методы Promise:
+// then() - обрабатывает fulfilled состояние
+// catch() - обрабатывает rejected состояние
+
+// Асинхронная ф-ия возврощает promise в качестве результата.
+
+// const promise = new Promise((fulfill, reject) => {
+//   console.log("Начало, состояние pending...");
+//   setTimeout(() => {
+//     if (Math.random() > 0.5) {
+//       fulfill("Ура, состояние fulfilled");
+//     } else {
+//       reject("Увы, состояние rejected");
+//     }
+//   }, 3000);
+// });
+// promise
+//   .then((successData) => {
+//     console.log("Успех! Получены данные:", successData);
+//   })
+//   .catch((errorData) => {
+//     console.log("Ошибка. Получены данные:", errorData);
+//   })
+//   .finally(() => {
+//     console.log("Код, выполняющийся в самом конце, независимо от результата");
+//   });
+
+//  Возможет и немного другой вариант кода, где изменен блок try catch.
+//  Код отработает точно так же, как и в предыдущем варианте.
+// const promise = new Promise((fulfill, reject) => {
+//   console.log("Начало, состояние pending...");
+//   setTimeout(() => {
+//     if (Math.random() > 0.5) {
+//       fulfill("Ура, состояние fulfilled");
+//     } else {
+//       reject("Увы, состояние rejected");
+//     }
+//   }, 3000);
+// });
+// promise
+//   .then(
+//     (successData) => {
+//       console.log("Успех! Получены данные:", successData);
+//     },
+//     (errorData) => {
+//       console.log("Ошибка. Получены данные:", errorData);
+//     }
+//   )
+//   .finally(() => {
+//     console.log("Код, выполняющийся в самом конце, независимо от результата");
+//   });
+// Первый вариант кода предпочтительней, более читабельный.
+
+// Колбэкхэлл с применением promises
+// const makeRequest = (url, onSuccess) => {
+//   return new Promise((fulfill) => {
+//     fulfill("Ура, состояние fulfilled");
+//   });
+// };
+// const sellerId = 154;
+// makeRequest(`/api/sellers/${sellerId}`)
+//   .then((seller) => {
+//     const firstProductId = seller.productIds[0];
+//     return makeRequest(`/api/products/${firstProductId}`);
+//   })
+//   .then((product) => {
+//     const firstReviewId = product.reviewsIds[0];
+//     return makeRequest(`/api/reviews/${firstReviewId}`);
+//   })
+//   .then((review) => {
+//     const authorName = review.author.name;
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
+
+// Альтернатива. async awayt
+// async function getSomething() {
+//   return "Hello!";
+// }
+// getSomething().then((something ) => {
+//   console.log(something);
+// });
+
+// async function getSomething() {
+//   return new Promise((fulfill) => {
+//     setTimeout(() => {
+//       fulfill("Hello!");
+//     }, 3000);
+//   });
+// }
+// getSomething().then((something) => {
+//   console.log(something);
+// });
+
+// async function getSomething() {
+//   return new Promise((fulfill) => {
+//     setTimeout(() => {
+//       fulfill("Hello!");
+//     }, 3000);
+//   });
+// }
+// console.log("Начало");
+// // вместо then
+// const something = await getSomething();
+// console.log(something);
+// console.log("Конец");
+// Снчало вывелось сообщение 'Начало', спустя 3сек 'Hello!' и сразу же 'Конец'.
+
+// Этот код был ранее. Переделали его с применением async await
+// const makeRequest = async (url, onSuccess) => {
+//   return new Promise((fulfill) => {
+//     fulfill("Ура, состояние fulfilled");
+//   });
+// };
+// const seller = await makeRequest(`/api/sellers/${sellerId}`);
+// const firstProductId = seller.productIds[0];
+// const product = await makeRequest(`/api/products/${firstProductId}`);
+// const firstReviewId = product.reviewsIds[0];
+// const review = await makeRequest(`/api/review/${firstReviewId}`);
+// const authorName = review.author.name;
+
+// Чтобы отловит ошибку
+// const makeRequest = async (url, onSuccess) => {
+//   return new Promise((fulfill) => {
+//     fulfill("Ура, состояние fulfilled");
+//   });
+// };
+// try {
+//   const seller = await makeRequest(`/api/sellers/${sellerId}`);
+//   const firstProductId = seller.productIds[0];
+//   const product = await makeRequest(`/api/products/${firstProductId}`);
+//   const firstReviewId = product.reviewsIds[0];
+//   const review = await makeRequest(`/api/review/${firstReviewId}`);
+//   const authorName = review.author.name;
+// } catch (error) {
+//   console.log(error);
+// }
