@@ -1590,6 +1590,7 @@
 
 //  20  // SetTimeout и SetInterval, clearTimeout
 //  Применяются для отбражения (спустя 10 сек) окошка с чатом техподдержки, после основной загрузки страницы
+
 // setTimeout(() => {}, 2000); //setTimeout или таймер (2000 миллисек (число любое))
 
 // setTimeout(() => {
@@ -1639,3 +1640,108 @@
 // Это из-за особенностей браузера, тк вв setTimeout есть минимальная задержка, хоть и указано 0 мс и браузер выполнит этот код не сразу (не ранее чем через 4 миллисек)
 
 //  21 // Обработчик ошибок - try catch finally, throw, класс Error
+
+// console.log("Начало кода...");
+// const userData = undefined;
+// names.forEach((name) => {
+//   console.log("Name:", name);
+// });
+// console.log("Конец кода..."); // Начало кода... затем Ошибка. Для отлова ошибок и существ try catch
+
+// console.log("Начало кода...");
+// try {
+//   // пробуем выполнить код
+// } catch (error) {
+//   // обрабатываем возникшую ошибку
+// }
+// console.log("Конец кода...");
+
+// console.log("Начало кода...");
+// try {
+//   const names = ["Alex", "Paul", "Kate"]; // если массив заменим на undefiend, то ошибку отловим
+//   names.forEach((name) => {
+//     console.log("Name:", name);
+//   });
+// } catch (error) {
+//   console.log("!!Error!!:", error);
+// }
+// console.log("Конец кода...");
+
+// // Try catch может отловить ошибку только в синтаксически корректном js-коде
+// console.log('3242')
+// try {
+//  -3$#@!
+// } catch (error) {
+// console.log('oshibka', error);
+// }
+// console.log('223');  // В этом случае try catch не отработает !!!
+
+// !!! Если в блоке try есть асинхронный код, который может отраб с ошибкой, то отловить такую ошибку не получится !!!
+// console.log("Начало кода...");
+// try {
+//   setTimeout(() => {
+//     const names = undefined;
+//     names.forEach((name) => {
+//       console.log("Name", name);
+//     });
+//   }, 3000);
+// } catch (error) {
+//   console.log("oshibka:", error);
+// }
+// console.log("Конец кода...");
+
+// Чтобы корректно отработать подобный случай над try catch перенести в тело асинхронной ф-ции:
+// console.log("Начало кода...");
+// setTimeout(() => {
+//   try {
+//     const names = undefined;
+//     names.forEach((name) => {
+//       console.log("Name", name);
+//     });
+//   } catch (error) {
+//     console.log("oshibka:", error);
+//   }
+//   console.log("Конец кода...");
+// }, 3000);
+
+// error не просто строка. Это объект содержащий 3 свойства: name, message и stack
+// console.log("Начало кода...");
+// try {
+//   const names = undefined;
+//   names.forEach((name) => {
+//     console.log("Name", name);
+//   });
+// } catch (error) {
+//   console.log("full error:", error);
+//   console.log("name:", error.name);
+//   console.log("message:", error.message);
+//   console.log("stack:", error.stack);
+// }
+// console.log("Конец кода...");
+
+// console.log("Начало кода...");
+// try {
+//   const userJSON = `{
+// 'age': 28}`;
+//   const user = JSON.parse(userJSON);
+//   const { name, age } = user;
+//   // дополняем код собственной проверкой. Генерим кастомную ошибку
+//   if (!name) {
+//     const errorMessage = "Имя не заполнено";
+//     throw new Error(errorMessage); // передаем аргумент в скобках, который попадет в конструктор класса Error
+//   }
+//   console.log(`Привет, ${name}
+//     Твой возраст - ${age}, верно ?`);
+// } catch (error) {
+//   console.log("Возникла ошибка:", error);
+// }
+// console.log("Конец кода...");
+
+// try {
+//   // пробуем выполнить код
+// } catch (error) {
+//   // обрабатываем возникшую ошибку
+// } finally {
+//   // выполняем при любом раскладе. Даже если в try будет поймана ошибка finally отработает.
+// }
+// console.log("Конец кода...");
