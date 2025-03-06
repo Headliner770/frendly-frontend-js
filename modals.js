@@ -1,11 +1,11 @@
-const selectors = {
-  // ...
-};
+// const selectors = {
+//   // ...
+// };
 
-export function initModals() {
-  console.log("initModals!");
-  // ...
-}
+// export function initModals() {
+//   console.log("initModals!");
+//   // ...
+// }
 
 
 

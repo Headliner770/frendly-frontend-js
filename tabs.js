@@ -1,11 +1,11 @@
-export const selectors = {
-  // ...
-};
+// export const selectors = {
+//   // ...
+// };
 
-export default function initTabs() {
-  console.log("initTabs!");
-  // ...
-}
+// export default function initTabs() {
+//   console.log("initTabs!");
+//   // ...
+// }
 
 
 

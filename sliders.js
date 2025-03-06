@@ -1,8 +1,8 @@
-const selectors = {
-  // ...
-};
+// const selectors = {
+//   // ...
+// };
 
-export function initSliders() {
-  console.log("initSliders!");
-  // ...
-}
+// export function initSliders() {
+//   console.log("initSliders!");
+//   // ...
+// }

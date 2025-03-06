@@ -1,10 +1,10 @@
-import initTabs, { selectors } from "./tabs.js";
-import { initModals } from "./modals.js";
-import { initSliders } from "./sliders.js";
+// import initTabs, { selectors } from "./tabs.js";
+// import { initModals } from "./modals.js";
+// import { initSliders } from "./sliders.js";
 
-initTabs();
-initModals();
-initSliders();
+// initTabs();
+// initModals();
+// initSliders();
 
 // const name = "Pavel";
 
@@ -1964,3 +1964,42 @@ initSliders();
 
 // Если путь импорта к файлу очень длинный (файл находится к примеру в трёх папках) то в первой вложенной папке создаем файл 'index.js' и в нем прописываем путь экспорта: export * './folder-1/folder-2/contacts.js'  (где * означает Всё). После данных манипуляций в файле с импортом : import * as constants from "./constants" (Это называется Реэкспорт)
 //
+
+//  24  //  DOM (Document Object Model) и BOM (Browser Object Model)
+
+// console.log(window); // window - это главный объект для взаимодействия с браузерным окружением.
+// Браузерное окружение даёт нам возможность для оживления интерфейсов.
+// Всё находящееся в нем можно поделить на 3 категории:
+// - Основной JS; - DOM; - BOM.
+
+// - BOM. С ним получаем возможность пользоваться спец объектами:
+// console.log("Информация о браузере:", window.navigator);
+// console.log("Информация о экране:", window.screen);
+// console.log("Информация о URL:", window.location);
+// console.log("Информация об истории текущей сессии:", window.history);
+
+// // Сохранить данные в localStorage
+// window.localStorage.setItem("id", JSON.stringify({ id: 123 }));
+
+// const id = JSON.parse(
+//   // Получить данные из localStorage
+//   window.localStorage.getItem("key-name")
+// );
+// // Отправка на сервер GET-запроса и получение ответа
+// window
+//   .fetch("https://jsonplaceholder.typicode.com/users")
+//   .then((response) => response.json())
+//   .then((users) => console.log("Пользователи:", users));
+
+// DOM. Объектная модель документа, позволяющая нам взаимодействовать с содержимым страницы в виде объектов. DOM-дерево.
+// console.log(window.document);
+// Вся иерархия вложенных друг в друга элементов, а также вложенные в элементы текст, всё это и является DOM-деревом. Абсолютно каждый элемент в DOM-дереве является объектом.
+// console.dir(window.document); //состоит из узлов
+// К window можно обращатсья без слова window
+// console.log(document);
+
+// const location = "Moscow"; // Недопустимое имя переменной на глобал уровне
+// const cityLocation = "Moscow"; // Допустимое имя переменной
+
+// console.log("Текущий полный URL-адрес:", window.location.href);
+// Если очень нужно создать переменную с именем, которая есть объекте window, то можно это сделать только не на глобал уровне. Но лучше таких переменных не создавать !!!!!!!!!!!!!!
