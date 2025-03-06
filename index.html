@@ -8,8 +8,10 @@
 </head>
 
 <body>
-
-    <script src="script.js" type="module"></script>
+<!-- Можно оставить только основной файл (script.js), который и будет управлять запуском всех модулей. Важно оставить атрибут type="module" -->
+<script src="./before.js"></script>
+     <script src="./script.js" type="module"></script> <!-- type="module" находятся вконце очереди на обработку -->
+    <script src="./after.js"></script>
 
 </body>
 

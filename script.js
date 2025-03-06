@@ -1,3 +1,11 @@
+import initTabs, { selectors } from "./tabs.js";
+import { initModals } from "./modals.js";
+import { initSliders } from "./sliders.js";
+
+initTabs();
+initModals();
+initSliders();
+
 // const name = "Pavel";
 
 // const lostname = "Alizar";
@@ -1951,3 +1959,8 @@
 // } catch (error) {
 //   console.log(error);
 // }
+
+//  23  // Модули. Декомпозиция или разделение кода на более мелкие части и отдельные файлы это основы Рефакторинга.
+
+// Если путь импорта к файлу очень длинный (файл находится к примеру в трёх папках) то в первой вложенной папке создаем файл 'index.js' и в нем прописываем путь экспорта: export * './folder-1/folder-2/contacts.js'  (где * означает Всё). После данных манипуляций в файле с импортом : import * as constants from "./constants" (Это называется Реэкспорт)
+//
