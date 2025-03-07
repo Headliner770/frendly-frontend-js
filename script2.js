@@ -617,4 +617,4 @@
 // const boxElementRectParams = boxElement.getBoundingClientRect();
 // console.log(boxElementRectParams);  // получаем различные координаты элемента
 
-//  30  //
+//  30  // 2
