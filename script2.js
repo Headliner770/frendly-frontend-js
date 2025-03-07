@@ -610,3 +610,11 @@
 
 // console.log("Ширина невидимой уже прокрученной по горизонтали области:", boxElement.scrollLeft)
 // console.log("Высота невидимой уже прокрученной по вертикали области:", boxElement.scrollTop)
+
+// Системы координат в браузере : Относительно окна браузера и относительно всей страницы
+
+// const boxElement = document.querySelector(".box");
+// const boxElementRectParams = boxElement.getBoundingClientRect();
+// console.log(boxElementRectParams);  // получаем различные координаты элемента
+
+//  30  //
