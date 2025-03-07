@@ -582,3 +582,31 @@
 // управление css-переменными через js
 // const boxElement = document.querySelector(".box");
 // boxElement.style.setProperty("--border-color", "blue", "important");
+
+//  29  // Браузерный JS: размеры и координаты DOM-элементов
+
+// Пример.
+// html
+// див с классом box
+// style.css
+// .box {overflow: auto; width: 100px; height: 100px; border: 20px solid indianred}
+// border-left-width: 30px;
+// border-top-width: 10px;
+// js
+// const boxElement = document.querySelector(".box"); // DOM-элемент
+// console.log("Полная ширина:", boxElement.offsetWidth);
+// console.log("Полная высота:", boxElement.offsetHeight);
+// console.log("Ширина левой рамки:", boxElement.clientLeft);
+// console.log("Ширина верхней рамки:", boxElement.clientTop);
+
+// console.log("Расстояние от левой границы элем до внутренностей:", boxElement.clientLeft) // + еще 15px скроллбара
+// console.log("Расстояние от верхней границы элем до внутренностей:", boxElement.clientTop)
+
+// console.log("Ширина без учета рамки и скроллбара:", boxElement.clientWidth)
+// console.log("Высота без учета рамки и скроллбара:", boxElement.clientHeight)
+
+// console.log("Ширина без учета рамки, включая прокручиваемую область:", boxElement.scrollWidth)
+// console.log("Высота без учета рамки, включая прокручиваемую область:", boxElement.scrollHeight)
+
+// console.log("Ширина невидимой уже прокрученной по горизонтали области:", boxElement.scrollLeft)
+// console.log("Высота невидимой уже прокрученной по вертикали области:", boxElement.scrollTop)
