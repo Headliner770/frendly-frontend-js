@@ -510,3 +510,31 @@
 // const sliderElement = document.querySelector('[data-js-slider]')
 // const sliderListElement = document.querySelector('[data-js-slider-list]')
 // const sliderSlideElement = document.querySelectorAll('[data-js-slider-slide]')
+
+//  27  //  DOM-элементы: свойства и атрибуты, поведение value, data-* атрибуты
+
+//  У каждого DOM-элемента есть большое количество параметров
+//  в html
+//  ...
+//  <body>
+//   <form class='form' action='/login'>
+//       <li class='slider__slide' data-js-slider-slide>...</li>
+//       <li class='slider__slide' data-js-slider-slide>...</li>
+//       <li class='slider__slide' data-js-slider-slide>...</li>
+//     </ul>
+//   </div>
+//  </body>
+//  ...
+//  в js
+// const formElement = document.querySelector(".form");
+// const loginInputElement = document.querySelector('.form__input[name="login"]');
+// const passwordInputElement = document.querySelector('.form__input[name="password"]');
+// const submitButtonElement = document.querySelector(".form__button");
+// console.dir(formElement);  // при выводе этих DOM-элементов получим их представление в виде объектов
+// console.dir(loginInputElement);
+// console.dir(passwordInputElement);
+// console.dir(submitButtonElement);
+// У каждого дом-элем будут только те свойства, которые ему соответствуют. 
+// Если для элем разметки можно указать какой то атрибут и при этом разметка останется валидной, то в jsкоде при обращении к этому до-элем, как к объекту, мы можем получить одноименное св-во. Эти свойства работают по принципу геттеров и сеттеров.
+// console.log('fromElement action:', formElement.action); // получаем значение св-ва объекта. Обращаемся как к геттеру.
+// formElement.action = '/register' // поменяли значение. Теперь обращаемся как к сеттеру.
