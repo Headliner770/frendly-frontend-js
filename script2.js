@@ -438,3 +438,75 @@
 // console.log('Родительский элемент <div>:', divElement.parentElement);
 
 //  26  // Поиск элементов в DOM-дереве.
+
+// Пример: Для доступа к button, который расположен в body внутри 3х div:
+//   const buttonElement =
+//   document
+//   .body             // <body>
+// .children[0]        // <div class='box-1'
+// .children[0]        // <div class='box-2'
+// .children[0]        // <div class='box-3'
+// .children[0]        // <div id='myButton'
+// console.log("Кнопка:", buttonElement);
+//  Существуют методы поиска по DOM-дереву
+
+// index.html :
+// <body>
+//  <div>
+//   <div>
+//     <button id='myButton' type='button'>
+//         Клик
+//     </button>
+//   </div>
+//  </div>
+// </body>
+
+//  script.js :
+// const buttonElement = document.getElementById("myButton"); // теперь в переменной buttonElement хранится ссылкана конкретный элем DOM-дерева (на нашу кнопку)
+// console.log("buttonElement:", buttonElement);
+
+// Если у кнопки нет id, то через document.querySelector('button') //
+// Если нужен доступ к нескольким элементам, то через document.querySelectorAll('.list .item')
+// Затем можно перебрать этот список:
+// listItemElements.forEach((element) => {
+//   console.log("Элемент списка:", element);
+// });
+
+// Мы можем использовать методы querySelector и querySelectorAll у любого DOM-элемента, а не только у объекта document.
+
+// Для поиска элемента снизу вверх
+// const thirdBoxElement = document.querySelector(".box-3"); // от box-3
+// const firstBoxElement = thirdBoxElement.closest(".box-1"); // в аргументе селектор элемента, который нид найти
+// console.log("firstBoxElement:", firstBoxElement);
+
+// Есть методы поиска оооочень редко используемые:
+// const formElement = document.getElementsByTagName("form"); // Возвращает список элем по имени тэга
+// const radioGroupElements = document.getElementsByClassName("radio-group"); // Возвращает список элем по имени класса
+// const inputElements = document.getElementsByName("specialization"); // Возвращает список элем по значению атрибута name
+// Эти методы возвращают живые коллекции (в отличае от querySelector и querySelectorAll, которые возвращают статические коллекции) и они всегда отражают актуальное состояние DOM-дерева.
+
+// Иногда крайне необходимо, чтобы переменные в js-коде всегда были синхронизированны с актуальных DOM-деревом, поэтому нужны методы :
+//  const formElements = document.getElementsByTagName('form')
+//  const radioGroupElements = document.getElementsByClassName('radio-group')
+//  const inputElements = document.getElementsByName('specialization')
+//  но полученные списки элементов, полученные этими методами нельзя перебрать через forEach, а нужно превратить в массив и применить спрэт-оператор :
+//  const formElements = [...document.getElementsByTagName('form')]  //  после этого можно перебрать через forEach
+
+// Нэйминг
+// Чтобы разделять в коде сущности на DOM-элементы и всё остальное для переменных DOM-элементов рекомендуется всегда добавлять суффикс 'element', чтобы избежать путанницу в коде. linkElement, listItemElement, inputElement и тд. Если элементов хранится несколько, то нид применять суффикс 'elements'.
+
+// дата атрибуты
+//  в html
+//  ...
+//   <div class='slider' data-js-slider='какие-то-настройки'>
+//     <ul class='slider__list' data-js-slider-list>
+//       <li class='slider__slide' data-js-slider-slide>...</li>
+//       <li class='slider__slide' data-js-slider-slide>...</li>
+//       <li class='slider__slide' data-js-slider-slide>...</li>
+//     </ul>
+//   </div>
+//  ...
+//  в js
+// const sliderElement = document.querySelector('[data-js-slider]')
+// const sliderListElement = document.querySelector('[data-js-slider-list]')
+// const sliderSlideElement = document.querySelectorAll('[data-js-slider-slide]')
