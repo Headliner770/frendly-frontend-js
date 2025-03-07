@@ -534,7 +534,51 @@
 // console.dir(loginInputElement);
 // console.dir(passwordInputElement);
 // console.dir(submitButtonElement);
-// У каждого дом-элем будут только те свойства, которые ему соответствуют. 
+// У каждого дом-элем будут только те свойства, которые ему соответствуют.
 // Если для элем разметки можно указать какой то атрибут и при этом разметка останется валидной, то в jsкоде при обращении к этому до-элем, как к объекту, мы можем получить одноименное св-во. Эти свойства работают по принципу геттеров и сеттеров.
 // console.log('fromElement action:', formElement.action); // получаем значение св-ва объекта. Обращаемся как к геттеру.
 // formElement.action = '/register' // поменяли значение. Теперь обращаемся как к сеттеру.
+
+//  28  // Стили и CSS-классы
+
+// Варианты написания стилей :
+// Стили в отдельном файле
+/* <link rel="stylesheet" href="styles.css" />; */
+
+// Стили в элементе <style>
+/* <style>
+    // ...
+</style> */
+
+// Стили в атрибуте style
+/* <div
+  class="box"
+  style="
+ width: 100px>;
+ height: 100px;
+ "
+></div>; */
+
+// Самый оптимальный вариант это размещение стилей в отдельном css-файле !!!!!!!!!!!!!!!!!!
+
+// const boxElement = document.querySelector(".box");
+// boxElement.style.position = "absolute";
+// boxElement.style.top = "40px";
+// boxElement.style.left = "80px";
+
+// // для добавления css-класса DOM-элементу
+// const boxElement = document.querySelector(".box");
+// console.dir(boxElement);
+// boxElement.classList.add("red", "big"); // добавили
+// boxElement.classList.remove("red"); // удалили
+// boxElement.classList.toggle("red"); // добавляет класс, если такого класса у элема нет или удаляет класс, если класс у элемента есть.
+
+// // так же toggle можно добавлять при условии true/false:
+// const boxElement = document.querySelector(".box");
+// const hasError = false;
+// boxElement.classList.toggle("red", hasError);
+// Хорошо подходит для свойств active на бургер-кнопке, состояние visible на модальном окне и тд.
+
+// управление css-переменными через js
+// const boxElement = document.querySelector(".box");
+// boxElement.style.setProperty("--border-color", "blue", "important");
