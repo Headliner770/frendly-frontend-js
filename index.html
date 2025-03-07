@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="./script2.js" type="module"></script>
+    <!-- Можно подключение разместить здесь, но обязательно добавить defer. defer !!! гарантирует, что скрипт дождется, что вся html разметка будет готова, а потом уже скрипт запустится. async !!! для того чтобы браузер загружал и выполнял скрипт асинхронно, те чтобы браузер не останавливал обраб страницы, когда столкнется в html-файле с подобной строкой -->
 </head>
 
 <body>
@@ -17,7 +19,8 @@
 
     <!-- Можно оставить только основной файл (script.js), который и будет управлять запуском всех модулей. Важно оставить атрибут type="module" -->
     <script src="./before.js"></script>
-    <script src="./script.js" type="module"></script> <!-- type="module" находятся вконце очереди на обработку -->
+    <script src="./script.js" type="module"></script>
+    <script src="./script2.js" type="module"></script> <!-- type="module" находятся вконце очереди на обработку -->
     <script src="./after.js"></script>
 
 </body>
