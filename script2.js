@@ -691,14 +691,16 @@
 //  31  // DOM манипуляции: создание элем, вставка, перемещение, удал и клон
 
 // html
-{/* <body>
+{
+  /* <body>
   <div class="box">
     Текст
     <p class="paragraph-1">Первый параграф</p>
     <p class="paragraph-2">Второй параграф</p>
     <p class="paragraph-3">Третий параграф</p>
   </div>
-</body>; */}
+</body>; */
+}
 // js
 // Спомощью textContent можем получить содержимое DOM-лемента, включая текст из всех его дочерних элемов
 // const boxElement = document.querySelector(".box");
@@ -752,3 +754,83 @@
 // const firstBoxElement = document.querySelector(".box-1");
 // const thirdBoxElement = document.querySelector(".box-3");
 // thirdBoxElement.after(firstBoxElement) // перемещение
+
+//  32  // Браузерные события: всплытие и погружение, сп-бы обработки событий, отмена всплытия
+// Каждое событие исходит от конкретного дом-элемента
+
+// Чтобы начать в коде обрабатывать события, нид сначала назначить дом-элемементу обработчик:
+// 1) Использование атрибута в html-разметке (Но это так себе способ !!!!!!!!!!!!)
+// <button type='button' onClick="console.log('Произошел клик)">Нажми меня</button>
+// в js
+// const logMessage = () => {
+// console.log('Произошел клик');
+// } // тогда в onClick можно передать logMessage()
+
+// 2) Через свойство события у дом-элемента
+// const buttonElement = document.querySelector('button')
+// const logMessage = () => {
+//   console.log("Произошел клик");
+// };
+// buttonElement.onclick = logMessage; // если укажем (), то в консоли сразу выведется значение, клик ничего не даст
+
+// !!! У этих двух способов есть минус. Нельзя повесить на один элемент несколько обработчиков одного события. !!!!
+
+// !!! Самый топовый способ по добавлению элементу обработчика событий это метод addEventListener. !!!!
+// const buttonElement = document.querySelector("button");
+// const logNumberOne = () => {
+//   console.log(1);
+// };
+// buttonElement.addEventListener("click", logNumberOne); // передаем во втором параметре ссылку на какую либо ф-ию
+// На один дом-элемент можно повесить сколь угодно ф-ий обраб
+
+// в html есть две кнопки с классами button-1 и button-2
+// const firstButtonElement = document.querySelector(".button-1");
+// const logMEssage = () => {
+//   console.log("Произошел клик");
+// };
+// firstButtonElement.addEventListener("click", logMEssage);
+// const secondButtonElement = document.querySelector(".button-2");
+// secondButtonElement.addEventListener("click", (logMEssage) => {
+//   firstButtonElement.removeEventListener("click", logMEssage); // тем самым одна кнопка добавляет обраб события, второй кнопкой удаляем с элем кнопки конкр обраб событий
+// });
+
+// сущнсоть event
+// const buttonElement = document.querySelector("button");
+// buttonElement.addEventListener("click", (event) => {
+//   console.log(event);
+// });
+
+// !!!!! Всплытие и погружение !!!!! Оч важно !!!!!!!!!!!!
+// Пример
+// У нас в разметке есть вложенные друг в друга элементы:
+//  div с классом box-1 -> div с классом box-2 -> div с классом box-3
+// js
+// const firstBoxElement = document.querySelector(".box-1");
+// const secondBoxElement = document.querySelector(".box-2");
+// const thirdBoxElement = document.querySelector(".box-3");
+// firstBoxElement.addEventListener("click", () => {
+//   console.log("Клик по box-1");
+// });
+// secondBoxElement.addEventListener("click", () => {
+//   console.log("Клик по box-2");
+// });
+// thirdBoxElement.addEventListener("click", () => {
+//   console.log("Клик по box-3");
+// });
+// При клике по box-3 : Клик по box-3  Клик по box-2  Клик по box-1
+// Все обраб срабатывают на бокс-3, затем событие как бы сплывает вверх по дом-дереву до корневого элема дом-дерева.
+// Это и называет всплытием событий или Bubbling !!!!!!!!!!!!!!!!
+// Самый глубокий элемент с которого событие начинает всплывать называется Целевым элементом
+
+const firstBoxElement = document.querySelector(".box-1");
+const secondBoxElement = document.querySelector(".box-2");
+const thirdBoxElement = document.querySelector(".box-3");
+firstBoxElement.addEventListener("click", () => {
+  console.log("Клик по box-1", event.target);
+}); // При клика на box-1. выведит  Клик по box-1
+secondBoxElement.addEventListener("click", () => {
+  console.log("Клик по box-2", event.target);
+}); // При клика на box-2. выведит Клик по box-2 (класс box-2) Клик по box-1 (класс box-2)
+thirdBoxElement.addEventListener("click", () => {
+  console.log("Клик по box-3", event.target);
+}); // При клика на box-3. выведит Клик по box-3 (класс box-3) Клик по box-2 (класс box-3)  Клик по box-1 (класс box-3)
