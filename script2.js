@@ -617,4 +617,48 @@
 // const boxElementRectParams = boxElement.getBoundingClientRect();
 // console.log(boxElementRectParams);  // получаем различные координаты элемента
 
-//  30  // 2
+//  30  // JS в браузере: размеры окна и траницы, скролл
+
+// const htmlElement = document.documentElement;  // вьюпорт
+// console.log(
+//   "Ширина окна через document.documentElement:",
+//   htmlElement.clientWidth
+// );
+// console.log(
+//   "Высота окна через document.documentElement:",
+//   htmlElement.clientHeight
+// );
+// console.log("Ширина окна через window:", window.innerWidth); // через windiw не будут учитываться размеры скроллбаров
+// console.log("Высота окна через window:", window.innerHeight); // через windiw не будут учитываться размеры скроллбаров
+
+// ширина и высота окна целиком
+// const htmlElement = document.documentElement;
+// console.log("Ширина окна:", htmlElement.clientWidth);
+// console.log("Высота окна:", htmlElement.clientHeight);
+// console.log("Ширина окна:", htmlElement.scrollWidth);
+// console.log("Высота окна:", htmlElement.scrollHeight);
+
+// const htmlElement = document.documentElement;
+// const bodyElement = document.body;
+// const fullPageHeight = Math.max(
+//   htmlElement.clientHeight,
+//   htmlElement.scrollHeight,
+//   htmlElement.offsetHeight,
+//   bodyElement.clientHeight,
+//   bodyElement.scrollHeight,
+//   bodyElement.offsetHeight
+// );
+// console.log("Наверняка корректная высота страницы:", fullPageHeight);
+
+// координаты
+// console.log(
+//   "Координаты позиции скролла страницы:",
+//   window.scrollX,
+//   window.scrollY
+// );
+
+// программный скролл страницы
+window.scroll({
+  top: 200,
+  behavior: "smooth",
+});
