@@ -658,7 +658,32 @@
 // );
 
 // программный скролл страницы
-window.scroll({
-  top: 200,
-  behavior: "smooth",
-});
+// window.scroll({
+//   top: 200,
+//   behavior: "smooth",
+// });
+
+// Двойной скролл через setTimeout
+// window.scrollBy({
+//   top: 200,
+//   behavior: "smooth",
+// });
+// setTimeout(() => {
+//   window.scrollBy({
+//     top: 100,
+//     behavior: "smooth",
+//   });
+// }, 2000);
+
+// Скролл до видимости оприделенного элемента (например до секции с отзывами (по id))
+// const reviewsSectionElement = document.querySelector("#reviews");
+// reviewsSectionElement.scrollIntoView({ behavior: "smooth" }); // для плавности
+
+// но для лучшей отрисвоки оборачивать такой код в setTimeout (Лучше делать так!!!)
+// const reviewsSectionElement = document.querySelector("#reviews");
+// setTimeout(() => {
+//   reviewsSectionElement.scrollIntoView({
+//     behavior: "smooth",
+//     block: "start",
+//   });
+// }, 300);
