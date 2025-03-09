@@ -691,7 +691,6 @@
 //  31  // DOM манипуляции: создание элем, вставка, перемещение, удал и клон
 
 // html
-{
   /* <body>
   <div class="box">
     Текст
@@ -700,7 +699,6 @@
     <p class="paragraph-3">Третий параграф</p>
   </div>
 </body>; */
-}
 // js
 // Спомощью textContent можем получить содержимое DOM-лемента, включая текст из всех его дочерних элемов
 // const boxElement = document.querySelector(".box");
@@ -822,15 +820,46 @@
 // Это и называет всплытием событий или Bubbling !!!!!!!!!!!!!!!!
 // Самый глубокий элемент с которого событие начинает всплывать называется Целевым элементом
 
-const firstBoxElement = document.querySelector(".box-1");
-const secondBoxElement = document.querySelector(".box-2");
-const thirdBoxElement = document.querySelector(".box-3");
-firstBoxElement.addEventListener("click", () => {
-  console.log("Клик по box-1", event.target);
-}); // При клика на box-1. выведит  Клик по box-1
-secondBoxElement.addEventListener("click", () => {
-  console.log("Клик по box-2", event.target);
-}); // При клика на box-2. выведит Клик по box-2 (класс box-2) Клик по box-1 (класс box-2)
-thirdBoxElement.addEventListener("click", () => {
-  console.log("Клик по box-3", event.target);
-}); // При клика на box-3. выведит Клик по box-3 (класс box-3) Клик по box-2 (класс box-3)  Клик по box-1 (класс box-3)
+// const firstBoxElement = document.querySelector(".box-1");
+// const secondBoxElement = document.querySelector(".box-2");
+// const thirdBoxElement = document.querySelector(".box-3");
+// firstBoxElement.addEventListener("click", (event) => {
+//   console.log("Клик по box-1", event.target, event.currentTarget); // Клик по box-3  <div class="box-3"> box-3 </div>
+// });
+// secondBoxElement.addEventListener("click", (event) => {
+//   console.log("Клик по box-2", event.target, event.currentTarget); // Клик по box-2  <div class="box-3"> box-3 </div>
+// });
+// thirdBoxElement.addEventListener("click", (event) => {
+//   console.log("Клик по box-3", event.target, event.currentTarget); // Клик по box-1  <div class="box-3"> box-3 </div>
+// });
+// Бокс 3 в данном случае это Целевой элемент
+
+// // передать вторым аргументом function()
+// firstBoxElement.addEventListener("click", function() {
+//   console.log("Клик по box-1", this);
+// }); // Если записать код так, то это равносильно варианту сверху event.currentTarget
+
+// thirdBoxElement.addEventListener("click", (event) => {
+//   console.log("Клик по box-3"); //
+//   event.stopPropagation(); // отмена высплытия события
+// });
+// stopImmediatePropagation    // помимо отмены всплытия событий по дом-дереву, он еще отменяет срабатывание всех остальных обработчиков (если их несколько) на текущем элементе
+
+// Фаза погружения события
+// const firstBoxElement = document.querySelector(".box-1");
+// const secondBoxElement = document.querySelector(".box-2");
+// const thirdBoxElement = document.querySelector(".box-3");
+// firstBoxElement.addEventListener("click", () => {
+//   console.log("Клик по box-1");
+// });
+// secondBoxElement.addEventListener(
+//   "click",
+//   () => {
+//     console.log("Клик по box-2");
+//   },
+//   true
+// );
+// thirdBoxElement.addEventListener("click", () => {
+//   console.log("Клик по box-3");
+// }); // Выдаст Клик по бокс-2, -3, -1
+// // где true отрабатывает в первую очередь
