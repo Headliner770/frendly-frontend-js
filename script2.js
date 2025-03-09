@@ -687,3 +687,68 @@
 //     block: "start",
 //   });
 // }, 300);
+
+//  31  // DOM манипуляции: создание элем, вставка, перемещение, удал и клон
+
+// html
+{/* <body>
+  <div class="box">
+    Текст
+    <p class="paragraph-1">Первый параграф</p>
+    <p class="paragraph-2">Второй параграф</p>
+    <p class="paragraph-3">Третий параграф</p>
+  </div>
+</body>; */}
+// js
+// Спомощью textContent можем получить содержимое DOM-лемента, включая текст из всех его дочерних элемов
+// const boxElement = document.querySelector(".box");
+// console.log("Текстовое содержимое boxElement:", boxElement.textContent); // выводит весь текст
+
+// const firstParagraphElement = document.querySelector(".paragraph-1");
+// firstParagraphElement.textContent = "Обновленный первый параграф"; //  можем поменять значение текстового содержимого
+// console.log(
+//   "Текстовое содержимое firstParagraphElement:",
+//   firstParagraphElement.textContent
+// );
+
+// const boxElement = document.querySelector(".box");
+// boxElement.textContent = "Обновленный текст"; // Так все текстовое содержимое перезапишется на "Обновленный текст"
+
+// const boxElement = document.querySelector(".box");
+// console.log("HTML-содержимое boxElement:", boxElement.innerHTML); // Получаем всю разметку элема целиком, включчая и синтакис вложенных тэгов
+// boxElement.innerHTML = `Обновленный текст <p>Новый параграф</p>`; // так мы заменяем содержимое
+// если здесь использовать не =, а +=, то добавим содержимое
+
+// const newParagraphElement = document.createElement("p");
+// newParagraphElement.textContent = "Четвертый параграф";
+// newParagraphElement.classList.add("paragraph-4");
+// console.log(newParagraphElement); // <p class="paragraph-4">Четвертый параграф</p>
+// cosnt boxElement = document.querySelector('.box')
+// boxElement.append(newParagraphElement); // в нашем html добавился новый параграф
+// boxElement.prepend(newParagraphElement); // в нашем html добавился новый параграф в начало. так же есть before after
+// boxElement.replaceWith(newParagraphElement) // полностью заменяет
+
+// const firstBoxElement = document.querySelector(".box-1");
+// const secondBoxElement = document.querySelector(".box-2");
+// const thirdParagrphElement = document.querySelector(".paragraph-3");
+// const fourthParagrphElement = document.querySelector(".paragraph-4");
+// const fifthParagrphElement = document.querySelector(".paragraph-5");
+// const newParagraphElementMarkup = "<p>Просто текст</p>";
+// firstBoxElement.insertAdjacentHTML("afterbegin", newParagraphElementMarkup); // Вставляем "<p>Просто текст</p>" в начало box-1
+// secondBoxElement.insertAdjacentHTML("beforebegin", newParagraphElementMarkup); // Вставляем "<p>Просто текст</p>" в конец box-2
+// thirdParagrphElement.insertAdjacentHTML(
+//   "beforebegin",
+//   newParagraphElementMarkup
+// ); // Вставляем "<p>Просто текст</p>" перед paragraph-3
+
+// const firstBoxElement = document.querySelector(".box-1");
+// firstBoxElement.remove() // удаление
+
+// const firstBoxElement = document.querySelector(".box-1");
+// const firstBoxElementClone = firstBoxElement.cloneNode(); // клонирование (поверхностное, без учета содержимого)
+// firstBoxElement.after(firstBoxElementClone); // вставка в дом-дерево
+// const firstBoxElementClone = firstBoxElement.cloneNode(true); // клонирование (глубокое, с учетом содержимого)
+
+// const firstBoxElement = document.querySelector(".box-1");
+// const thirdBoxElement = document.querySelector(".box-3");
+// thirdBoxElement.after(firstBoxElement) // перемещение
