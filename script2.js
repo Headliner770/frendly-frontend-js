@@ -691,7 +691,7 @@
 //  31  // DOM манипуляции: создание элем, вставка, перемещение, удал и клон
 
 // html
-  /* <body>
+/* <body>
   <div class="box">
     Текст
     <p class="paragraph-1">Первый параграф</p>
@@ -863,3 +863,13 @@
 //   console.log("Клик по box-3");
 // }); // Выдаст Клик по бокс-2, -3, -1
 // // где true отрабатывает в первую очередь
+
+//  33  // События: делегирование, поведение по умолчанию, генерация собственных событий
+
+const todoItemElements = document.querySelectorAll(".todo__item"); // найдем все элементы item и запишим в переменную
+// с помощью метода forEach проитерируемся по коллекции todoItemElements. На каждой итерации у нас есть доступ к конкретному дом-элем todoItem
+todoItemElements.forEach((todoItemElement) => {
+  todoItemElement.addEventListener("click", () => {
+    todoItemElement.classList.add("is-complited");
+  }); // добавляем обработчик событий клика
+});
