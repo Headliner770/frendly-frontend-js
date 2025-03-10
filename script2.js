@@ -866,10 +866,33 @@
 
 //  33  // События: делегирование, поведение по умолчанию, генерация собственных событий
 
-const todoItemElements = document.querySelectorAll(".todo__item"); // найдем все элементы item и запишим в переменную
-// с помощью метода forEach проитерируемся по коллекции todoItemElements. На каждой итерации у нас есть доступ к конкретному дом-элем todoItem
-todoItemElements.forEach((todoItemElement) => {
-  todoItemElement.addEventListener("click", () => {
-    todoItemElement.classList.add("is-complited");
-  }); // добавляем обработчик событий клика
+// const todoItemElements = document.querySelectorAll(".todo__item"); // найдем все элементы item и запишим в переменную
+// // с помощью метода forEach проитерируемся по коллекции todoItemElements. На каждой итерации у нас есть доступ к конкретному дом-элем todoItem
+// todoItemElements.forEach((todoItemElement) => {
+//   todoItemElement.addEventListener("click", () => {
+//     todoItemElement.classList.add("is-complited");
+//   }); // добавляем обработчик событий клика
+// });
+// Данный код не приемлем !!!! Из-за большого кол-ва элементов в дом-дереве со своим обработчиком клика  !!!!!
+
+// для этого нид Делtгирование событий
+const onTodoItemClick = (todoItemElement) => {
+  // в аргументах ф-я будет ожидать дом-элем todoItemElement
+  todoItemElement.classList.add("is-complited");
+};
+document.addEventListener("click", (event) => {
+  const todoItement = event.target.closest(".todo__item");
+
+  if (todoItement) {
+    // проверяем у event.target наличие класса todo__item через метод classList.contains, если всё ок, то вызываем ф-ю onTodoItemClick и передаем в аргументы event.target
+    onTodoItemClick(todoItement);
+  }
 });
+const addTodoItem = () => {
+  const todoListElement = document.querySelector(".todo__list");
+  const newTodoItemMarkup = `<li class="todo__item"><span>Todo item...</span></li>`;
+  todoListElement.insertAdjacentHTML("beforeend", newTodoItemMarkup);
+};
+addTodoItem();
+addTodoItem();
+addTodoItem();
