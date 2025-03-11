@@ -875,24 +875,37 @@
 // });
 // Данный код не приемлем !!!! Из-за большого кол-ва элементов в дом-дереве со своим обработчиком клика  !!!!!
 
-// для этого нид Делtгирование событий
-const onTodoItemClick = (todoItemElement) => {
-  // в аргументах ф-я будет ожидать дом-элем todoItemElement
-  todoItemElement.classList.add("is-complited");
-};
-document.addEventListener("click", (event) => {
-  const todoItement = event.target.closest(".todo__item");
+// для этого нид Делегирование событий
+// const onTodoItemClick = (todoItemElement) => {
+//   // в аргументах ф-я будет ожидать дом-элем todoItemElement
+//   todoItemElement.classList.add("is-complited");
+// };
+// // достаточно одного обраб событий на весь докум
+// document.addEventListener("click", (event) => {
+//   const todoItement = event.target.closest(".todo__item");
 
-  if (todoItement) {
-    // проверяем у event.target наличие класса todo__item через метод classList.contains, если всё ок, то вызываем ф-ю onTodoItemClick и передаем в аргументы event.target
-    onTodoItemClick(todoItement);
-  }
-});
-const addTodoItem = () => {
-  const todoListElement = document.querySelector(".todo__list");
-  const newTodoItemMarkup = `<li class="todo__item"><span>Todo item...</span></li>`;
-  todoListElement.insertAdjacentHTML("beforeend", newTodoItemMarkup);
-};
-addTodoItem();
-addTodoItem();
-addTodoItem();
+//   if (todoItement) {
+//     // проверяем у event.target наличие класса todo__item через метод classList.contains, если всё ок, то вызываем ф-ю onTodoItemClick и передаем в аргументы event.target
+//     onTodoItemClick(todoItement);
+//   }
+// });
+// const addTodoItem = () => {
+//   const todoListElement = document.querySelector(".todo__list");
+//   const newTodoItemMarkup = `<li class="todo__item"><span>Todo item...</span></li>`;
+//   todoListElement.insertAdjacentHTML("beforeend", newTodoItemMarkup);
+// };
+// addTodoItem();
+// addTodoItem();
+// addTodoItem();
+
+// Некоторые события на оприд элем вынуждают браузер автоматом выполнять какое то действие. Например кнопка сабмит. Например хотим, чтобы клик на ссылку не инициировал переход на др страницу
+// const linkElement = document.querySelector("a");
+// const formElement = document.querySelector("form");
+// linkElement.addEventListener("click", (event) => {
+//   event.preventDefault(); // данный метод отменит действие браузера по умолчанию. страница не перезагр и не переходит по ссылки
+// });
+// formElement.addEventListener("submit", (event) => {
+//   event.preventDefault();
+// });
+
+// Генерация событий
