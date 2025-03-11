@@ -909,3 +909,19 @@
 // });
 
 // Генерация событий. на примере сайта ламкова (лоадер при загрузки) Раскидано по файлам: preloader.js и animateSection.js
+
+//  34  //  События мыши, Drag and Drop компонент
+
+const buttonElement = document.querySelector(".button");
+// buttonElement.addEventListener("click", () => {
+//   console.log("Произошел клик");
+// });
+buttonElement.addEventListener("mousemove", () => {
+  console.log("Движение мыши над элементом"); // возникает когда курсор движется над элементом
+});
+buttonElement.addEventListener("mouseover", () => {
+  console.log("🟢 Курсор навели на элемент кнопки");
+});
+buttonElement.addEventListener("mouseout", () => {
+  console.log("🟡 Курсор увели с элемента кнопки");
+});
