@@ -97,8 +97,77 @@ section:not(.is-visible):nth-child(even) {
   left: -5px;
 } */
 
-.box {
+/* .box {
   width: 200px;
   height: 200px;
   background-color: aqua;
+} */
+
+/* body {
+  font-family: "Rubik", sans-serif;
+  background-color: #bdc1c7;
+  font-size: 24px;
+}
+.circle {
+  position: absolute;
+  width: 50px;
+  aspect-ratio: 1;
+  background-color: dodgerblue;
+  border-radius: 50%;
+  translate: -50% -50%;
+  user-select: none;
+}
+.circle.red {
+  background-color: red;
+}
+.circle__label {
+  position: absolute;
+  bottom: -5%;
+  left: 105%;
+  pointer-events: none;
+  user-select: none;
+} */
+
+/* body {
+}
+img {
+}
+.chicken,
+.fish,
+.shrimp {
+} */
+
+.chicken {
+  position: relative;
+  bottom: 5px;
+}
+
+.fish {
+  position: absolute;
+  bottom: 350px;
+}
+
+.shrimp {
+  left: 50px;
+}
+
+.cat {
+  position: absolute;
+  left: 400px;
+  /* bottom: -50px; */
+}
+
+.draggable {
+  position: absolute;
+  z-index: 1;
+  cursor: grab;
+  transition-property: scale;
+  transition-duration: 0.2s;
+  touch-action: none;
+}
+
+.draggable.is-dragging {
+  cursor: grabbing;
+  opacity: 0.5;
+  scale: 1.15;
 }
