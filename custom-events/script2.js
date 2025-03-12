@@ -910,18 +910,100 @@
 
 // Генерация событий. на примере сайта ламкова (лоадер при загрузки) Раскидано по файлам: preloader.js и animateSection.js
 
-//  34  //  События мыши, Drag and Drop компонент
+//  34  //  События мыши, Drag and Drop компонент // Сложно !!!!!
 
-const buttonElement = document.querySelector(".button");
-// buttonElement.addEventListener("click", () => {
-//   console.log("Произошел клик");
+// const buttonElement = document.querySelector(".button");
+// // buttonElement.addEventListener("click", () => {
+// //   console.log("Произошел клик");
+// // });
+// // buttonElement.addEventListener("mousemove", () => {
+// //   console.log("Движение мыши над элементом"); // возникает когда курсор движется над элементом
+// // });
+
+// buttonElement.addEventListener("mouseover", (event) => {
+//   console.log("🟢 Курсор навели на элемент кнопки");
+//   // console.log("target:", event.target);
+//   // console.log("relatedTarget:", event.relatedTarget);
 // });
-buttonElement.addEventListener("mousemove", () => {
-  console.log("Движение мыши над элементом"); // возникает когда курсор движется над элементом
-});
-buttonElement.addEventListener("mouseover", () => {
-  console.log("🟢 Курсор навели на элемент кнопки");
-});
-buttonElement.addEventListener("mouseout", () => {
-  console.log("🟡 Курсор увели с элемента кнопки");
-});
+// buttonElement.addEventListener("mouseout", (event) => {
+//   console.log("🟡 Курсор увели с элемента кнопки");
+//   console.log("target:", event.target);
+//   console.log("relatedTarget:", event.relatedTarget);
+// });
+
+// const buttonElement = document.querySelector(".button");
+// buttonElement.addEventListener("mouseout", (event) => {
+//   console.log("🟡 Курсор увели с элемента кнопки");
+//   console.log("relatedTarget:", event.relatedTarget); // св-во reletedTarget не гарантирует, что в значении точно будет ссылка на граничащий элемент. Если курсор оч быстро движится, то может быть непредсказуемый результат
+// });
+
+// const secondBoxElement = document.querySelector(".box-2");
+// secondBoxElement.addEventListener("mouseover", () => {
+//   console.log("🟢 Курсор навели на элемент box-2 (или на его дочерний элемент");
+//   console.log("🟡 Курсор увели с элемента кнопки");
+//   console.log("relatedTarget:", event.relatedTarget);
+// });
+// secondBoxElement.addEventListener("mouseover", () => {
+//   console.log("🟡 Курсор увели с элемента box-2 (или на его дочерний элемент");
+//   console.log("🟡 Курсор увели с элемента кнопки");
+//   console.log("relatedTarget:", event.relatedTarget);
+// });
+
+// Такие метода лучше и удобнее !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// const secondBoxElement = document.querySelector(".box-2");
+// secondBoxElement.addEventListener("mouseenter", () => {
+//   console.log("🟢 Курсор навели на элемент box-2 (или на его дочерний элемент");
+// });
+// secondBoxElement.addEventListener("mouseleave", () => {
+//   console.log("🟡 Курсор увели с элемента box-2 (или на его дочерний элемент");
+// });
+
+// const buttonElement = document.querySelector(".button");
+// buttonElement.addEventListener("mousedown", (event) => {
+//   console.log("1. mousedown", event.target, event.currentTarget); // в target будет всегда ссылка на целевой, самый глубокий дом-элем с которого событие нач всплывать. currentTarget будет ссылка на элем на который повесили обраб события
+// });
+// buttonElement.addEventListener("mouseup", (event) => {
+//   console.log("2. mouseup", event.target, event.currentTarget);
+// });
+// buttonElement.addEventListener("click", (event) => {
+//   console.log("3. click", event.target, event.currentTarget);
+// });
+
+// const boxElement = document.querySelector(".box");
+// boxElement.addEventListener("click", () => {
+//   console.log("click");
+// });
+// boxElement.addEventListener("dblclick", () => {
+//   console.log("dblclick");
+// });
+
+// boxElement.addEventListener("contextmenu", (event) => {
+//   event.preventDefault(); // отмена правого клика мыши
+//   console.log("contextmenu"); // правый клик мыши
+// });
+
+// События мыши:
+// mousemove
+// mousedown
+// mouseup
+// mouseover
+// mouseout
+// mouseenter
+// mouseleave
+// Эти события будуь работать и при исп мыши, и при взаимодействии с тачскрином. Тк устройства с тачскрином фактически эмулируют эти самые события мыши. Но и для тачскринов есть свои события :
+// touchmove;
+// touchstart;
+// touchend;
+
+// События указателя:
+// pointermove
+// pointerdown
+// pointerup
+// pointerover
+// pointerout
+// pointerenter
+// pointerleave
+// pointercancel
+// gotpointercapture
+// lostpointercapture
+// Преимущества соб указателя над событиями мыши. У соб указателя есть доп св-ва, которых нет у устаревших соб мыши.

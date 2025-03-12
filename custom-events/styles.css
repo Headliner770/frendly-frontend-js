@@ -18,7 +18,7 @@
 .todo__item.is-complited {
   background-color: darkseagreen;
 } */
-
+/*
 section {
   transition-duration: 0.5s;
 }
@@ -33,14 +33,14 @@ section:nth-child(4) {
   transition-delay: 0.6s;
 }
 
-/* для секций у которых нет класса is-visble выставляется опасити 0 */
+// для секций у которых нет класса is-visble выставляется опасити 0 
 section:not(.is-visible) {
   opacity: 0;
 }
 section:not(.is-visible):nth-child(odd) {
   translate: 50vw;
 }
-/* сдвиг для нечетных секций */
+/* сдвиг для нечетных секций 
 section:not(.is-visible):nth-child(even) {
   translate: -50vw;
 }
@@ -89,4 +89,16 @@ section:not(.is-visible):nth-child(even) {
   100% {
     clip-path: circle(75%);
   }
+} */
+
+/* .button {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+} */
+
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: aqua;
 }
