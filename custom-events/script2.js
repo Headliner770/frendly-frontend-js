@@ -1109,3 +1109,46 @@
 
 // new DragAndDrop();
 // Еду можно перетаскивать котику и оставлять. Логика с перетаскиванием пищи у меня не получилась (((( хз чё делать.
+
+//  35  // События клавиатуры: keydown / keyup. События ввода: input, change, cut, copy, paste
+//  События клавиатуры
+//  keydown - нажатие клавишу
+//  keyup - отпускание клавиши
+
+// document.addEventListener("keydown", (event) => {
+//   console.log("keydown event:", event);
+// });
+// document.addEventListener("keyup", (event) => {
+//   // console.log("keyup event:", event);
+// })
+
+// document.addEventListener("keydown", (event) => {
+//   const { code, metaKey } = event;
+
+//   // Обработка нажатия на 'PageDown'
+//   if (
+//     (code === "ArrowDown" && metaKey) || // MacOS
+//     code === "Numpad3" // Windows и др.
+//   ) {
+//     event.preventDefault();
+//     console.log("Нажатие на PageDown отменено!");
+//   }
+// });
+
+// document.addEventListener("keydown", (event) => {
+//   console.log(event);
+// });
+
+// регулярные выражения. \d означает Любая цифра. matches вызывается у любого дом-элем, например ивэнт таргет и в аргументы передается селектор по имени тега input
+// document.addEventListener("keydown", (event) => {
+//   if (!event.target.matches("input")) {
+//     return;
+//   }
+
+//   const anyDigitRegExp = /\d/;
+
+//   if (anyDigitRegExp.test(event.key)) {
+//     event.preventDefault();
+//     console.log("Отменен ввод цифр:", event.key);
+//   }
+// });
