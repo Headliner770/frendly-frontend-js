@@ -1374,3 +1374,5 @@
 //   .map(({ value }) => value)
 //   .join(",");
 // console.log("Текущее значение multiple-селекта:", selectValue);
+
+//  38  // Формы - FormData, класс для сбора данных со всех полей формы
