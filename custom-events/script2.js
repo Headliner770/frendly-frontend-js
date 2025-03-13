@@ -1376,3 +1376,14 @@
 // console.log("Текущее значение multiple-селекта:", selectValue);
 
 //  38  // Формы - FormData, класс для сбора данных со всех полей формы
+// Отмена стандартной браузерной отправки формы
+const formElement = document.querySelector("form");
+formElement.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const FormData = {};
+
+  for (const element of formElement.elements) {
+    FormData[element.name] = element.value;
+  }
+});
