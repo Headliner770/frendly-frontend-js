@@ -1111,6 +1111,7 @@
 // Еду можно перетаскивать котику и оставлять. Логика с перетаскиванием пищи у меня не получилась (((( хз чё делать.
 
 //  35  // События клавиатуры: keydown / keyup. События ввода: input, change, cut, copy, paste
+
 //  События клавиатуры
 //  keydown - нажатие клавишу
 //  keyup - отпускание клавиши
@@ -1210,3 +1211,87 @@
 //   });
 // });
 // // в свойствах есть clipboardData, там хранится инфа буфера обмена
+
+//  36  // События фокуса: focus и blur, focusin и focusout | Методы focus и blur | activeElement
+
+// События взятия в фокус - focus
+// const loginInputElement = document.querySelector("#login"); // сохр ссылки на дом-элементы
+// const passwordInputElement = document.querySelector("#password");
+// const submitButtonElement = document.querySelector('button[type="submit"]');
+
+// к каждому элему цепляем обраб событий фокус
+// loginInputElement.addEventListener("focus", () => {
+//   console.log("В фокусе: поле ввода логина");
+// });
+
+// passwordInputElement.addEventListener("focus", () => {
+//   console.log("В фокусе: поле ввода пароля");
+// });
+
+// submitButtonElement.addEventListener("focus", () => {
+//   console.log("В фокусе: кнопка входа");
+// });
+
+// блюр
+// loginInputElement.addEventListener("blur", () => {
+//   console.log("Фокус ушел с элемента: поле ввода логина");
+// });
+
+// passwordInputElement.addEventListener("blur", () => {
+//   console.log("Фокус ушел с элемента: поле ввода пароля");
+// });
+
+// submitButtonElement.addEventListener("blur", () => {
+//   console.log("Фокус ушел с элемента: кнопка входа");
+// });
+
+// const loginInputElement = document.querySelector("#login");
+// // если будет 'change' код будет работать не особо корректно. проблемы с рамкой
+// // если будет 'blur' норм. но после повторного ввода рамка останется
+// loginInputElement.addEventListener("blur", () => {
+//   const isLoginEmpty = loginInputElement.value.length === 0;
+
+//   loginInputElement.classList.toggle("is-invalid", isLoginEmpty);
+// });
+// // Добавляем ффокус
+// loginInputElement.addEventListener("focus", () => {
+//   loginInputElement.classList.remove("is-invalid");
+// });
+
+// focus / blur не всплывают от целевого элемента вверх по дом-дереву. на уровне document их перехватить не получится. Чтобы это всё же реализовать есть альтернативные события focusin и focusout
+// document.addEventListener("focusin", (event) => {
+//   console.log("focusin event:", event);
+// });
+// document.addEventListener("focusout", (event) => {
+//   console.log("focusout event:", event);
+// });
+
+// // проверка, что целевой элем ivent.target соответствует оприд селектору
+// document.addEventListener("focusin", (event) => {
+//   if (event.target.matches("#login")) {
+//     console.log("Поле ввода логина в фокусе!");
+//   }
+// });
+// document.addEventListener("focusout", (event) => {
+//   if (event.target.matches("#login")) {
+//     console.log("Поле ввода логина потеряло фокус!");
+//   }
+// });
+
+// Состояние фокуса бывает только на интерактивных элементах
+// const firstButtonElement = document.querySelector("#button-1");
+// const secondButtonElement = document.querySelector("#button-2");
+// const thirdButtonElement = document.querySelector("#button-3");
+// firstButtonElement.addEventListener("focus", () => {
+//   console.log("В фокусе: Кнопка 1");
+// });
+// secondButtonElement.addEventListener("focus", () => {
+//   console.log("В фокусе: Кнопка 2");
+// });
+// thirdButtonElement.addEventListener("focus", () => {
+//   console.log("В фокусе: Кнопка 3");
+// });
+// фокус работает корректно даже через tab на кнопке с div
+
+// Когда нид проверить сайт на базовые аксесабилити, нид дебажить верстку и убедится что по сайти можно навигировать с клавы. и над видеть все подсвеченные элемы, но бывает элемент в фокусе, а какой именно не понять.
+// Для таких дебагов нид использовать фишку дэвтулса LiveExpression. Во вкладке Console нажать значок глазика. в появившемся поле ввода Выражение можно ввести любое js-выражение. Нид ввести document.activeElement  жмак Enter. Можно увидеть как фокус висит на button#modal-button-1 (скрытом). Во вкладке Элемента можно увидеть конкр место в дом-дереве где находится обнаруженный выражением элем.

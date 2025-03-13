@@ -137,7 +137,7 @@ img {
 .shrimp {
 } */
 
-.chicken {
+/* .chicken {
   position: relative;
   bottom: 5px;
 }
@@ -155,7 +155,7 @@ img {
   position: absolute;
   left: 400px;
   /* bottom: -50px; */
-}
+/* }
 
 .draggable {
   position: absolute;
@@ -170,4 +170,12 @@ img {
   cursor: grabbing;
   opacity: 0.5;
   scale: 1.15;
+} */
+
+.modal {
+  position: fixed;
+  inset: 0;
+}
+.modal:not(.is-active) {
+  scale: 0;
 }
