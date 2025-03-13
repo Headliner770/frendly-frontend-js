@@ -1176,3 +1176,37 @@
 // inputElement.addEventListener("input", (event) => {
 //   nameOutputElement.textContent = inputElement.value;
 // }); // код отстает. Если "keydown" заменить на "keyup" то немного получше, но появится эффект типо подлагивания. Лучше всего использовать 'input". Будет рботать без задержки
+
+// const InputElement = document.querySelector("input");
+// const errorMessageElemeent = document.querySelector("#error-message");
+// // 'input' здесь здсь неуместен. Лучше применить 'change'
+// InputElement.addEventListener("change", () => {
+//   const isInvalid = InputElement.value.length < 5;
+
+//   InputElement.classList.toggle("is-invalid", isInvalid);
+//   errorMessageElemeent.textContent = isInvalid
+//     ? "Минимальная длина - 5 символов"
+//     : "";
+// });
+
+// При каждом событии cut copy paste будем получать актуальные значения из буфера обмена
+// document.addEventListener("cut", (event) => {
+//   console.log("События CUT:", event);
+//   navigator.clipboard.readText().then((clipboardText) => {
+//     console.log("clipboardText:", clipboardText);
+//   });
+//   console.log(event.clipboardData.getData("text/plain")); // корректно отраб только в paste
+// });
+// document.addEventListener("copy", (event) => {
+//   console.log("События COPY:", event);
+//   navigator.clipboard.readText().then((clipboardText) => {
+//     console.log("clipboardText:", clipboardText);
+//   });
+// });
+// document.addEventListener("paste", (event) => {
+//   console.log("События PASTE:", event);
+//   navigator.clipboard.readText().then((clipboardText) => {
+//     console.log("clipboardText:", clipboardText);
+//   });
+// });
+// // в свойствах есть clipboardData, там хранится инфа буфера обмена
