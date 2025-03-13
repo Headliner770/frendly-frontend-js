@@ -1152,3 +1152,27 @@
 //     console.log("Отменен ввод цифр:", event.key);
 //   }
 // });
+
+// document.addEventListener("keydown", (event) => {
+//   const { code, metaKey, altKey } = event;
+
+//   // Попытка отработать хоткей закрытия окна приложения
+//   If(
+//     (code === "Q" && metaKey) || // MacOS
+//       (code === "F4" && altKey) // Windows и др.
+//   );
+//   {
+//     console.log("Поймали хоткей закрытия приложения!");
+//     event.preventDefault(); // Не отработает
+//   }
+// });
+
+// Когда мы отрабатываем событие клавиатуры мы постоянно обращаемся к различным сущностям объекта event: к св-ам key, code и др. Для отработки клавиш в реальном времени !!!  toptal.com/developers/keycode !!!!!
+
+// Обработка ввода в поля input / textarea
+// const inputElement = document.querySelector("input");
+// const nameOutputElement = document.querySelector(".name-output");
+
+// inputElement.addEventListener("input", (event) => {
+//   nameOutputElement.textContent = inputElement.value;
+// }); // код отстает. Если "keydown" заменить на "keyup" то немного получше, но появится эффект типо подлагивания. Лучше всего использовать 'input". Будет рботать без задержки
