@@ -1295,3 +1295,82 @@
 
 // Когда нид проверить сайт на базовые аксесабилити, нид дебажить верстку и убедится что по сайти можно навигировать с клавы. и над видеть все подсвеченные элемы, но бывает элемент в фокусе, а какой именно не понять.
 // Для таких дебагов нид использовать фишку дэвтулса LiveExpression. Во вкладке Console нажать значок глазика. в появившемся поле ввода Выражение можно ввести любое js-выражение. Нид ввести document.activeElement  жмак Enter. Можно увидеть как фокус висит на button#modal-button-1 (скрытом). Во вкладке Элемента можно увидеть конкр место в дом-дереве где находится обнаруженный выражением элем.
+
+//  37  //  Формы - доступ к элементам форм, чтение и измен значений полей ввода, атрибут form
+
+// Доступ ко всем дом-элем form на странице
+// console.log("Все элементы <form> на странице:", document.forms);
+
+// // Получаем дом-элем конкретной формы на странице
+// console.log("Форма регистрации:", document.forms.regForm); // ..., forms[0] обращение по индексу для получения дом-элем конкр формы
+// console.log("Форма авторизации:", document.forms.authForm);
+
+// Так же для получения доступов к элемам формы по их знач атрибутов name
+// const formElement = document.querySelector("#regForm");
+// console.log("Поле ввода логина:", formElement.elements.login);
+// console.log("Поле ввода пароля:", formElement.elements.password);
+
+// Доступ к форме, к которой привязан дом-элем
+// const formElement = document.querySelector("form");
+// const loginInputElement = formElement.login;
+// const passwordInputElement = formElement.password;
+// console.log(
+//   "К какой форме относится поле ввода логина?",
+//   loginInputElement.form // форм хранит ссылку на дом-элем формы, к которой относится поле ввода
+// );
+// console.log(
+//   "К какой форме относится поле ввода логина?",
+//   passwordInputElement.form
+// );
+// console.log(
+//   "К какой форме относится селект выбора города?",
+//   document.querySelector("#city").form
+// );
+// console.log('Поля формы:', formElement.elements)
+
+// Управление элементами классического input и textarea
+// const formElement = document.querySelector("form");
+
+// const loginInputElement = formElement.login;
+// const aboutTextAreaElement = formElement.about;
+
+// loginInputElement.value = "TheBestFrontDeveloper"; // можно программно устан значение
+// aboutTextAreaElement.value = "Лучший из лучших";
+// // если эти поля заполнены в html
+// console.log("О себе:", aboutTextAreaElement.value);
+
+// Управление элементами с input type radio
+// const formElement = document.querySelector("form");
+// const genderRadios = formElement.gender;
+// console.log("Информация о гендере:", genderRadios);
+// // В инпуте нид всегда в html заполнять атрибут value !!!!!!!
+// console.log("Выбранный пол:", genderRadios.value); // так лучше
+// // еще один способ получить выбранное значение среди конкретной группы радиокнопок это точечно обратится к дом-элем инпут с тайп рэдио. Но этот способ не самый удобный!!!!!!!
+// console.log("Выбран ли мужской пол?", genderRadios[0].checked);
+// console.log("Выбран ли женский пол?", genderRadios[1].checked);
+// В инпуте нид всегда в html заполнять атрибут value !!!!!!
+
+// Управление элементами с input type checkbox
+// const formElement = document.querySelector("form");
+// const agreementCheckboxElement = formElement.agreement;
+// console.log("Согласен ли на всё?", agreementCheckboxElement.checked); // false. Но если в разметке зададим checked, то результат измен на true
+
+// Управление элементом select
+// const formElement = document.querySelector(".form");
+// const citySelectElement = formElement.city;
+// citySelectElement.value = "Питер"; // так можно задать значение по умолчанию через js
+// console.log("Выбранный город:", citySelectElement.value);
+// Значение города в инпуте выбрать по умолчанию можно добавив в разметке после value значение selected
+
+// select multiple
+// const formElement = document.querySelector("form");
+// const citySelectElement = formElement.city;
+
+// console.log("Текущее значение:", citySelectElement.value); // Питер
+// console.log("Индекс выбранной опции:", citySelectElement.selectedIndex); // 1. Хотя в разметке пометили multiple 2 элемента
+
+// console.log("Индекс выбранной опции:", citySelectElement.selectedOptions); // содержит коллекцию дом-элементов опции которая выбрана в данный момент
+// const selectValue = [...citySelectElement.selectedOptions] // можно сделать тоже самое через метод reduce (будет посложнее)
+//   .map(({ value }) => value)
+//   .join(",");
+// console.log("Текущее значение multiple-селекта:", selectValue);
