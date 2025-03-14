@@ -223,18 +223,80 @@
         <button type="submit">Войти</button>
       </form> -->
 
-    38
+    <!-- 38 -->
     <!-- //из-за экшн и метод при жмаке на регистрацию, происходит словно переход по ссылки экшн преднозн для
     указания адреса и имени серверного скрипта, который будет выполн после отправки формы. В атриб метод указыв get /
     post (бэк) -->
-    <form action="/registration" method="post">
+    <!-- <form id="regForm" action="/registration" method="post">
+        <p class="field">
+          <label class="field__label" for="login">Логин</label>
+          <input
+            class="field__control"
+            id="login"
+            name="login"
+          />
+        </p>
+        <p class="field">
+          <label class="field__label" for="password">Пароль</label>
+          <input
+            class="field__control"
+            id="password"
+            name="password"
+            type="password"
+          />
+        </p>
+        <p class="field">
+          <label class="field__label" for="about">О себе</label>
+          <textarea class="field__control" id="about" name="about"></textarea>
+        </p>
+        <fieldset class="radios">
+          <legend class="radios__legend">Ваш пол</legend>
+    
+          <input
+            class="radios__control"
+            id="male"
+            name="gender"
+            type="radio"
+            value="Мужской"
+          />
+          <label class="radios__label" for="male">Мужской</label>
+    
+          <input
+            class="radios__control"
+            id="female"
+            name="gender"
+            type="radio"
+            value="Женский"
+          />
+          <label class="radios__label" for="female">Женский</label>
+        </fieldset>
+        <div class="field checkbox">
+          <input
+            class="checkbox__control"
+            id="agreement"
+            name="agreement"
+            type="checkbox"
+          />
+          <label class="field__label checkbox__label" for="agreement">Согласен на всё</label>
+        </div>
+        <button type="submit">Регистрация</button>
+      </form> -->
+
+    39
+    <form id="regForm" action="/registration" method="post" novalidate data-js-form>
         <p class="field">
             <label class="field__label" for="login">Логин</label>
-            <input class="field__control" id="login" name="login" />
+            <input class="field__control" id="login" name="login" required minlength="3" maxlength="12"
+                aria-errormessage="login-errors" />
+            <span class="field__errors" id="login-errors" data-js-form-field-errors></span>
         </p>
         <p class="field">
             <label class="field__label" for="password">Пароль</label>
-            <input class="field__control" id="password" name="password" type="password" />
+            <input class="field__control" id="password" name="password" type="text" required minlength="8"
+                maxlength="16" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}"
+                title="Пароль должен быть длиной от 8 до 16 символов, включать как минимум одну цифру, одну букву в нижнем и одну букву в верхнем регистре"
+                aria-errormessage="password-errors" />
+            <span class="field__errors" id="password-errors" data-js-form-field-errors></span>
         </p>
         <p class="field">
             <label class="field__label" for="about">О себе</label>
@@ -243,29 +305,23 @@
         <fieldset class="radios">
             <legend class="radios__legend">Ваш пол</legend>
 
-            <input class="radios__control" id="male" name="gender" type="radio" />
+            <input class="radios__control" id="male" name="gender" type="radio" value="Мужской" required
+                aria-errormessage="password-errors" />
             <label class="radios__label" for="male">Мужской</label>
 
-            <input class="radios__control" id="female" name="gender" type="radio" />
+            <input class="radios__control" id="female" name="gender" type="radio" value="Женский" required
+                aria-errormessage="password-errors" />
             <label class="radios__label" for="female">Женский</label>
+
+            <span class="field__errors" id="gender-errors" data-js-form-field-errors></span>
         </fieldset>
         <div class="field checkbox">
-            <input class="checkbox__control" id="agreement" name="agreement" type="checkbox" />
+            <input class="checkbox__control" id="agreement" name="agreement" type="checkbox" required
+                aria-errormessage="agreement-errors" />
             <label class="field__label checkbox__label" for="agreement">Согласен на всё</label>
+            <span class="field__errors" id="agreement-errors" data-js-form-field-errors></span>
         </div>
         <button type="submit">Регистрация</button>
-    </form>
-
-    <form action="/auth" method="post">
-        <p class="field">
-            <label class="field__label" for="auth-login">Логин</label>
-            <input class="field__control" id="auth-login" name="login" />
-        </p>
-        <p class="field">
-            <label class="field__label" for="auth-password">Пароль</label>
-            <input class="field__control" id="auth-password" name="password" type="password" />
-        </p>
-        <button type="submit">Войти</button>
     </form>
 
     <!-- Можно оставить только основной файл (script.js), который и будет управлять запуском всех модулей. Важно оставить атрибут type="module" -->

@@ -1377,6 +1377,7 @@
 
 //  38  // Формы - FormData, класс для сбора данных со всех полей формы
 // Отмена стандартной браузерной отправки формы
+
 // const formElement = document.querySelector("form");
 // formElement.addEventListener("submit", (event) => {
 //   event.preventDefault();
@@ -1390,3 +1391,128 @@
 
 //   console.log(Object.fromEntries(formData));
 // }); // такую инфу можно отправлять на сервер, она корректна
+
+//  39  // Валидация форм - validity св-во у полей формы. Классовый компон валидации форм.
+// Виды валидации форм: Нативная, сугубо через html-атрибуты (рекуаерт, паттерн, мин/макс ленгс) И более серьезная валидация с приенеием JS.
+
+//  !!!!! Лучшим вариантом будет использовать комбинацию из этих двух видов !!!!!!!
+// После добавления в html required появляются звездочки возле соответствующих элементов (обязательно для заполнения).
+// minlength / maxlength - кол-во вводимых символов
+// pattern   title
+// Добавление в разметке novalidate - стандартная валидация перестанет работать, мы будем писать собственную
+// data-js-form - он будет исп в кач селектора оприделении кастомной валидации формы
+// aria-errormessage="login-errors" для связки инпута со спаном
+
+// class FormsValidation {
+//   selectors = {
+//     form: "[data-js-form]",
+//     fieldErrors: "[data-js-form-field-errors]",
+//   };
+
+//   errorMessages = {
+//     valueMissing: () => "Пожалуйста, заполните это поле",
+//     patternMismatch: ({ title }) => title || "Данные не соответствуют формату",
+//     tooShort: ({ minLength }) =>
+//       `Слишком короткое значение, минимум символов - ${minLength}`, // нид обратить внимание !!! в разметке это св-во указано маленькими буквами. в JS оно в камэлкейс нотации.
+//     tooLong: (maxLength) =>
+//       `Слишком длинное значение, ограничение символов - ${maxLength}`,
+//   };
+
+//   constructor() {
+//     this.bindEvents();
+//   }
+
+//   manageErrors(fieldControlElement, errorMessages) {
+//     const fieldErrorsElement = fieldControlElement.parentElement.querySelector(
+//       this.selectors.fieldErrors
+//     );
+
+//     fieldErrorsElement.innerHTML = errorMessages
+//       .map((message) => `<span class="field__error">${message}</span>`)
+//       .join("");
+//   }
+
+//   validateField(fieldControlElement) {
+//     const errors = fieldControlElement.validity;
+//     const errorMessages = [];
+//     // сначала преобразуем объект в массив пар ключ-значение, затем итерируемся по этому массиву через метод форич. на каждой итерации у нас доступ к имени св-ва и его значению
+//     Object.entries(this.errorMessages).forEach(
+//       ([errorType, getErrorMessage]) => {
+//         if (errors[errorType]) {
+//           errorMessages.push(getErrorMessage(fieldControlElement));
+//         }
+//       }
+//     );
+
+//     this.manageErrors(fieldControlElement, errorMessages);
+
+//     const isValid = errorMessages.length === 0;
+
+//     fieldControlElement.ariaInvalid = !isValid;
+
+//     return isValid;
+//   }
+
+//   onBlur(event) {
+//     const { target } = event; // далее убираем слово event (деструктурировали)
+//     const isFormField = target.closest(this.selectors.form);
+//     const isRequired = target.required;
+
+//     //проверка, что перед нами дом-элем формы и что поле обязат для заполнения. Если это истана, то будем поле валидировать
+//     if (isFormField && isRequired) {
+//       this.validateField(target);
+//     }
+//   }
+//   onChange(event) {
+//     const { target } = event;
+//     const isRequired = target.required;
+//     const isToggleType = ["radio", "checkbox"].includes(target.type);
+
+//     if (isToggleType && isRequired) {
+//       this.validateField(target);
+//     }
+//   }
+
+//   onSubmit(event) {
+//     const isFormElement = event.target.matches(this.selectors.form);
+//     if (!isFormElement) {
+//       return;
+//     }
+
+//     const requiredControlElements = [...event.target.elements].filter(
+//       ({ required }) => required
+//     );
+//     let isFormValid = true;
+//     let firstInvalidFieldControl = null;
+
+//     requiredControlElements.forEach((element) => {
+//       const isFieldValid = this.validateField(element);
+
+//       if (!isFieldValid) {
+//         isFormValid = false;
+
+//         if (!firstInvalidFieldControl) {
+//           firstInvalidFieldControl = element;
+//         }
+//       }
+//     });
+
+//     if (!isFormValid) {
+//       event.preventDefault();
+//       firstInvalidFieldControl.focus();
+//     }
+//   }
+
+//   bindEvents() {
+//     document.addEventListener(
+//       "blur",
+//       (event) => {
+//         this.onBlur(event);
+//       },
+//       { capture: true }
+//     );
+//     document.addEventListener("change", (event) => this.onChange(event));
+//     document.addEventListener("submit", (event) => this.onSubmit(event));
+//   }
+// }
+// new FormsValidation();
