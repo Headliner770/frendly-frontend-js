@@ -1523,9 +1523,30 @@
 // fetch("https://jsonplaceholder.typicode.com/todos/1") //с помощью этой ф-ии можно отправлять запросы на сервер. принимает два аргумента. первый - url-адрес по которому будет выполн запрос. второй - необязательный, предн для доп инф и настроек запроса.
 //   .then((response) => response.json())
 //   .then((json) => console.log(json));
-fetch("https://jsonplaceholder.typicode.com/todos/1")
-  .then((response) => {
-    console.log("response:", response);
-    return response.json();
-  })
-  .then((json) => console.log(json));
+
+const loadTodoFormElement = document.querySelector(".load-todo-form");
+const resultElement = document.querySelector(".result");
+
+loadTodoFormElement.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  fetch("https://jsonplaceholder.typicode.com/todos/1")
+    .then((response) => {
+      console.log("response:", response);
+      return response.json();
+    })
+    .then((json) => {
+      console.log(json);
+
+      const { id, title, completed } = json;
+
+      resultElement.innerHTML = `
+<input
+id="todo-${id}"
+type="checkbox"
+${completed ? "checked" : ""}
+/>
+<label for="todo-${id}">${title}</label>
+`;
+    });
+});
