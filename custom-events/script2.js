@@ -1377,13 +1377,16 @@
 
 //  38  // Формы - FormData, класс для сбора данных со всех полей формы
 // Отмена стандартной браузерной отправки формы
-const formElement = document.querySelector("form");
-formElement.addEventListener("submit", (event) => {
-  event.preventDefault();
+// const formElement = document.querySelector("form");
+// formElement.addEventListener("submit", (event) => {
+//   event.preventDefault();
 
-  const FormData = {};
+//   const formData = new FormData(formElement);
 
-  for (const element of formElement.elements) {
-    FormData[element.name] = element.value;
-  }
-});
+//   formData.append("example", "bla-bla-bla"); // позволяет добавить собств пару ключ-значение
+//   console.log('Значение по ключу "name":', formData.get("example")); // метод get принимает имя ключа возвращает соотв ему значение
+//   console.log('Есть ли запись по ключу "name"?', formData.has("example")); // мет has принимает имя ключа возвращ true/false, отвечая на вопрос есть ли в формдата запись по опридел имени
+//   formData.delete("example"); // дел удал по имени запись из структуры формдата
+
+//   console.log(Object.fromEntries(formData));
+// }); // такую инфу можно отправлять на сервер, она корректна
