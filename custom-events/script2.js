@@ -1516,3 +1516,16 @@
 //   }
 // }
 // new FormsValidation();
+
+//  40  // Запросы fetch - клиент-серверное взаимодействие
+// Клиент-серверное взаимодействие - процесс обмена информации между клиентом(браузером) и сервером с помощью выполнения запросов.
+// free rest api // jsonplaceholder
+// fetch("https://jsonplaceholder.typicode.com/todos/1") //с помощью этой ф-ии можно отправлять запросы на сервер. принимает два аргумента. первый - url-адрес по которому будет выполн запрос. второй - необязательный, предн для доп инф и настроек запроса.
+//   .then((response) => response.json())
+//   .then((json) => console.log(json));
+fetch("https://jsonplaceholder.typicode.com/todos/1")
+  .then((response) => {
+    console.log("response:", response);
+    return response.json();
+  })
+  .then((json) => console.log(json));
