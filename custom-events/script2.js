@@ -1676,3 +1676,7 @@ createPostFormElement.addEventListener("submit", (event) => {
 });
 
 // хз че делать
+.then((json) => {
+  console.log("json:", json);
+});
+});
