@@ -1674,3 +1674,4 @@ createPostFormElement.addEventListener("submit", (event) => {
     });
 });
 
+хз че делать
