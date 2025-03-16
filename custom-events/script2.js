@@ -1663,10 +1663,11 @@ createPostFormElement.addEventListener("submit", (event) => {
     body: JSON.stringify({
       ...formDataObject,
       views: 0,
-    })
-  }).then((response) => {
-    console.log("response:", response);
-    
+    }),
+  })
+    .then((response) => {
+      console.log("response:", response);
+
       return response.json();
     })
     .then((json) => {
@@ -1674,4 +1675,4 @@ createPostFormElement.addEventListener("submit", (event) => {
     });
 });
 
-хз че делать
+// хз че делать
