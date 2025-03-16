@@ -1525,32 +1525,152 @@
 //   .then((response) => response.json()) // в первом промисе обраб ответ от сервера. за этот ответ здесь отвечает сущность responce и у ней вызывается метод json. результат вып этого метода возвращается и передается в след промис.
 //   .then((json) => console.log(json));
 
-const loadTodoFormElement = document.querySelector(".load-todo-form"); // ссылки на дом-элементы. форма
+// const loadTodoFormElement = document.querySelector(".load-todo-form"); // ссылки на дом-элементы. форма
+// const todoInputElement = document.querySelector("#todo-id"); // сохр ссылку на дом-элем инпута в перем todoInputElement
+// const resultElement = document.querySelector(".result"); // див с классом резалт
+
+// // вешаем ан форму обраб событий сабмит
+// loadTodoFormElement.addEventListener("submit", (event) => {
+//   event.preventDefault(); // отменим действие браузера через ивент.приветдеф
+
+//   fetch(`https://jsonplaceholder.typicode.com/todos/${todoInputElement.value}`)
+//     // в первом промисе обраб-тся ответ от сервера. по пути логируется и после выполн метода json результат передается дальше
+//     .then((response) => {
+//       console.log("response:", response);
+
+//       // обраб когда в св-ах значение ок false
+//       if (!response.ok) {
+//         const errorMessage =
+//           response.status === 404
+//             ? "Задача по указанному идентификатору не найдена"
+//             : "Что-то пошло не так";
+//         // нид досрочно прервать промис чтобы не выполн след блок кода then, который должен работать только в случае успешно выполн запроса
+//         throw new Error(errorMessage); // при срабат этой инструкции выполн кода сразу же переключ на блок catch (см внизу)
+//       }
+
+//       return response.json();
+//     })
+//     // во втором промисе обраб ответ от сервера сначало логируется в консоль...
+//     .then((json) => {
+//       console.log(json);
+//       //  ...затем из этого объекта деструктурируются поля id, title, completed...
+//       const { id, title, completed } = json;
+//       //...в резэлемент через иннерhtml рисуется разметка
+//       resultElement.innerHTML = `
+// <input
+// id="todo-${id}"
+// type="checkbox"
+// ${completed ? "checked" : ""}
+// />
+// <label for="todo-${id}">${title}</label>
+// `;
+//     })
+//     .catch((error) => {
+//       resultElement.innerHTML = error.message;
+//     });
+// });
+
+// Меняем всю логику. Изменяем Todo на post
+// const loadPostFormElement = document.querySelector(".load-post-form"); // ссылки на дом-элементы. форма
+// const postIdInputElement = document.querySelector("#post-id"); // сохр ссылку на дом-элем инпута в перем todoInputElement
+// const resultElement = document.querySelector(".result"); // див с классом резалт
+
+// // вешаем на форму обраб событий сабмит
+// loadPostFormElement.addEventListener("submit", (event) => {
+//   event.preventDefault(); // отменим действие браузера через ивент.приветдеф
+
+//   fetch(`http://localhost:3000/posts/${postIdInputElement.value}`)
+//     // в первом промисе обраб-тся ответ от сервера. по пути логируется и после выполн метода json результат передается дальше
+//     .then((response) => {
+//       console.log("response:", response);
+
+//       // обраб когда в св-ах значение ок false
+//       if (!response.ok) {
+//         const errorMessage =
+//           response.status === 404
+//             ? "Пост по указанному идентификатору не найден"
+//             : "Что-то пошло не так";
+//         // нид досрочно прервать промис чтобы не выполн след блок кода then, который должен работать только в случае успешно выполн запроса
+//         throw new Error(errorMessage); // при срабат этой инструкции выполн кода сразу же переключ на блок catch (см внизу)
+//       }
+
+//       return response.json();
+//     })
+//     // во втором промисе обраб ответ от сервера сначало логируется в консоль...
+//     .then((json) => {
+//       console.log(json);
+//       const { title, views } = json;
+
+//       resultElement.innerHTML = `
+//      <p>${title}, просмотров: ${views}</p>`;
+//     })
+//     .catch((error) => {
+//       resultElement.innerHTML = error.message;
+//     });
+// });
+// имитируем базу данных в файле db.json5
+// Методы запросов : get (получать), post(отправлять), put, patch, delete и др
+
+const loadPostFormElement = document.querySelector(".load-post-form"); // ссылки на дом-элементы. форма
+const postIdInputElement = document.querySelector("#post-id"); // сохр ссылку на дом-элем инпута в перем todoInputElement
 const resultElement = document.querySelector(".result"); // див с классом резалт
 
-// вешаем ан форму обраб событий сабмит
-loadTodoFormElement.addEventListener("submit", (event) => {
+loadPostFormElement.addEventListener("submit", (event) => {
   event.preventDefault(); // отменим действие браузера через ивент.приветдеф
 
-  fetch("https://jsonplaceholder.typicode.com/todos/1")
+  fetch(`http://localhost:3000/posts/${postIdInputElement.value}`)
     // в первом промисе обраб-тся ответ от сервера. по пути логируется и после выполн метода json результат передается дальше
     .then((response) => {
       console.log("response:", response);
+
+      // обраб когда в св-ах значение ок false
+      if (!response.ok) {
+        const errorMessage =
+          response.status === 404
+            ? "Пост по указанному идентификатору не найден"
+            : "Что-то пошло не так";
+        // нид досрочно прервать промис чтобы не выполн след блок кода then, который должен работать только в случае успешно выполн запроса
+        throw new Error(errorMessage); // при срабат этой инструкции выполн кода сразу же переключ на блок catch (см внизу)
+      }
+
       return response.json();
     })
     // во втором промисе обраб ответ от сервера сначало логируется в консоль...
     .then((json) => {
       console.log(json);
-      //  ...затем из этого объекта деструктурируются поля id, title, completed...
-      const { id, title, completed } = json;
-      //...в резэлемент через иннерhtml рисуется разметка
+      const { title, views } = json;
+
       resultElement.innerHTML = `
-<input
-id="todo-${id}"
-type="checkbox"
-${completed ? "checked" : ""}
-/>
-<label for="todo-${id}">${title}</label>
-`;
+     <p>${title}, просмотров: ${views}</p>`;
+    })
+    .catch((error) => {
+      resultElement.innerHTML = error.message;
     });
 });
+
+const createPostFormElement = document.querySelector(".create-post-form"); // находим дом-элем формы и сохр в перем
+
+// вешаем обраб событий сабмит. в теле ф-ии обработчика выполняем ивентпривентдеф
+createPostFormElement.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  // в аргум формдаты передаем ссылку на дом-элем нашей формы. рез сохр в formData
+  const formData = new FormData(createPostFormElement);
+  const formDataObject = Object.fromEntries(formData);
+
+  fetch("http://localhost:3000/posts", {
+    method: "post",
+    body: JSON.stringify({
+      ...formDataObject,
+      views: 0,
+    })
+  }).then((response) => {
+    console.log("response:", response);
+    
+      return response.json();
+    })
+    .then((json) => {
+      console.log("json:", json);
+    });
+});
+
