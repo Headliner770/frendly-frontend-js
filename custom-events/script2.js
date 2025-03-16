@@ -1520,26 +1520,30 @@
 //  40  // Запросы fetch - клиент-серверное взаимодействие
 // Клиент-серверное взаимодействие - процесс обмена информации между клиентом(браузером) и сервером с помощью выполнения запросов.
 // free rest api // jsonplaceholder
+// API - Application Programming Interface (программный интерфейс приложений). Набор правил по которым приложения общаются друг с другом. В нашем случае фронтенд с бэкендом.
 // fetch("https://jsonplaceholder.typicode.com/todos/1") //с помощью этой ф-ии можно отправлять запросы на сервер. принимает два аргумента. первый - url-адрес по которому будет выполн запрос. второй - необязательный, предн для доп инф и настроек запроса.
-//   .then((response) => response.json())
+//   .then((response) => response.json()) // в первом промисе обраб ответ от сервера. за этот ответ здесь отвечает сущность responce и у ней вызывается метод json. результат вып этого метода возвращается и передается в след промис.
 //   .then((json) => console.log(json));
 
-const loadTodoFormElement = document.querySelector(".load-todo-form");
-const resultElement = document.querySelector(".result");
+const loadTodoFormElement = document.querySelector(".load-todo-form"); // ссылки на дом-элементы. форма
+const resultElement = document.querySelector(".result"); // див с классом резалт
 
+// вешаем ан форму обраб событий сабмит
 loadTodoFormElement.addEventListener("submit", (event) => {
-  event.preventDefault();
+  event.preventDefault(); // отменим действие браузера через ивент.приветдеф
 
   fetch("https://jsonplaceholder.typicode.com/todos/1")
+    // в первом промисе обраб-тся ответ от сервера. по пути логируется и после выполн метода json результат передается дальше
     .then((response) => {
       console.log("response:", response);
       return response.json();
     })
+    // во втором промисе обраб ответ от сервера сначало логируется в консоль...
     .then((json) => {
       console.log(json);
-
+      //  ...затем из этого объекта деструктурируются поля id, title, completed...
       const { id, title, completed } = json;
-
+      //...в резэлемент через иннерhtml рисуется разметка
       resultElement.innerHTML = `
 <input
 id="todo-${id}"
