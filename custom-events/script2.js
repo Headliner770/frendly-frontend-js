@@ -1661,9 +1661,14 @@ createPostFormElement.addEventListener("submit", (event) => {
   fetch("http://localhost:3000/posts", {
     method: "post",
     body: JSON.stringify({
-      ...formDataObject,
+      ...formDataObject, // в этом объекте есть св-ва title и id
       views: 0,
     }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8", // заголовки дял доп инфы, нужная для корр обраб вашего запроса серверу
+      "X-Auth-Token": "blablabla", // ключ сеанса. для идентиф сервером отправителя запроса
+    },
+    credentials: "include", // для отправки куков на сервер с запросом
   })
     .then((response) => {
       console.log("response:", response);
@@ -1675,8 +1680,19 @@ createPostFormElement.addEventListener("submit", (event) => {
     });
 });
 
-// хз че делать
-.then((json) => {
-  console.log("json:", json);
-});
+const searchPostsFormElement = document.querySelector(".search-posts-form");
+const postViewsInputElement = document.querySelector("#post-views");
+
+searchPostsFormElement.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  fetch(`http://localhost:3000/posts?views_gte=${postViewsInputElement.value}`)
+    .then((response) => response.json())
+    .then((json) => {
+      console.log(json);
+
+      resultElement.innerHTML = json
+        .map(({ title, views }) => `<p>${title}, просмотров: ${views}</p>`) // преобразуем массив объектов с данными в массив строк
+        .join(""); // соединяем массив строк в одну единую
+    });
 });
