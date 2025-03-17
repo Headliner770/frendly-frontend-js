@@ -180,7 +180,7 @@ img {
   scale: 0;
 } */
 
-@import "https://unpkg.com/@a1rth/css-normalize@1.1.3/index.css";
+/* @import "https://unpkg.com/@a1rth/css-normalize@1.1.3/index.css";
 
 body {
   display: flex;
@@ -299,4 +299,4 @@ textarea {
 
 .checkbox .field__error {
   flex-basis: 100%;
-}
+} */
