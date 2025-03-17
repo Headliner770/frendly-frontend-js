@@ -1611,88 +1611,268 @@
 // имитируем базу данных в файле db.json5
 // Методы запросов : get (получать), post(отправлять), put, patch, delete и др
 
-const loadPostFormElement = document.querySelector(".load-post-form"); // ссылки на дом-элементы. форма
-const postIdInputElement = document.querySelector("#post-id"); // сохр ссылку на дом-элем инпута в перем todoInputElement
-const resultElement = document.querySelector(".result"); // див с классом резалт
+// const loadPostFormElement = document.querySelector(".load-post-form"); // ссылки на дом-элементы. форма
+// const postIdInputElement = document.querySelector("#post-id"); // сохр ссылку на дом-элем инпута в перем todoInputElement
+// const resultElement = document.querySelector(".result"); // див с классом резалт
 
-loadPostFormElement.addEventListener("submit", (event) => {
-  event.preventDefault(); // отменим действие браузера через ивент.приветдеф
+// loadPostFormElement.addEventListener("submit", (event) => {
+//   event.preventDefault(); // отменим действие браузера через ивент.приветдеф
 
-  fetch(`http://localhost:3000/posts/${postIdInputElement.value}`)
-    // в первом промисе обраб-тся ответ от сервера. по пути логируется и после выполн метода json результат передается дальше
-    .then((response) => {
-      console.log("response:", response);
+//   fetch(`http://localhost:3000/posts/${postIdInputElement.value}`)
+//     // в первом промисе обраб-тся ответ от сервера. по пути логируется и после выполн метода json результат передается дальше
+//     .then((response) => {
+//       console.log("response:", response);
 
-      // обраб когда в св-ах значение ок false
-      if (!response.ok) {
-        const errorMessage =
-          response.status === 404
-            ? "Пост по указанному идентификатору не найден"
-            : "Что-то пошло не так";
-        // нид досрочно прервать промис чтобы не выполн след блок кода then, который должен работать только в случае успешно выполн запроса
-        throw new Error(errorMessage); // при срабат этой инструкции выполн кода сразу же переключ на блок catch (см внизу)
-      }
+//       // обраб когда в св-ах значение ок false
+//       if (!response.ok) {
+//         const errorMessage =
+//           response.status === 404
+//             ? "Пост по указанному идентификатору не найден"
+//             : "Что-то пошло не так";
+//         // нид досрочно прервать промис чтобы не выполн след блок кода then, который должен работать только в случае успешно выполн запроса
+//         throw new Error(errorMessage); // при срабат этой инструкции выполн кода сразу же переключ на блок catch (см внизу)
+//       }
 
-      return response.json();
-    })
-    // во втором промисе обраб ответ от сервера сначало логируется в консоль...
-    .then((json) => {
-      console.log(json);
-      const { title, views } = json;
+//       return response.json();
+//     })
+//     // во втором промисе обраб ответ от сервера сначало логируется в консоль...
+//     .then((json) => {
+//       console.log(json);
+//       const { title, views } = json;
 
-      resultElement.innerHTML = `
-     <p>${title}, просмотров: ${views}</p>`;
-    })
-    .catch((error) => {
-      resultElement.innerHTML = error.message;
-    });
-});
+//       resultElement.innerHTML = `
+//      <p>${title}, просмотров: ${views}</p>`;
+//     })
+//     .catch((error) => {
+//       resultElement.innerHTML = error.message;
+//     });
+// });
 
-const createPostFormElement = document.querySelector(".create-post-form"); // находим дом-элем формы и сохр в перем
+// const createPostFormElement = document.querySelector(".create-post-form"); // находим дом-элем формы и сохр в перем
 
-// вешаем обраб событий сабмит. в теле ф-ии обработчика выполняем ивентпривентдеф
-createPostFormElement.addEventListener("submit", (event) => {
-  event.preventDefault();
+// // вешаем обраб событий сабмит. в теле ф-ии обработчика выполняем ивентпривентдеф
+// createPostFormElement.addEventListener("submit", (event) => {
+//   event.preventDefault();
 
-  // в аргум формдаты передаем ссылку на дом-элем нашей формы. рез сохр в formData
-  const formData = new FormData(createPostFormElement);
-  const formDataObject = Object.fromEntries(formData);
+//   // в аргум формдаты передаем ссылку на дом-элем нашей формы. рез сохр в formData
+//   const formData = new FormData(createPostFormElement);
+//   const formDataObject = Object.fromEntries(formData);
 
-  fetch("http://localhost:3000/posts", {
-    method: "post",
-    body: JSON.stringify({
-      ...formDataObject, // в этом объекте есть св-ва title и id
-      views: 0,
-    }),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8", // заголовки дял доп инфы, нужная для корр обраб вашего запроса серверу
-      "X-Auth-Token": "blablabla", // ключ сеанса. для идентиф сервером отправителя запроса
-    },
-    credentials: "include", // для отправки куков на сервер с запросом
-  })
-    .then((response) => {
-      console.log("response:", response);
+//   fetch("http://localhost:3000/posts", {
+//     method: "post",
+//     body: JSON.stringify({
+//       ...formDataObject, // в этом объекте есть св-ва title и id
+//       views: 0,
+//     }),
+//     headers: {
+//       "Content-type": "application/json; charset=UTF-8", // заголовки дял доп инфы, нужная для корр обраб вашего запроса серверу
+//       "X-Auth-Token": "blablabla", // ключ сеанса. для идентиф сервером отправителя запроса
+//     },
+//     credentials: "include", // для отправки куков на сервер с запросом
+//   })
+//     .then((response) => {
+//       console.log("response:", response);
 
-      return response.json();
-    })
-    .then((json) => {
-      console.log("json:", json);
-    });
-});
+//       return response.json();
+//     })
+//     .then((json) => {
+//       console.log("json:", json);
+//     });
+// });
 
-const searchPostsFormElement = document.querySelector(".search-posts-form");
-const postViewsInputElement = document.querySelector("#post-views");
+// const searchPostsFormElement = document.querySelector(".search-posts-form");
+// const postViewsInputElement = document.querySelector("#post-views");
 
-searchPostsFormElement.addEventListener("submit", (event) => {
-  event.preventDefault();
+// searchPostsFormElement.addEventListener("submit", (event) => {
+//   event.preventDefault();
 
-  fetch(`http://localhost:3000/posts?views_gte=${postViewsInputElement.value}`)
-    .then((response) => response.json())
-    .then((json) => {
-      console.log(json);
+//   fetch(`http://localhost:3000/posts?views_gte=${postViewsInputElement.value}`)
+//     .then((response) => response.json())
+//     .then((json) => {
+//       console.log(json);
 
-      resultElement.innerHTML = json
-        .map(({ title, views }) => `<p>${title}, просмотров: ${views}</p>`) // преобразуем массив объектов с данными в массив строк
-        .join(""); // соединяем массив строк в одну единую
-    });
-});
+//       resultElement.innerHTML = json
+//         .map(({ title, views }) => `<p>${title}, просмотров: ${views}</p>`) // преобразуем массив объектов с данными в массив строк
+//         .join(""); // соединяем массив строк в одну единую
+//     });
+// });
+
+//  41  // Браузерные хранилища данных: localStorage, cookie, IndexedDB. Смена темы.
+
+// cookie - это небольшие фрагменты данных, склеенные в единую строку
+// console.log("Cookie:", document.cookie);
+
+// document.cookie = "username=Pavel"; // куки как и любые другие браузерные хранилища данных не онуляются после перезагр страницы
+// document.cookie = "age=35";
+
+// // document.cookie = "date of birth=april 11, 1989"; // запись некорректна !!! спецсимволы недопустимы !!!
+// document.cookie = `${encodeURIComponent("date of birth")}=${encodeURIComponent(
+//   "april 11, 1989"
+// )}`; // такая запись отработает корректно
+
+// чтение и запись куки
+// document.cookie = "username=Pavel";
+// document.cookie = "age=35";
+
+// const setCookie = (name, value) => {
+//   document.cookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)}`;
+// };
+// setCookie("date of birth", "april 11, 1989");
+
+// console.log("Cookie", document.cookie);
+
+// const getCookie = (name) => {
+//   for (const entryStr of document.cookie.split("; ")) {
+//     const [entryName, entryValue] = entryStr.split("=");
+
+//     if (decodeURIComponent(entryName) === name) {
+//       return entryValue;
+//     }
+//   }
+// };
+// console.log("username:", getCookie("username"));
+// console.log("date of birth:", getCookie("date of birth"));
+// любую куку мужно удалить во вкладки Application дэвтулс через del
+
+//срок истечения
+// document.cookie = "username=Pavel";
+// document.cookie = "age=35";
+// document.cookie = "age=36";
+
+// const setCookie = (name, value, options = {}) => {
+//   let newEntryBody = `${encodeURIComponent(name)}=${encodeURIComponent(value)}`;
+
+//   const optionsAsString = Object.entries(options)
+//     .map((entry) => entry.join("="))
+//     .join("; ");
+
+//   if (optionsAsString) {
+//     newEntryBody += `; ${optionsAsString}`;
+//   }
+//   document.cookie = newEntryBody;
+// };
+// // ф-ия делит куки
+// const deleteCookie = (name) => {
+//   setCookie(name, "", { "max-age": -1 });
+// };
+
+// console.log("Cookie", document.cookie);
+
+// const getCookie = (name) => {
+//   for (const entryStr of document.cookie.split("; ")) {
+//     const [entryName, entryValue] = entryStr.split("=");
+
+//     if (decodeURIComponent(entryName) === name) {
+//       return entryValue;
+//     }
+//   }
+// };
+// deleteCookie("username");
+// console.log("username:", getCookie("username"));
+// console.log("date of birth:", getCookie("date of birth"));
+// Общее кол-во записей на один домен может быть не более 20. В некоторых браузерах объем чуть больше.
+// Объем данных в одной записи куки не должен превышать 4 килобайт.
+
+// Хранение данных в браузере:
+
+// Cookie:
+// - данные сохраняются после перезагрузки страницы;
+// - данные привязаны к конкретному домену;
+// - могут управляться сервером;
+// - количество записей ограничено ~20 шт;
+// - каждая запись хранит не более 4 КБ данных;
+// - для чтения, добавления, изменения и удаления записей нужны кастомные утилитарные функции.
+
+// SessionStorage и localStorage:
+// - данные сохраняются после перезагрузки страницы;
+// - данные привязаны к конкретному домену;
+// - не могут управляться сервером;
+// - количество и объем записей ограничен 5 Мб данных;
+// - для чтения, добавления, изменения и удаления записей есть встроенные методы.
+
+// SessionStorage:
+// - существует в рамках текущей активной вкладки.
+
+// LocalStorage:
+// - данные не имеют сроки давности.
+
+// Методы управления данными в SessionStorage и LocalStorage
+// sessionStorage.setItem("username", "Pavel");
+// sessionStorage.setItem("age", "35");
+
+// //переводим в строку
+// sessionStorage.setItem(
+//   "user",
+//   JSON.stringify({
+//     name: "Max",
+//     age: 100,
+//     isDeveloper: true,
+//   })
+// );
+// // переводим в js-код
+// console.log("username:", sessionStorage.getItem("username"));
+// console.log("age:", sessionStorage.getItem("age"));
+// console.log("typeof age:", typeof sessionStorage.getItem("age"));
+
+// console.log("user:", sessionStorage.getItem("user")); //строка
+// console.log("user:", JSON.parse(sessionStorage.getItem("user"))); // распарсили и превратили в js объект
+
+// sessionStorage.setItem("username", "Pavel");
+// sessionStorage.removeItem("username"); // полностью удаляет данные по указанному в аргум ключу
+// console.log("username:", sessionStorage.getItem("username"));
+
+// sessionStorage.setItem("username", "Pavel");
+// sessionStorage.setItem("age", "35");
+// console.log("sessionsStorage до очищения:", sessionStorage);
+// sessionStorage.clear(); // полностью очищает хранилище
+// console.log("sessionStorage после очищения:", sessionStorage);
+
+class ThemeSwitcher {
+  selectors = {
+    switchThemeButton: "[data-js-theme-switcher]",
+  };
+
+  themes = {
+    dark: "dark",
+    light: "light",
+  };
+
+  stateClasses = {
+    isDarkTheme: "is-dark-theme",
+  };
+
+  storageKey = "theme";
+
+  constructor() {
+    this.switchThemeButtonElement = document.querySelector(
+      this.selectors.switchThemeButton
+    );
+    this.setInitialTheme();
+    this.bindEvents();
+  }
+
+  get isDarkThemeCached() {
+    return sessionStorage.getItem(this.storageKey) === this.themes.dark;
+  }
+
+  setInitialTheme() {
+    document.documentElement.classList.toggle(
+      this.stateClasses.isDarkTheme,
+      this.isDarkThemeCached
+    );
+  }
+
+  onClick = () => {
+    sessionStorage.setItem(
+      this.storageKey,
+      this.isDarkThemeCached ? this.themes.light : this.themes.dark
+    );
+
+    document.documentElement.classList.toggle(this.stateClasses.isDarkTheme);
+  };
+
+  bindEvents() {
+    this.switchThemeButtonElement.addEventListener("click", this.onClick);
+  }
+}
+new ThemeSwitcher();
