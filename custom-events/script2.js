@@ -1924,28 +1924,52 @@
 //   console.log("history:", window.history);
 // });
 
-const filterFormElement = document.querySelector(".filter");
-filterFormElement.addEventListener("submit", (event) => {
-  event.preventDefault();
-  // ... //
-});
-filterFormElement.addEventListener("change", () => {
-  const formData = new FormData(filterFormElement);
-  const formDataObj = Object.entries(formDataObj)
-    .map(([key, value]) => `${key}=${value}`) // преобразуем в массив строк и склеиваем
-    .join("&"); // склеиваем массив строк в одну единую строчку
+// const filterFormElement = document.querySelector(".filter");
+// filterFormElement.addEventListener("submit", (event) => {
+//   event.preventDefault();
+//   // ... //
+// });
+// filterFormElement.addEventListener("change", () => {
+//   const formData = new FormData(filterFormElement);
+//   const formDataObj = Object.entries(formDataObj)
+//     .map(([key, value]) => `${key}=${value}`) // преобразуем в массив строк и склеиваем
+//     .join("&"); // склеиваем массив строк в одну единую строчку
 
-  window.history.replaceState(
-    {},
-    "",
-    `${window.location.pathname}?${paramsString}`
-  );
-});
-window.location.search
-  .replace("?", "")
-  .split("&")
-  .forEach((queryParam) => {
-    const [name, value] = queryParam.split("=");
+//   window.history.replaceState(
+//     {},
+//     "",
+//     `${window.location.pathname}?${paramsString}`
+//   );
+// });
+// window.location.search
+//   .replace("?", "")
+//   .split("&")
+//   .forEach((queryParam) => {
+//     const [name, value] = queryParam.split("=");
 
-    filterFormElement;
-  });
+//     filterFormElement[name].value = value;
+//   });
+
+// Класс URLSearchParams
+// const filterFormElement = document.querySelector(".filter");
+// filterFormElement.addEventListener("submit", (event) => {
+//   event.preventDefault();
+//   // ... //
+// });
+// filterFormElement.addEventListener("change", () => {
+//   const formData = new FormData(filterFormElement);
+//   const formDataObj = Object.fromEntries(formData);
+//   const params = new URLSearchParams(formDataObj);
+//   const paramsString = params.toString();
+
+//   window.history.replaceState(
+//     {},
+//     "",
+//     `${window.location.pathname}?${paramsString}`
+//   );
+// });
+
+// const paramsFromUrl = new URLSearchParams(window.location.search);
+// paramsFromUrl.forEach((value, name) => {
+//   filterFormElement[name].value = value;
+// });
