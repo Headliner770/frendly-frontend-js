@@ -1876,3 +1876,76 @@
 //   }
 // }
 // new ThemeSwitcher();
+
+//  42  //  Location и History API, URL страницы и история браузера
+
+// console.log(window.location);
+
+// setTimeout(() => {
+//   // window.location.assign("./catalog.html");
+//   // window.location.replace("./catalog.html");
+//   // window.location.href = './catalog.html'
+// }, 3000);
+
+// document.addEventListener("click", (event) => {
+//   if (event.target.href) {
+//     event.preventDefault();
+//     window.location.href = event.target.href;
+//   }
+// });
+
+// console.log(window.history);
+
+// const backButtonElement = document.getElementById("back-button");
+// const forwardButtonElement = document.getElementById("forward-button");
+
+// backButtonElement.addEventListener("click", () => {
+//   window.history.back(); // есть еще метод go(-2) оприд на сколько шагов нужно перейти в рамках сессии истории браузера
+// });
+
+// forwardButtonElement.addEventListener("click", () => {
+//   window.history.forward();
+// });
+
+// const backButtonElement = document.getElementById("back-button");
+// const forwardButtonElement = document.getElementById("forward-button");
+// addToHistoryButtonElement.addEventListener("click"),
+//   () => {
+//     window.history.pushState(
+//       // или replaceState, но он модифицирует последнюю запись в истории сессии, а не добаляет новую
+//       {
+//         example: "Какой-то текст",
+//       },
+//       "",
+//       "./catalog.html"
+//     );
+//   };
+// showHistoryButtonElement.addEventListener("click", () => {
+//   console.log("history:", window.history);
+// });
+
+const filterFormElement = document.querySelector(".filter");
+filterFormElement.addEventListener("submit", (event) => {
+  event.preventDefault();
+  // ... //
+});
+filterFormElement.addEventListener("change", () => {
+  const formData = new FormData(filterFormElement);
+  const formDataObj = Object.entries(formDataObj)
+    .map(([key, value]) => `${key}=${value}`) // преобразуем в массив строк и склеиваем
+    .join("&"); // склеиваем массив строк в одну единую строчку
+
+  window.history.replaceState(
+    {},
+    "",
+    `${window.location.pathname}?${paramsString}`
+  );
+});
+window.location.search
+  .replace("?", "")
+  .split("&")
+  .forEach((queryParam) => {
+    const [name, value] = queryParam.split("=");
+
+    filterFormElement;
+  });

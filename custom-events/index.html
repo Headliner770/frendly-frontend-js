@@ -370,12 +370,45 @@
 
     <!-- 41
 
-
     <h1>
         Браузерные хранилища данных: localStorage, sessionStorage, cookie, IndexedDB. Смена темы на сайте
     </h1>
 
     <button type="button" data-js-theme-switcher>Сменить тему</button> -->
+
+    
+    <form class="filter">
+        <p>
+            <label for="query">Поиск по имени товара:</label>
+            <input id="query" name="query" placeholder="Диван..." />
+        </p>
+        <p>
+            <label for="min-price">Минимальная цена:</label>
+            <input id="min-price" name="min-price" value="0" type="number" />
+        </p>
+        <p>
+            <label for="max-price">Максимальная цена:</label>
+            <input id="max-price" name="max-price" value="10000" type="number" />
+        </p>
+        <button type="submit">Найти</button>
+    </form>
+
+    <!-- <h1>Каталог</h1>
+    <nav>
+        <ul>
+            <li>
+                <a href="./">Главная</a>
+            </li>
+            <li>
+                <a href="./catalog.html">Каталог</a>
+            </li>
+            <li>
+                <a href="./about.html">О нас</a>
+            </li>
+        </ul>
+    </nav>
+    <button id="back-button" type="button">Назад</button>
+    <button id="forward-button" type="button">Вперед</button> -->
 
     <!-- Можно оставить только основной файл (script.js), который и будет управлять запуском всех модулей. Важно оставить атрибут type="module" -->
     <!-- <script src="./before.js"></script>
@@ -383,6 +416,10 @@
 
     <!-- <script src="./after.js"></script> -->
     <!-- <script src="./script2.js" type="module"></script> -->
+
+
+
+
 </body>
 
 </html>
