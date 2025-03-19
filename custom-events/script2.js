@@ -1973,3 +1973,258 @@
 // paramsFromUrl.forEach((value, name) => {
 //   filterFormElement[name].value = value;
 // });
+
+// const sum = [] + 1 + 2;
+// console.log(sum);
+
+// let f = (a, b) => {
+//   a + b;
+// };
+// console.log(f(1, 2));
+
+// let str = "Hello";
+// str.something = 5;
+// alert(str.something); // ?
+
+// f.call(f);
+
+// function f() {
+//   alert(this);
+// }
+
+// alert(str); // ?
+// let str = "Hello";
+
+// let a = 1;
+// let b = {
+//   toString() {
+//     return "1";
+//   },
+// };
+// let c = 1;
+// console.log(a + b + c);
+
+// [].push(1, 2).unshift(3).join();
+
+// let obj = {
+//   0: 1,
+//   0: 2,
+// };
+
+// alert(obj["0"] + obj[0]);
+
+// alert("1"[0]); // 1
+
+// sayHi();
+
+// function sayHi() {
+//   alert("Hello");
+// }
+
+// let f = (function (x) {
+//   alert(x);
+// })(
+//   (function () {
+//     f(1);
+//   })()
+// );
+
+// for(var i=0; i<10; i++) {
+//   console.log(i);
+// }
+// // i = ?
+
+// [] + false - null + true
+
+// null == undefined
+
+// let x = 5;
+// alert(x++);
+
+// for (let key in { 1: 1, 0: 0 }) {
+//   alert(key);
+// }
+
+// break me;
+
+// ("use strict");
+
+// a = null + undefined;
+// alert(a);
+
+// let str = "Hello";
+// str.something = 5;
+// alert(str.something); // ?
+
+// let name = "Вася";
+// function sayHi() {
+//   alert(name);
+// }
+// setTimeout(function () {
+//   let name = "Петя";
+//   sayHi();
+// }, 1000);
+
+// function f() {
+//   let a = 5;
+//   return new Function("b", "return a + b");
+// }
+
+// alert(f()(1));
+
+// const a = true + false;
+// console.log(a);
+
+// function User() {}
+// User.prototype = { admin: false };
+
+// let user = new User();
+
+// User.prototype = { admin: true };
+
+// alert(user.admin);
+
+// let str = "Hello";
+// str.something = 5;
+// alert(str.something); // ?
+
+// let a = [1,2]
+
+// (function() { alert(a) })()
+
+// let a = 1;
+// let b = {
+//   toString() {
+//     return "1";
+//   },
+// };
+// let c = 1;
+
+// let d = a + b + c;
+// console.log(d);
+
+// alert("1"[0]);
+
+// function MyArray() {}
+// MyArray.prototype = [];
+
+// let arr = new MyArray();
+// arr.push(1, 2, 3);
+// alert(arr.length);
+
+// let arr = [1, 2, 3];
+// arr.something = 5;
+
+// alert(arr.something); // ?
+
+// let y = 1;
+// let x = (y = 2);
+
+// alert(x);
+
+// alert(str); // ?
+// let str = "Hello";
+
+// for (let i = 0; i < 10; i++) {
+//   console.log(i);
+// }
+// i = ?
+
+// alert(+"Infinity");
+
+// [].push(1, 2).unshift(3).join();
+
+// function F() {
+//   return F;
+// }
+
+// alert(new F() instanceof F);
+// alert(new F() instanceof Function);
+
+// function User() {}
+// User.prototype = { admin: false };
+
+// let user = new User();
+// alert(user.admin);
+
+// for (let i = 0; i < 10; i++) {
+//   setTimeout(function () {
+//     console.log(i);
+//   }, 100);
+// }
+
+// let user = {
+//   sayHi: function () {
+//     alert(this);
+//   },
+// };
+
+// (user.sayBye = user.sayHi)();
+
+// let bmw = null + { 0: 1 }[0] + [, [1]][1][0];
+// console.log(bmw);
+
+// Stepik  ------------------------------------------------------------------
+
+// console.log(1)
+
+// console.info(2)
+
+// console.error(3)
+
+// console.warn(4)
+
+// let data = null,
+//   single,
+//   logs = [];
+
+// console.log(typeof data, typeof single, typeof logs);
+
+// let profile = {};
+
+// console.log(typeof profile);
+
+// console.log(typeof user);
+
+// let day;
+
+// console.log(typeof day);
+
+// console.log(1 + String("9") + "5" + Number("5"));
+
+// let score = 10;
+// let bonus = 10;
+// let q = 2;
+
+// score = score + bonus * q;
+
+// console.log(score);
+
+// let gifts = 0, gift = 1;
+
+// gifts += (gift++) + (gift++);
+
+// console.log(gifts);
+
+// let active = true,
+//   heroName = "Санта";
+
+// console.log(active && heroName);
+
+// let snow = true,
+//   winter = true;
+
+// console.log(!snow && !winter);
+
+// let kevinPositionX = -1;
+
+// console.log(-kevinPositionX, +kevinPositionX);
+
+(x = 10), (y = 10), (direction = "right");
+
+x += (direction == "right") - (direction == "left");
+y += (direction == "down") - (direction == "up");
+
+result = `x: ${x}, y: ${y}, direction: ${direction}`;
+
+console.log(result);
