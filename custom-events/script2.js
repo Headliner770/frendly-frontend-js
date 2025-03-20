@@ -2220,11 +2220,151 @@
 
 // console.log(-kevinPositionX, +kevinPositionX);
 
-(x = 10), (y = 10), (direction = "right");
+// (x = 10), (y = 10), (direction = "right");
 
-x += (direction == "right") - (direction == "left");
-y += (direction == "down") - (direction == "up");
+// x += (direction == "right") - (direction == "left");
+// y += (direction == "down") - (direction == "up");
 
-result = `x: ${x}, y: ${y}, direction: ${direction}`;
+// result = `x: ${x}, y: ${y}, direction: ${direction}`;
 
-console.log(result);
+// console.log(result);
+
+// let country = "Франция",
+//   shippingCost;
+
+// switch (country) {
+//   case "США":
+//     shippingCost = 20;
+//     break;
+//   case "Германия":
+//   case "Франция":
+//     shippingCost = 15;
+//     break;
+//   case "Япония":
+//     shippingCost = 25;
+//     break;
+//   default:
+//     shippingCost = 30;
+// }
+
+// console.log("Стоимость доставки в " + country + ": " + shippingCost + " евро");
+
+// let giftCatalog = [
+//   { name: "Игрушка-робот", price: 30 },
+//   { name: "Набор красок", price: 15 },
+//   { name: "Конструктор", price: 40 },
+//   { name: "Настольная игра", price: 25 },
+// ];
+
+// let budget = 35,
+//   selectedGift;
+
+// for (var i = 0; i < giftCatalog.length; i++) {
+//   if (giftCatalog[i].price <= budget) {
+//     selectedGift = giftCatalog[i].name;
+//     break;
+//   }
+// }
+
+// console.log("Выбранный подарок: " + selectedGift);
+
+// let isGiftOrdered = true,
+//   isGiftShipped = !isGiftOrdered,
+//   isGiftDelivered = !!isGiftShipped;
+
+// // ...
+
+// let orderStatus = isGiftOrdered
+//   ? isGiftShipped
+//     ? isGiftDelivered
+//       ? "Подарок успешно доставлен!"
+//       : "Подарок находится в процессе доставки."
+//     : "Подарок готовится к отправке."
+//   : "Подарок еще не заказан.";
+
+// console.log(orderStatus);
+
+// let items = ["Меч", "Щит", "Свиток", "Кольцо"];
+
+// console.log([items.shift(2)]);
+
+// let enemies = [
+//   { name: "Гоблин", health: 10 },
+//   { name: "Скелет", health: 20 },
+//   { name: "Орк", health: 30 },
+// ];
+
+// let lowHealthEnemies = enemies.filter((enemy) => enemy.health < 30);
+
+// console.log(lowHealthEnemies[1].name[1]);
+
+// function balance(data) {
+//   let leftSum = 0,
+//     rightSum = 0;
+
+//   for (let i = 0; i < data.length / 2; i++) {
+//     leftSum += data[i];
+//   }
+
+//   for (let i = data.length / 2; i < data.length; i++) {
+//     rightSum += data[i];
+//   }
+
+//   if (leftSum > rightSum) {
+//     return "Левая сторона тяжелее";
+//   } else if (rightSum > leftSum) {
+//     return "Правая сторона тяжелее";
+//   } else {
+//     return "Обе стороны сбалансированы";
+//   }
+// }
+
+// let santa = {
+//   name: "Санта",
+//   power: 1000000,
+//   location: "Снежное царство",
+// };
+
+// santa.power > 9000 && Object.freeze(santa);
+
+// console.log(Object.isFrozen(santa));
+
+// let setFlag = (flag) => flag && "Флаг";
+
+// console.log(setFlag(false), setFlag(true));
+
+// console.log(Math.abs(['-1985']));
+
+// const regex = /jingle\.bells/s;
+
+// console.log(regex.test("jingle\nbells"));
+
+// const champion = {
+//   alias: "Жанна",
+//   powerLevel: 30,
+// };
+
+// champion.powerLevel = 15;
+
+// champion = {
+//   alias: "Максимус",
+//   powerLevel: 40,
+// };
+
+// console.log(champion.powerLevel);
+
+let guild = {
+  name: "Рыцари света",
+  leader: "Леонард",
+};
+
+function changeGuildLeader(newLeader) {
+  guild.leader = newLeader;
+  console.log("Новый лидер гильдии: " + guild.leader);
+  let guild = {
+    name: "Тени ночи",
+    leader: "Сильвия",
+  };
+}
+
+changeGuildLeader("Арнольд");

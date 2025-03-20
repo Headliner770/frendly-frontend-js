@@ -1588,3 +1588,4 @@
 // const developerExample = new Developer("Миша", 25, 5);
 // console.log("Количество лет опыта:", developerExample.experience); //Количество лет опыта: 5
 
+
