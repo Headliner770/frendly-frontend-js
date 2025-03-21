@@ -2353,18 +2353,186 @@
 
 // console.log(champion.powerLevel);
 
-let guild = {
-  name: "Рыцари света",
-  leader: "Леонард",
-};
+// let guild = {
+//   name: "Рыцари света",
+//   leader: "Леонард",
+// };
 
-function changeGuildLeader(newLeader) {
-  guild.leader = newLeader;
-  console.log("Новый лидер гильдии: " + guild.leader);
-  let guild = {
-    name: "Тени ночи",
-    leader: "Сильвия",
-  };
-}
+// function changeGuildLeader(newLeader) {
+//   guild.leader = newLeader;
+//   console.log("Новый лидер гильдии: " + guild.leader);
+//   let guild = {
+//     name: "Тени ночи",
+//     leader: "Сильвия",
+//   };
+// }
 
-changeGuildLeader("Арнольд");
+// changeGuildLeader("Арнольд");
+
+// let counter = {
+//   count: 0,
+//   init: function (count) {
+//     this.count = count;
+//   },
+//   increment: function () {
+//     this.count++;
+//   },
+//   decrement: function () {
+//     this.count--;
+//   },
+// };
+
+// counter.init(1);
+// counter.increment();
+
+// console.log(counter.count);
+
+// console.log({ counter: 1 }.counter + [].length);
+
+// console.log({ counter: 1 }.counter + [2, 4, 6].length);
+
+// let game = {
+//   score: 0,
+//   start: function () {
+//     console.log("Игра началась!");
+//     // ..логика начала игры
+//     // ...
+//     this.score += 100;
+//     // ...
+//     setTimeout(this.gameOver.bind(this), 5000 + 5000);
+//   },
+//   gameOver: function () {
+//     console.log("Игра окончена!");
+//   },
+// };
+
+// game.start();
+
+// Тема prototype и __proto__ !!!!!!!!!!
+
+// let a = { value: 18 };
+
+// let b = {
+//   age: a,
+// };
+
+// let c = a;
+
+// console.log(a === b.age);
+// console.log(a === c);
+
+// b.age.value = 21;
+
+// console.log(a.value === 21);
+// console.log(c.value === 21);
+
+// console.log({} === {});
+
+// let man = {};
+// let man2 = {};
+// console.log(man.__proto__ === man2.__proto__); // __proto__ равны
+
+// let users = [];
+// let cars = [];
+// console.log(users.__proto__ === cars.__proto__); // __proto__ равны
+
+// let age = 18;
+// let level = 100;
+// console.log(age.__proto__ === level.__proto__); // __proto__ равны
+
+// let promise = new Promise(() => {}); // new Promise(...)
+
+// let man = {}; // new Object(...)
+
+// let users = []; // new Array(...)
+
+// let youtube = "it-kama"; // new String(...)
+
+// function subscribe() {} // new Function(...)
+// let like = function () {}; // new Function(...)
+// let click = function () {}; // new Function(...)
+// class YoutubeChannel {} // new Function(...)
+
+// let channel1 = new YoutubeChannel(); // new YoutubeChannel (по аналогии с promise)
+
+// let areYouOk = true; // new Boolean(...)
+
+// Любой объект создается с помощью класса
+// У любого объекта есть свойство __proto__
+// Чтобы понимать, что это за __proto__, нужно ТОЧНО знать с помощью какой функции-конструктора (класса) создан данный объект (new XXX())
+// Например:  let promise = new Promise(() => {}); //создаем promise с помощью newPromise
+
+// __proto__ - любого объекта
+// prototype - у class или function
+// __proto__ любого объекта ссылается на prototype класса (функции конструктора), с помощью которой этот объект был создан (сконструирован)
+
+// let promise = new Promise(() => {}); // new Promise(...) // promise.__proto__ === Promise.prototype
+
+// let man = {}; // new Object(...) // man.__proto__ === Object.prototype
+
+// let users = []; // new Array(...) users.__proto__ === Array.prototype
+
+// let youtube = "it-kama"; // new String(...) // youtube.__proto__ === String.prototype
+// youtube это объект и его __proto__ будет ссылаться на прототип того класса с помощью которого он создан, а именно String.prototype
+
+// class YoutubeChannel {} // new Function(...) // YoutubeChannel.__proto__ === Function.prototype
+
+// let channel1 = new YoutubeChannel(); // new YoutubeChannel (по аналогии с promise) // channel1.__proto__ === YoutubeChannel.prototype
+
+// Вопросы
+// 1 let dimych = { name: "Dimych" };
+// 2 console.log(dimych.prototype) // false
+// 3 console.log(dimych.__proto__) // true
+// 4 console.log(dimych.__proto__ ===  Object.prototype)
+// 5
+// 6 let numbers = [1, 2, 3, 34]
+// 7 console.log(numbers.prototype) // false (prototype есть только у class или function )
+// 8 console.log(numbers.__proto__) // true (массив это объект, поэтому есть )
+// 9 numbers.__proto__ === Array.prototype
+
+// 11 class Samurai {
+// 12     constructor(name) {
+// 13         this.name = name
+// 14     }
+// 15     hello() {
+// 16          alert(this.name)
+// 17     }
+// 18  }
+// 19
+// 20 console.log(Samurai.prototype)  // true (тк prototype есть только у ф-ий объявленных через function и у class)
+// 21 console.log(Samurai.__proto__)  // true (тк это объект)
+// 22 console.log(Samurai.__proto__ === Function.prototype) (тк class Samurai создался с помощью new Function)
+// 23
+// 24 let shogun = new Samurai('Dimych')
+// 25 console.log(shogun.prototype)  // false (тк prototype только у class или function (let shogun это ОБЪЕКТ))
+// 26 console.log(shogun.__proto__)  // true (let shogun это ОБЪЕКТ)
+// 27 console.log(shogun.__proto__ === Samurai.prototype) // __proto__ любого объекта = prototype того класса с помощью которого был создан
+
+// class Samurai {
+//   constructor(name) {
+//     this.name = name;
+//   }
+//   hello() {
+//     alert(this.name);
+//   }
+// }
+// let shogun = new Samurai("Dimych");
+// let shogun2 = new Samurai("Viktor");
+// console.log(shogun.__proto__ === shogun2.__proto__); // __proto__ есть и они равны // shogun и shogun2 это объекты, значит есть __proto__.
+// __proto__ = прототипу класса с помощью которого были созданы (Samurai). Две ссылки __proto__ ссылаются на один и тот же объект.
+
+// const Component = (props) => {
+//   return "<h1>I needs HELP</h1>";
+// };
+// console.log(Component.prototype); // нет prototype (тк prototype есть только у ф-ий объявленных через function и у class)
+// console.log(Component.__proto__); // есть __proto__ (тк ф-ия это объект) и равен === Function.prototype
+
+// ЗАЧЕМ КЛАССУ НУЖЕН объект prototype
+// и зачем объектам, созданным с помощью этого класса, свойство __proto__,
+// которое ссылается на этот объект prototype ?
+
+Если мы попытаемся прочитать свойство объекта, либо вызвать его метод, а
+данного свойства/метода нет, то объект полезет искать его через ссылку 
+__proto__ в prototype-е класса, с помощью которого он был создан.
+
+Как правило, речь идёт именно о метода
