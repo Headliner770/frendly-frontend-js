@@ -2408,7 +2408,7 @@
 
 // game.start();
 
-// Тема prototype и __proto__ !!!!!!!!!!
+// Тема prototype и __proto__ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 // let a = { value: 18 };
 
@@ -2462,8 +2462,8 @@
 // Чтобы понимать, что это за __proto__, нужно ТОЧНО знать с помощью какой функции-конструктора (класса) создан данный объект (new XXX())
 // Например:  let promise = new Promise(() => {}); //создаем promise с помощью newPromise
 
-// __proto__ - любого объекта
-// prototype - у class или function
+// __proto__ - у любого объекта
+// prototype - у class либо function
 // __proto__ любого объекта ссылается на prototype класса (функции конструктора), с помощью которой этот объект был создан (сконструирован)
 
 // let promise = new Promise(() => {}); // new Promise(...) // promise.__proto__ === Promise.prototype
@@ -2531,8 +2531,101 @@
 // и зачем объектам, созданным с помощью этого класса, свойство __proto__,
 // которое ссылается на этот объект prototype ?
 
-Если мы попытаемся прочитать свойство объекта, либо вызвать его метод, а
-данного свойства/метода нет, то объект полезет искать его через ссылку 
-__proto__ в prototype-е класса, с помощью которого он был создан.
+// Если мы попытаемся прочитать свойство объекта, либо вызвать его метод, а
+// данного свойства/метода нет, то объект полезет искать его через ссылку
+// __proto__ в prototype-е класса, с помощью которого он был создан.
 
-Как правило, речь идёт именно о метода
+// let dimych = { name: "Dimych" };
+// dimych.toString();
+// dimych.__proto__ => Object.prototype = { toString(){} }
+
+// Как правило, речь идёт именно о метода
+
+// function Samurai(name) {
+//   this.name = name;
+// }
+// Samurai.prototype.hello = function () {
+//   alert(this.name);
+// };
+// let shogun = new Samurai("Dimych");
+// shogun.hello(); // shogun.__proto__ => Samurai.prototype, и там находим hello
+// let shogun2 = new Samurai("Viktor");
+// shogun2.hello(); // shogun2.__proto__ => Samurai.prototype, и там находим hello
+
+// let man = {};
+// let man2 = {}; // new Object
+// console.log(man.__proto__ === man2.__proto__);
+
+// let users = [];
+// let cars = []; // new Array
+// console.log(users.__proto__ === cars.__proto__);
+
+// let age = 18;
+// let level = 100; // new Number
+// console.log(age.__proto__ === level.__proto__);
+
+// let youtube = "it-kama";
+// let website = "it-kama.com"; // new String
+// console.log(youtube.__proto__ === website.__proto__);
+
+// function subscribe() {}
+// let like = function () {};
+// let click = () => {};
+// class YoutubeChannel {} // new Function
+
+// let areYou = true; // new Boolean
+// console.log(YoutubeChannel.__proto__ !== areYou.__proto__);
+
+// Задачки
+// 1
+// console.log(({}).prototype === ({}).__proto__);  // false (у первого объекта нет prototype)
+
+// // 2
+// function ITKama() {
+//   console.log(ITKama.prototype === ITKama.__proto__); // false (у function есть prototype и у function(объект) есть __proto__ (создан от function.prototype), но два прототипа всегда не равны)
+// }
+
+// // 3
+// function ITIncub() {}
+// function ITKama() {}
+// console.log(ITIncub.__proto__ === ITKama.__proto__); // true (эти __proto__ будут указывать на один и тот же prototype, а именно function.prototype)
+// // 4
+// console.log(ITIncub.prototype === ITKama.prototype); // false (у этих двух ф-ий есть prototype, но они не равны, тк у каждого класса свой персональный prototype)
+
+// // 5
+// let Component = (props) => {
+//   return `<div>I dont know...</div>`;
+// };
+// console.log(Component.prototype === Object.prototype); // false (у Component.prototype нет prototype (это объект) у Object.prototype есть)
+
+// // 6
+// let age = 18;
+// console.log(age.prototype === Number.prototype); // false (у age.prototype нет prototype)
+// // 7
+// console.log(age.__proto__ === Number.prototype); // true (у объекта есть __proto__ и он создается с помощью new Number)
+
+// // 8
+// class Hacker {}
+// console.log(Hacker.__proto__ === Function.prototype); // true (у объекта есть __proto__ и он создается с помощью new Function)
+
+// // 9
+// function ITIncub()
+// console.log(ITIncub.__proto__ === ???); // function.prototype (ITIncub есть прото, создана за кадром с помощью new Function)
+
+// // 10
+// const count = 12
+// console.log( count.__proto__ === ???); // number.prototype (count есть прото, создана за кадром с помощью new Number)
+
+//
+class Samurai {
+  constructor(name) {
+    this.name = name;
+  }
+  hello() {
+    alert(this.name);
+  }
+}
+let shogun = new Samurai("Dimych");
+console.log(shogun.__proto__.__proto__ === ???);
+console.log(shogun.__proto__.constructor.__proto__ === ???);
+console.log(shogun.__proto__.__proto__.__proto__ === ???);
