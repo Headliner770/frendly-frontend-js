@@ -2617,15 +2617,39 @@
 // console.log( count.__proto__ === ???); // number.prototype (count есть прото, создана за кадром с помощью new Number)
 
 //
-class Samurai {
-  constructor(name) {
-    this.name = name;
-  }
-  hello() {
-    alert(this.name);
-  }
-}
-let shogun = new Samurai("Dimych");
-console.log(shogun.__proto__.__proto__ === ???);
-console.log(shogun.__proto__.constructor.__proto__ === ???);
-console.log(shogun.__proto__.__proto__.__proto__ === ???);
+// class Samurai {
+//   constructor(name) {
+//     this.name = name;
+//   }
+//   hello() {
+//     alert(this.name);
+//   }
+// }
+// let shogun = new Samurai("Dimych");
+// console.log(shogun.__proto__.__proto__ === ???);
+// console.log(shogun.__proto__.constructor.__proto__ === ???);
+// console.log(shogun.__proto__.__proto__.__proto__ === ???);
+
+const john = {
+  name: "Джон",
+  age: 25,
+  pet: "Барсик",
+};
+const ann = {
+  name: "Анна",
+  age: 28,
+  pet: "Шарик",
+};
+const myPet = ({ name, age, pet }) =>
+  console.log(`Меня зовут ${name}, мне ${age}, у меня есть питомец ${pet}`);
+myPet(ann);
+
+// const incementAge = ({ age }) => console.log(`${++age}`);
+// incementAge(john);
+// или
+
+const incrementAge = ({ people }) => {
+  return (people.age += 1);
+};
+
+incrementAge(people.age);
