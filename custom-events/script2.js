@@ -2630,26 +2630,37 @@
 // console.log(shogun.__proto__.constructor.__proto__ === ???);
 // console.log(shogun.__proto__.__proto__.__proto__ === ???);
 
-const john = {
-  name: "Джон",
-  age: 25,
-  pet: "Барсик",
-};
-const ann = {
-  name: "Анна",
-  age: 28,
-  pet: "Шарик",
-};
-const myPet = ({ name, age, pet }) =>
-  console.log(`Меня зовут ${name}, мне ${age}, у меня есть питомец ${pet}`);
-myPet(ann);
+//
+// Задачи Минин !!!!!!!!!!!!!!!!!
+// 1
+// const john = {
+//   name: "Джон",
+//   age: 25,
+//   pet: "Барсик",
+// };
+// const ann = {
+//   name: "Анна",
+//   age: 28,
+//   pet: "Шарик",
+// };
+// const myPet = ({ name, age, pet }) =>
+//   console.log(`Меня зовут ${name}, мне ${age}, у меня есть питомец ${pet}`);
+// // myPet(ann);
 
-// const incementAge = ({ age }) => console.log(`${++age}`);
-// incementAge(john);
-// или
+// // const incementAge = ({ age }) => console.log(`${++age}`);
+// // incementAge(john);
+// // или
 
-const incrementAge = ({ people }) => {
-  return (people.age += 1);
-};
+// const incrementAge = (people) => people.age++;
 
-incrementAge(people.age);
+// const display = (people) => {
+//   for (const [key, value] of Object.entries(people))
+//     console.log(`${key}: ${value}`);
+// };
+// display(john);
+// incrementAge(ann);
+
+// 2
+function sum(array) {}
+const arr = [1, 20, 20, 75, 90];
+sum(arr);
