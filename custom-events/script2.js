@@ -2660,7 +2660,80 @@
 // display(john);
 // incrementAge(ann);
 
-// 2
-function sum(array) {}
-const arr = [1, 20, 20, 75, 90];
-sum(arr);
+// ---  1  --- //
+
+// isPrimeNumber = (num) => {
+//   if (num <= 1) {
+//     return false; // не является простым
+//   }
+//   if (num <= 3) {
+//     return true; // 2 и 3 простые числа
+//   }
+//   if (num % 2 === 0 || num % 3 === 0) {
+//     return false;
+//   }
+//   // Проверяем делители, начиная с 5, с шагом 6
+//   for (let i = 5; i * i <= num; i = i + 6) {
+//     if (num % i === 0 || num % (i + 2) === 0) {
+//       return false; // Если число делится на i или i+2, то оно не простое
+//     }
+//   }
+//   return true; // Если делителей не найдено, число простое
+// };
+// console.log(isPrimeNumber(1)); // true
+
+// ---  2  --- //
+
+// function func(num, min, max) {
+//   if (num < min) {
+//     return min ** 2;
+//   }
+//   if (num > max) {
+//     return max ** 2;
+//   }
+//   if (num < max - (max - min) / 2) {
+//     return num ** 2;
+//   }
+//   return Math.floor(num);
+// }
+// console.log(func(3, 1, 10)); // 9
+// console.log(func(15, 1, 10)); // 100
+// console.log(func(5, 1, 10)); // 25
+// console.log(func(8.5, 1, 10)); // 8
+
+// ---  1  --- //
+// следующий блок
+// const car = {
+//   name: "Hyundai Solaris",
+//   type: "sedan",
+//   maxSpeed: "320",
+//   color: "red",
+// };
+
+// const string = (car) =>
+//   `<article><div><h2>${car.name}</h2><span>${car.type}</span></div><div><span>Maximum speed:</span><span>${car.maxSpeed}</span></div><div><span>Color:</span><span>${car.color}</span></div></article`;
+// console.log(string(car));
+
+// ---  2  --- //
+
+// function countWords(sentence) {
+//   const words = sentence.split(" "); // разбиваем строку на массив, разделяя пробелом. Можно исп .trim для удаления пробелов в начале и в конце.
+//   return words[0] === "" ? 0 : words.length; // проверяем первый элем на пустую строку
+// }
+
+// const sentence = "Hello, how are you yo?";
+// console.log(countWords(sentence)); // 4
+
+// ---  3  --- //
+
+const fullName = "John Doe";
+
+const getInitials = (name) => {
+  return name
+    .split(" ") // разбиваем на массив
+    .map((letters) => letters.charAt(0).toUpperCase() + ".") //проходимя по каждому элему массива, извлекаем первые буквы и возводим их в верхний регистр
+    .join(" ");
+};
+
+const initials = getInitials(fullName);
+console.log(initials); // "J. D."
