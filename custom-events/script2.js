@@ -2737,3 +2737,58 @@ const getInitials = (name) => {
 
 const initials = getInitials(fullName);
 console.log(initials); // "J. D."
+
+// del
+//
+
+//   --- Задание № 1 ---   //
+
+// function isPrimeNumber(num) {
+//   for (let a = 2; a < num; a++) {
+//     if (num % a === 0) return false;
+//   }
+//   return num !== 1;
+// }
+
+// function printPrimes(max) {
+//   for (let a = 2; a <= max; a++) {
+//     if (isPrimeNumber(a)) console.log(a);
+//   }
+// }
+
+// console.log(isPrimeNumber(29));
+
+// function isPrimeNumber(num) {
+//   // Проверка, является ли число меньше 2
+//   if (num < 2) return false;
+
+//   // Проверка делителей от 2 до num - 1
+//   for (let a = 2; a < num; a++) {
+//     if (num % a === 0) return false; // Если нашли делитель, число не простое
+//   }
+//   return true; // Если делителей не найдено, число простое
+// }
+
+// function printPrimes(max) {
+//   for (let a = 2; a <= max; a++) {
+//     if (isPrimeNumber(a)) console.log(a); // Исправлено на isPrimeNumber
+//   }
+// }
+
+// // Пример вызова функции для печати простых чисел до 20
+
+// console.log(isPrimeNumber(13));
+
+// console.log('a');
+// new Promise((resolve, reject) => {
+// 	console.log('b');
+// 	setTimeout(() => {
+// 		console.log('c');
+// 		resolve();
+// 	}, 0);
+// })
+//   .then(() => console.log('d'));
+
+// console.log('e');
+// setTimeout(() => console.log('f'), 0);
+// console.log('g');
