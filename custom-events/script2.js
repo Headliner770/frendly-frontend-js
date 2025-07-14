@@ -2726,17 +2726,17 @@
 
 // ---  3  --- //
 
-const fullName = "John Doe";
+// const fullName = "John Doe";
 
-const getInitials = (name) => {
-  return name
-    .split(" ") // разбиваем на массив
-    .map((letters) => letters.charAt(0).toUpperCase() + ".") //проходимя по каждому элему массива, извлекаем первые буквы и возводим их в верхний регистр
-    .join(" ");
-};
+// const getInitials = (name) => {
+//   return name
+//     .split(" ") // разбиваем на массив
+//     .map((letters) => letters.charAt(0).toUpperCase() + ".") //проходимя по каждому элему массива, извлекаем первые буквы и возводим их в верхний регистр
+//     .join(" ");
+// };
 
-const initials = getInitials(fullName);
-console.log(initials); // "J. D."
+// const initials = getInitials(fullName);
+// console.log(initials); // "J. D."
 
 // del
 //
@@ -2792,3 +2792,13 @@ console.log(initials); // "J. D."
 // console.log('e');
 // setTimeout(() => console.log('f'), 0);
 // console.log('g');
+
+// Прототипное наследование
+
+const person = new Object({
+  name: "Maxim",
+  age: 28,
+  greet: function () {
+    console.log("Greet!");
+  },
+});
