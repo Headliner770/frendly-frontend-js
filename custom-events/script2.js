@@ -2811,13 +2811,15 @@
 // console.log(original);
 // console.log(copy);
 
-const original = [
-  [1, [10, 20]],   // Первый внутренний массив, у него тоже есть вложенность!
-  [3, 4]
-];
+// const original = [
+//   [1, [10, 20]],   // Первый внутренний массив, у него тоже есть вложенность!
+//   [3, 4]
+// ];
 
-// Поверхностное копирование внешнего массива
-const сopy = [...original];
+// // Поверхностное копирование внешнего массива
+// const сopy = [...original];
 
-console.log(original)
-console.log(сopy)
+// console.log(original)
+// console.log(сopy)
+
+
