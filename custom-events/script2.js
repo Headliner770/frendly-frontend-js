@@ -2795,10 +2795,29 @@
 
 // Прототипное наследование
 
-const person = new Object({
-  name: "Maxim",
-  age: 28,
-  greet: function () {
-    console.log("Greet!");
-  },
-});
+// const person = new Object({
+//   name: "Maxim",
+//   age: 28,
+//   greet: function () {
+//     console.log("Greet!");
+//   },
+// });
+
+// const original = [
+//   [1, 2],
+//   [3, 4],
+// ];
+// const copy = [...original];
+// console.log(original);
+// console.log(copy);
+
+const original = [
+  [1, [10, 20]],   // Первый внутренний массив, у него тоже есть вложенность!
+  [3, 4]
+];
+
+// Поверхностное копирование внешнего массива
+const сopy = [...original];
+
+console.log(original)
+console.log(сopy)
