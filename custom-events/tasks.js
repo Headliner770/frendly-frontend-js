@@ -17,9 +17,9 @@
 //   let counter = init;
 
 //   return {
-//     increment: () => 
+//     increment: () =>
 //       ++counter,
-//     decrement: () => 
+//     decrement: () =>
 //       --counter,
 //     reset: () => {
 //       counter = init;
@@ -45,10 +45,31 @@
 
 // console.log(colorConfig[colors[1]]);
 
-let a = 2;
-let b = a;
+// let a = 2;
+// let b = a;
 
-a = 6;
+// a = 6;
 
-console.log(a)
-console.log(b)
+// console.log(a)
+// console.log(b)
+
+// function createFunction(n) {
+//   return function () {
+//     console.log(1000 * n);
+//   };
+// }
+
+// const calc = createFunction(42)
+// calc()
+
+// function urlGenerator(domain) {
+//   return function (url) {
+//     return `https://${url}.${domain}`;
+//   };
+// }
+
+// const comUrl = urlGenerator("com");
+// const ruUrl = urlGenerator("ru");
+
+// console.log(comUrl("google"));
+// console.log(ruUrl("yandex"));
