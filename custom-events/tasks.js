@@ -73,3 +73,8 @@
 
 // console.log(comUrl("google"));
 // console.log(ruUrl("yandex"));
+
+function logPerson() {
+    console.log(`Person: ${this.name}, `);
+    
+}
